@@ -194,7 +194,7 @@ export class MyApp {
       });
 
       if(!validtab){
-        let tabdictionare = this.appglobals.getTabsContainerList();      
+        let tabdictionare = this.appglobals.getTabsContainerList();
         for(let tab in tabdictionare){
           // if(tabdictionare[tab].deeplink === pathparts[1]){
           if(pathparts[1].indexOf(tabdictionare[tab].deeplink) === 0){
@@ -255,8 +255,7 @@ export class MyApp {
     //console.log('Storage Meta::: ',this.storageMeta.user);
     //if(!usr['account_verified']){
 
-    if(!usr['account_verified']){
-      // if(!usr['dummy_uploaded']){
+    //if(!usr['account_verified']){
         console.log('verify modal opened');
         this.verifyModal = this.modalctrl.create(VerifyAccountPopoverPage,{}, { enableBackdropDismiss: false});
         this.verifyModal.present();
@@ -264,8 +263,7 @@ export class MyApp {
         this.verifyModal.onDidDismiss(() => {
           this.verifyModal = null;
         });
-      // }
-    }
+    //}
   }
 
   private showFailNavToast(message): void{
@@ -492,8 +490,8 @@ export class MyApp {
       });
 
       // Set the name of the hidden property and the change event for visibility
-      var hidden, visibilityChange; 
-      if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
+      var hidden, visibilityChange;
+      if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
         hidden = "hidden";
         visibilityChange = "visibilitychange";
       } else if (typeof document.msHidden !== "undefined") {
@@ -507,7 +505,7 @@ export class MyApp {
       if (typeof document.addEventListener === "undefined" || typeof document[hidden] === "undefined") {
         console.warn("addeventlistener required for page visibility api to work!");
       } else {
-        // Handle page visibility change   
+        // Handle page visibility change
         document.addEventListener(visibilityChange, () => {
           if(document[hidden]){
               console.warn("########################### window hidden ##############################");
@@ -519,7 +517,7 @@ export class MyApp {
               this.appservice.updateOnlineStatus(true);
           }
         }, false);
-      }   
+      }
       // window.onfocus = () => {
       //   console.warn("@@@@@@@@@@@@@@@@@@@@@@@@@@@@ window focused @@@@@@@@@@@@@@@@@@@@@@@@@@@@");
       //   this.appservice.setAppFocus(true);

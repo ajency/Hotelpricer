@@ -22,13 +22,13 @@
   <div class="flex-center por" style="height: 100%;">
     <h6 (click)="editPhone = false" *ngIf="editPhone" text-left class="flex flex-items-center back-to"><a class="text-primary text-decoration-none"><ion-icon name="md-arrow-round-back" class="m-r-5"></ion-icon> Back to Verification</a></h6>
     <div class="flex-column">
-    <img *ngIf="!editPhone" src="../assets/img/tracker-logo.png" alt="" class="bt-logo">
-    <h4 *ngIf="!editPhone" class="text-lighter" padding-bottom>Welcome to Browntape Tracker</h4>
+    <!-- <img *ngIf="!editPhone" src="../assets/img/tracker-logo.png" alt="" class="bt-logo"> -->
+    <h4 *ngIf="!editPhone" class="text-lighter" padding-bottom>Welcome to Hotel Pricer</h4>
     <img src="../assets/img/Verification.png" alt="">
       <h4 *ngIf="!editPhone" class="text-lighter verification-title" >Phone Number Verification</h4>
       <h4 *ngIf="editPhone" class="text-lighter verification-title">Edit phone number</h4>
       <!-- <p class="fosz18 text-lighter">Please enter the access code sent to your number</p> -->
-      <p *ngIf="!editPhone" class="fosz18 text-lighter m-b-5">To continue using Browntape Tracker please verify your phone number.<br> Enter the 6 digit OTP sent via SMS to your number.</p>
+      <p *ngIf="!editPhone" class="fosz18 text-lighter m-b-5">To continue using Hotel Pricer please verify your phone number.<br> Enter the 6 digit OTP sent via SMS to your number.</p>
       <p *ngIf="editPhone" class="fosz18 text-lighter m-b-5">Please enter your 10 digit phone number</p>
       <!-- <p *ngIf="editPhone" class="fosz18 text-lighter m-b-5">Please enter the access code sent to your number via SMS</p> -->
 
@@ -113,42 +113,23 @@
 <!-- step-2.0 -->
 <div class="step-2 flex-center" *ngIf="trackerSetup">
 <div>
-  <img src="../assets/img/tracker-logo.png" alt="" class="">
+  <!-- <img src="../assets/img/tracker-logo.png" alt="" class=""> -->
 
   <!-- phone no. verified msg -->
   <!-- <div class="phone-verified">
     <ion-icon name="checkmark-circle" class="icon-md-success" style=""></ion-icon> <p class="text-lighter">Your number <span class="mob-no">{{phonenumber}}</span> has been verified</p>
   </div> -->
-  <h4 class="text-lighter">Now see tracker in action</h4>
-  <p class="fosz18 text-lighter">Get a complete understanding of tracker by importing dummy products into your account and watch them being tracked.</p><br><br>
+  <h4 class="text-lighter">Enter your hotel id</h4>
 
-  <!-- <div class="fosz18 text-lighter">Choose your marketplaces</div> -->
-  <!-- <ul class="marketplaces-cover">
-    <li [class.active]="selectedCategory.market == 'amazon'" (click)="selectMarket('amazon')"><a class="marketplaces m-amazon" style="transition: none;"><span class="m-h"></span></a></li>
-    <li [class.active]="selectedCategory.market == 'flipkart'" (click)="selectMarket('flipkart')"><a class="marketplaces m-flipkart"><span class="m-h"></span></a></li>
-    <li [class.active]="selectedCategory.market == 'snapdeal'" (click)="selectMarket('snapdeal')"><a class="marketplaces m-snapdeal"><span class="m-h"></span></a></li>
-    <li [class.active]="selectedCategory.market == 'paytm'" (click)="selectMarket('paytm')"><a class="marketplaces m-paytm"><span class="m-h"></span></a></li>
-  </ul> -->
-
-  <div class="fosz18 text-lighter" margin-top>Choose category for dummy import</div>
-  <ul class="product-category flex">
-    <!-- <li class="active"><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/Electronics.png" alt=""><br>Electronics</a></li>
-    <li class=""><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/Appliances.png" alt=""><br>Appliances</a></li>
-    <li class=""><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/Fashion.png" alt=""><br>Fashion</a></li>
-    <li><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/kids.png" alt=""><br>Baby & Kids</a></li>
-    <li><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/furniture.png" alt=""><br>Furniture</a></li> -->
-    <li (click)="selectedCategory = category.slug;" [class.active]="selectedCategory == category.slug" *ngFor="let category of categories">
-      <a><!-- <ion-icon md="md-checkmark" class="text-primary"></ion-icon> --><!-- <img [src]="category.icon" alt=""> --><div class="cat-icon"></div>{{category.name}}</a>
-    </li>
-  </ul>
+  <div class="filters__search flex">
+    <input type="text" class="form-control" placeholder="Enter hotel ID" padding-left>
+  </div>
 
   <button [hidden]="!importCallPending" [ngClass]="{'loading': importInProgress}" [disabled]="!selectedCategory || importInProgress" (click)="importDummyRecords()" ion-button color="green" margin-top>
     <!-- <ion-icon md="md-cloud-upload" margin-right></ion-icon> -->
-    Track dummy products
+    Let me in
   </button>
-  <button [hidden]="importCallPending" ion-button color="dark" (click)="refreshLocation()">Start working<ion-icon name="arrow-round-forward" margin-left></ion-icon></button>
 
-  <div class="text-lighter fosz18" margin-top><span class="text-primary opacity-1">Note: </span>Dummy products will be deleted from your account as soon as you import real data</div>
   </div>
 </div>
 </ion-content>

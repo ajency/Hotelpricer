@@ -1,5 +1,5 @@
 export const prodVariables = {
-  repricerApi: 'https://tracker.browntape.com/api',
+  repricerApi: 'http://hotelpricer-api.ajency.in/api',
   fileStackKey: 'xxxxxxxxxQQz',
   environmentName: 'Production Environment',
   ionicEnvName: 'prod'

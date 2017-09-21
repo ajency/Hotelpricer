@@ -30,7 +30,7 @@ export class VerifyAccountPopoverPage {
 
   private editPhone = false;
   private verifying = false;
-  private verified = false;
+  private verified = true;
   private phonenumber:any;
   private isVerificationError = false;
   private verificationError:any;
@@ -263,7 +263,7 @@ export class VerifyAccountPopoverPage {
       this.repricerapi.importTemplate(payload)
       .then((res) => {
         console.log("import",res)
-        
+
         this.importCallPending = false;
         // this.importInProgress = false;
         if(res.success == true){
