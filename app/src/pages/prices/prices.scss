@@ -1,0 +1,390 @@
+page-prices {
+	.header-secondary .pri-menu {
+		display: flex;
+		align-items: center;
+	}
+	.buttons-right {
+		white-space: nowrap;
+		font-size: 12px;
+		li {
+			border-left: 1px solid #ddd;
+			a {
+				padding: 0 15px;
+			}
+		}
+	}
+	.current-user {
+		display: none;
+		&.visible {
+			display: inline-block;
+		}
+		color: $alert-green;
+		font-weight: bold;
+		background: transparent;
+		border: 1px solid $alert-green;
+	}
+	// .tabular {
+	// 	.t-price {
+	// 		text-align: right;
+	// 		padding-right: 15px;
+	// 	}
+	// 	.price {
+	// 		text-align: center;
+	// 	}
+	// }
+	// .tabular .t-battle {
+	// 	min-width: 180px;
+	// }
+
+	.tabular {
+		.segment {
+			opacity: 0;
+			transition: all 0.5s;
+		}
+		.open .segment {
+			opacity: 1;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		.t-price {
+			padding-right: 20px;
+		}
+		.t-rule {
+			padding-right: 8px;
+		}
+	}
+	@media screen and (max-width: 767px) {
+		.content-md {
+			background: $bt-grey;
+		}
+		.filters {
+			margin: 0 -15px;
+			margin-bottom: 15px;
+		}
+		// tabular
+		.tabular {
+			&__row {
+				padding-bottom: 0;
+				@media (min-width: 768px) {
+					margin-left: -15px;
+					margin-right: -15px;
+				}
+			}
+			.t-product {
+				width: 100%;
+				order: 1;
+			}
+			.t-price {
+				order: 5;
+				width: 65%;
+				text-align: right;
+				height: 52px;
+				padding-top: 15px;
+			}
+			.t-rule,
+			.t-battle {
+				display: none;
+			}
+			.open .t-battle {
+				display: block;
+				order: 5;
+				padding: 25px;
+				width: 100%;
+			}
+			.t-listing {
+				order: 2;
+				width: 18%;
+				padding-top: 15px;
+				padding-bottom: 15px;
+			}
+			.t-seller {
+				order: 3;
+				width: 17%;
+				padding-top: 15px;
+				padding-bottom: 15px;
+			}
+			.t-battler {
+				order: 6;
+			}
+
+
+
+			.open {
+				z-index: 20;
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 49px;
+				margin: 0;
+				padding: 63px 0 0 0;
+				align-content: flex-start;
+				overflow-y: auto;
+				.pricer-count__legend {
+					display: block;
+					opacity: 0.45;
+					font-size: 12px;
+					margin-top: 4px;
+				}
+				.tabular-mob-header {
+					display: block;
+				}
+				ion-fab {
+					position: fixed;
+					bottom: 70px;
+				}
+				.segment.ng-touched + .tabbed__panels {
+					padding-bottom: 0;
+				}
+			}
+			.open .tabular-mob-header {
+				position: fixed;
+				left: 0;
+				top: 0;
+				right: 0;
+				height: 47px;
+				padding: 0 15px;
+				z-index: 5;
+				transform: translate3d(0, 0, 0);
+			}
+			.open .t-product {
+				padding: 0 15px;
+				height: auto;
+			}
+			.open .t-price {
+				width: 63%;
+				height: auto;
+				padding-right: 15px;
+			}
+			.open .t-seller {
+			}
+			.open .t-battle {
+				display: block;
+				order: 5;
+				padding: 25px;
+				width: 100%;
+			}
+			.open .t-rule {}
+			.open .t-listing {
+				width: 20%;
+				padding-left: 15px;
+			}
+			.open .t-battler {
+				display: block;
+				padding: 15px;
+			}
+		}
+	}
+
+	a{
+		cursor: pointer;
+	}
+	.tabbed__panels {
+		.list {
+			border: 1px solid $border-base;
+			.tabular__header {
+				box-shadow: 0 16px 10px -10px rgba(242, 242, 242, 1);
+			}
+		}
+		ion-col {
+			margin-top: -32px;
+		}
+	}
+
+	.competitors-list {
+		max-height: 275px;
+		overflow-y: auto;
+		line-height: initial;
+		.tabular__header {
+			opacity: .45;
+		}
+
+		@media (max-width: 767px) {
+			max-height: initial;
+			overflow-y: initial;
+		}
+
+		.tabular__row {
+			background: #fff;
+			@media (max-width: 767px) {
+				-webkit-overflow-scrolling: touch;
+				.competing-list_col {
+					flex-basis: 100%;
+					margin-bottom: 15px;
+				}
+				.sellers-col,
+				.status-col {
+					flex-basis: 50%;
+					margin-bottom: 10px;
+				}
+				.status-col {
+					text-align: right;
+					span {
+						opacity: 1;
+					}
+				}
+			}
+			.img-wrap {
+				min-width: 50px;
+	    		max-width: 50px;
+	    		height: 50px;
+			}
+		}
+	}
+
+	.open {
+		.tabular__moreinfo {
+			@media (max-width: 767px) {
+				.counts {
+					background: #fff;
+				}
+				.tabbed__panels {
+					.into-card {
+						background: #f6f5f0;
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+	.open .fixed-xs {
+		@media (max-width: 767px) {
+			position: fixed;
+			top: 47px;
+			background: #fff;
+			z-index: 1;
+			padding: 10px 15px !important;
+		}
+	}
+	@media (max-width: 767px) {
+		.product-info-tab {
+			& > ion-segment {
+				& + .tabbed__panels {
+					margin-top: 30px;
+				}
+			}
+		}
+
+	}
+
+	@media (max-width: 767px) {
+		ion-badge.bb {
+			margin-top: 3px;
+			& + span.price {
+				margin-top: 1px;
+			}
+		}
+		.into-card {
+			.m-b-16 {
+				margin-bottom: 16px;
+			}
+		}
+	}
+	.sku-code {
+		& + span {
+			margin-top: 2px;
+		}
+	}
+	@media (max-width: 767px) {
+		.seller-table {
+			.tabular__row.seller-loader_tabs {
+				padding-bottom: 0;
+			}
+		}
+	}
+
+	// for sellers info modal
+	@media only screen and (min-height: 600px) and (min-width: 768px) {
+	.modal-wrapper {
+		    left: calc(50% - (90%/2));
+		    width: 90% !important;
+		}
+	}
+
+	.status-container {
+		ul {
+			li {
+				display: inline-block;
+				padding: 5px;
+				background: #f5f6ef;
+				border: 1px solid #eeefe3;
+				border-radius: 4px;
+				cursor: pointer;
+				margin-right: 3px;
+				&.active {
+					border: 1px solid $bt-red;
+				}
+				span {
+					opacity: 0.8;
+					// margin-top: 5px;
+				}
+				// &:not(:last-child) {
+				// 	margin-right: 5px;
+				// }
+			}
+		}
+		@media (max-width: 767px) {
+			margin-top: 5px;
+			overflow-x: auto;
+			white-space: nowrap;
+			&::-webkit-scrollbar {
+			    display: none;
+			}
+		}
+	}
+
+
+	.tabular__row {
+		@media (min-width: 767px) {
+			padding: 10px 10px;
+			.prod-title {
+				margin-bottom: 6px;
+			}
+		}
+	}
+
+	.pending-crawls-refresh{
+		font-weight: bold;
+		color: $bt-blue;
+		cursor: pointer;
+		// &:hover{
+		// 	color: $alert-red;
+		// }
+	}
+
+	.prices-legend{
+		padding: 0 10px;
+		ion-badge{
+			top: 0;
+			font-size: 0.9em;
+		}
+	}
+
+	.flex-column{
+		display: -webkit-flex;
+		display: flex;
+		flex-direction: column;
+		height: 400px;
+		background: rgba(0,0,0,0.1);
+		align-items: center;
+		justify-content: center;
+	}
+
+
+
+	@media (max-width: 767px) {
+		.to-crawl.visible-xs {
+			.sku-code {
+				white-space: normal;
+				.no-wrap {
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+
+	.last-updated-txt{
+		font-size: 85%;
+		color: #757575;
+	}
+}

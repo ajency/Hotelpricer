@@ -1,0 +1,33 @@
+<!--
+  Generated template for the UserPopoverPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="hidden">
+
+  <ion-navbar>
+    <ion-title>{{appName}} - User</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="user">
+
+	<div class="user__popover">
+		<div class="user__name" padding>
+			<span class="text-lighter">Welcome!</span>
+			<h6 class="prod-title" no-margin>{{userDetails.username}}&nbsp;<!-- <span [hidden]="!userDetails.email" style="opacity: 0.5">({{userDetails.email}})</span> --></h6>
+		</div>
+		<hr no-margin>
+		<div class="user__links" padding-horizontal>
+			<!--<a ion-button clear full text-left no-margin color="dark" class="user__link">Settings</a>
+			<hr no-margin>
+			<a ion-button clear full text-left no-margin color="dark" (click)="navTo('pricingrule');" class="user__link">Pricing Rule</a>
+			<hr no-margin> -->
+			<a ion-button clear full text-left no-margin color="dark" (click)="signOut()" class="user__link">Logout</a>
+		</div>
+	</div>
+
+</ion-content>

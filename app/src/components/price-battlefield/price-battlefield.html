@@ -1,0 +1,85 @@
+<!-- <div [style.width.px]="rangeOuterContainerWidth" id="mainSVGContainer">
+  <svg [attr.width]="rangeContainerWidth" height="70" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <svg [attr.width]="rangeContainerWidth" height="15">
+          <svg:text style="overflow:visible" [attr.x]="myRangerStartAt-15" y="12" fill="navy" font-size="10">{{my_min ? my_min.toLocaleString() : naText }}</text>
+          <svg:text [attr.x]="myRangerEndAt-15" y="12" fill="navy" font-size="10">{{my_max ? my_max.toLocaleString() : naText}}</text>
+      </svg>
+
+
+      <svg class="drawerContainer" [attr.width]="rangeContainerWidth" height="70">
+        <svg:rect fill="black" [attr.x]="myRangerStartAt" y="22" width="2" height="8" />
+        <svg:rect fill="black" [attr.x]="myRangerEndAt-2" y="22" width="2" height="8" />
+        <svg:path [attr.d]="myRangerLinePath" stroke-width="1" stroke="black"/>
+      </svg>
+
+      <svg [attr.width]="rangeContainerWidth" height="9">
+          <svg:path [attr.d] = "myRangerPointerPath" [attr.fill]="myPointerColor" stroke-opacity="0" stroke-width="1"/>
+      </svg>
+
+      <svg *ngIf="myBuyBox" [attr.width]="rangeContainerWidth" height="10">
+        <svg:circle [attr.cx]="circleStartAt" cy="30" r="5" fill="orange"/>
+      </svg>
+
+    </g>
+
+    <g>
+      <svg class="drawerContainer" width="150" height="70">
+        <svg:path [attr.d]="marketRangerLinePath" [attr.stroke]="marketLineColor" stroke-width="1" stroke-dasharray="3,3"/>
+        <svg:rect [attr.fill]="marketLineColor" [attr.x]="marketRangerStartAt" y="42" width="2" height="8" />
+        <svg:rect [attr.fill]="marketLineColor" [attr.x]="marketRangerEndAt-2" y="42" width="2" height="8" />
+      </svg>
+
+      <svg *ngIf="!myBuyBox" [attr.width]="rangeContainerWidth" height="10">
+        <svg:circle [attr.cx]="circleStartAt" cy="42" r="5" fill="orange"/>
+      </svg>
+
+      <svg [attr.width]="rangeContainerWidth" height="15">
+        <svg:text [attr.x]="marketRangerStartAt-15" y="63" fill="navy" font-size="10">{{market_min ? market_min.toLocaleString() : naText}}</text>
+        <svg:text [attr.x]="marketRangerEndAt-15" y="63" fill="navy" font-size="10">{{market_max ? market_max.toLocaleString() : naText}}</text>
+      </svg>
+    </g>
+  </svg>
+</div> -->
+
+
+
+
+<div [style.width.px]="rangeOuterContainerWidth" id="mainSVGContainer">
+  <svg (mouseenter)="mouseenter()" (mouseleave)="mouseleave()" [attr.viewBox]="viewBoxDimensions" [attr.width]="rangeContainerWidth" [attr.height]="rangeContainerHeight" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+    <g>
+      <svg [attr.width]="rangeContainerWidth" height="15">
+          <svg:text style="overflow:visible" [attr.x]="-15" y="12" fill="navy" font-size="12">{{market_min ? market_min.toLocaleString() : naText }}</text>
+          <svg:text [attr.x]="rangeContainerWidth-15" y="12" fill="navy" font-size="12">{{market_max ? market_max.toLocaleString() : naText}}</text>
+          <svg:text #mrpElement [attr.x]="(rangeContainerWidth / 2 ) - 24" y="16" [attr.fill]="hoverTextColor" font-size="10">{{is_buy_box == 'no' && !mrp ? 'NO BUYBOX' : mrp > 0 ? 'MRP: ' + mrp.toLocaleString() : naText}}</text>
+      </svg>
+
+
+      <svg class="drawerContainer" [attr.width]="rangeContainerWidth" height="70">
+        <svg:rect fill="black" [attr.x]="0" y="22" width="2" height="8" />
+        <svg:rect fill="black" [attr.x]="rangeContainerWidth-2" y="22" width="2" height="8" />
+        <svg:path [attr.d]="rangeLine" stroke-width="1" stroke="black"/> 
+      </svg>
+
+
+      <svg [attr.width]="rangeContainerWidth" height="9">
+        <svg:path *ngIf="mpricepointerPixel >= 0" [attr.d]="myPricePointer" [attr.fill]="myPricePointerColor" stroke-opacity="0" stroke-width="1"/>  
+         <svg:text #rankElement [attr.x]="mpricepointerPixel - 15" y="55" [attr.fill]="hoverTextColor" font-size="10">Rank: {{sales_rank ? sales_rank.toLocaleString() : naText}}</text> 
+        <!-- <pricer-loader></pricer-loader> -->
+         <svg #rankLoader version="1.1" class="loading-spinner inline" [attr.x]="mpricepointerPixel - 8" y="45" width="12" height="12" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"> 
+           <path fill="#ef4748" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z" transform="rotate(240 25 25)" stroke-width="1" stroke="#ef4748">
+            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform>
+          </path> 
+         </svg> 
+      </svg> 
+
+      <svg *ngIf="!myBuyBox" [attr.width]="rangeContainerWidth" height="10">
+         <!-- <svg:circle [attr.cx]="buyBoxStartAt" cy="30" r="5" fill="orange"/>  -->
+         <svg:rect *ngIf="buyBoxStartAt >=0" [attr.x]="buyBoxStartAt - 4" y="25" width="10" height="10" fill="orange" /> 
+      </svg>
+
+    </g>
+
+  </svg>
+</div>

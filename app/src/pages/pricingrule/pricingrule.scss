@@ -1,0 +1,100 @@
+page-pricingrule {
+	.header-secondary .pri-menu {
+		display: flex;
+		align-items: center;
+		&__title {
+			width: 100%;
+		}
+	}
+	.buttons-right {
+		white-space: nowrap;
+		font-size: 12px;
+		li {
+			a {
+				opacity: 1;
+				padding: 0 15px;
+				color: $bt-blue;
+				text-decoration: underline;
+			}
+		}
+	}
+	.prod__title {
+		font-size: 16px;
+		a {
+			text-decoration: none;
+			color: #000;
+		}
+	}
+	.tabular__row:hover .prod__title a {
+		color: $bt-blue;
+	}
+	.text {
+		opacity: 0.5;
+	}
+
+	// table stuff
+	@media (max-width: 767px) {
+		.content.content-md {
+			background: $bt-grey;
+		}
+		.container[padding-horizontal] {
+			padding: 0;
+		}
+		.pri-menu__hb {
+			margin-left: 0;
+		}
+		.tabular {
+			&__row {
+				flex-wrap: wrap;
+			}
+			.t-upid {
+				position: absolute;
+				left: 15%;
+				top: 10px;
+				width: auto;
+				opacity: 0.45;
+				padding-left: 8px;
+			}
+			.t-market {
+				order: 3;
+				width: 15%;
+				text-align: right;
+			}
+			.t-filename {
+				order: 2;
+				width: 70%;
+				padding-top: 15px;
+			}
+			.t-assign {
+				order: 5;
+				width: 50%;
+				text-align: right;
+				padding-top: 15px;
+				margin-top: 10px;
+				border-top: 1px solid #eee;
+				strong {
+					font-size: 18px;
+					font-weight: 600;
+				}
+			}
+			.t-uploader {
+				order: 4;
+				width: 50%;
+				opacity: 0.45;
+				padding-top: 15px;
+				margin-top: 10px;
+				border-top: 1px solid #eee;
+			}
+			.t-toggler {
+				order: 1;
+				width: 15%;
+			}
+			.item-toggle .input-wrapper {
+				display: none;
+			}
+			.item-toggle .toggle {
+				padding-top: 0;
+			}
+		}
+	}
+}

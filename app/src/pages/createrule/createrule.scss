@@ -1,0 +1,19 @@
+page-createrule {
+	.header-secondary .pri-menu {
+		display: flex;
+		align-items: center;
+		&__title {
+			width: 100%;
+		}
+	}
+	.buttons-right {
+		white-space: nowrap;
+		// font-size: 12px;
+		// li {
+		// 	border-left: 1px solid #ddd;
+		// 	a {
+		// 		padding: 0 15px;
+		// 	}
+		// }
+	}
+}

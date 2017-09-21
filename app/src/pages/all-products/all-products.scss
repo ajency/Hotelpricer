@@ -1,0 +1,54 @@
+page-all-products {
+	.tabular {
+		&__row {
+			align-items: center;
+		}
+		@media (max-width: 767px) {
+			margin-left: -15px;
+			margin-right: -15px;
+			&__row {
+				flex-wrap: wrap;
+			}
+			.t-group {
+				order: 1;
+				width: 80%;
+			}
+			.t-markets {
+				order: 3;
+				width: 100%;
+				margin-top: 15px;
+				overflow-x: auto;
+				// display: block;
+				&::-webkit-scrollbar { 
+				    display: none; 
+				}
+				.tabular__cell {
+					min-width: 135px;
+					// display: inline-block;
+					// vertical-align: top;
+					[padding-right] {
+						padding-right: 5px;
+					}
+				}
+			}
+			.t-actions {
+				order: 2;
+				width: 20%;
+				align-self: flex-start;
+			}
+			.price {
+				display: block;
+				.amount {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 767px) {
+		.filters {
+			margin: 0 -15px;
+			margin-bottom: 15px;
+		}
+	}
+}

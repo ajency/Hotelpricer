@@ -1,0 +1,62 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="hidden">
+
+  <ion-navbar>
+    <ion-title>Reset Password</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="background-bt-grey login-page">
+
+<div class="container" padding-horizontal padding-top>
+	<div class="text-center" margin-top padding-top>
+		<a class="bt-logo">
+			<img src="../assets/img/browntape_logo.png" alt="">
+		</a>
+	</div>
+	<ion-grid no-padding>
+	  <ion-row no-padding>
+	    <ion-col col-12 offset-0 col-lg-4 col-md-6 offset-lg-4 offset-md-3 no-padding>
+	      <div class="pricer-wrap">
+	      	<h1 class="pricer-title">Pricer</h1>
+	      	<h5 class="pricer-sub">Reset your login password</h5>
+
+	      	<ion-list>
+	      		<ion-item no-padding>
+	      			<ion-label floating>Password</ion-label>
+	      			<ion-input type="password" (keyup)="comparePasswords(passwordRef.dirty, confirmPasswordRef.dirty)" [disabled]="resetingMail || resetMailSent" #passwordRef="ngModel" [(ngModel)]="password" (change)="comparePasswords(passwordRef.dirty, confirmPasswordRef.dirty)"></ion-input>
+	      		</ion-item>
+	      		<br>
+	      		<ion-item no-padding>
+	      			<ion-label floating>Confirm Password</ion-label>
+	      			<ion-input type="password" (keyup)="comparePasswords(passwordRef.dirty, confirmPasswordRef.dirty)" [disabled]="resetingMail || resetMailSent" #confirmPasswordRef="ngModel" [(ngModel)]="confirmPassword" (change)="comparePasswords(passwordRef.dirty, confirmPasswordRef.dirty)"></ion-input>
+	      		</ion-item>
+            <div padding-vertical>
+	      			<!--<div [hidden]="!validFields" class="error error--danger">
+                Passwords match
+              </div>-->
+	      		</div>
+	      		<div [hidden]="validationFailMessage == ''" class="error error--danger">
+	      			{{validationFailMessage}}
+	      		</div>
+	      		<div padding-top class="pricer-footer">
+	      			<!-- .... add class "loading" to this button to get the loader .... -->
+      				<button [disabled]="resetingMail || !validFields || resetMailSent" ion-button float-right color="green" medium (click)="resetPassword();">Change Password</button>
+      			</div>
+	      	</ion-list>
+	      </div>
+	      <div class="text-center" padding-top>&copy; Browntape 2017</div>
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+</div>
+
+</ion-content>
+

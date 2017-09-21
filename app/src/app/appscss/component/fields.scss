@@ -1,0 +1,160 @@
+.item-md.item-block.item-label-stacked .item-inner,
+.item-md.item-block.item-label-floating .item-inner {
+	border: 1px solid $border-base;
+	// padding: 7px 15px;
+	padding: 0 10px;
+}
+.item-md.item-block.item-label-stacked .item-inner {
+	padding: 7px 10px;
+}
+.item-md.item-block.item-label-stacked + .item-md.item-block.item-label-stacked .item-inner,
+.item-md.item-block.item-label-floating + .item-md.item-block.item-label-floating .item-inner {
+	border-top: 0;
+}
+.inline {
+	.item-md.item-block.item-label-stacked + .item-md.item-block.item-label-stacked .item-inner,
+	.item-md.item-block.item-label-floating + .item-md.item-block.item-label-floating .item-inner {
+		border-top: 1px solid $border-base;
+	}
+	.item-md {
+		// padding-left: 0;
+		// margin-left: 16px;
+	}
+	.item-md.item-block:first-child {
+		padding-left: 0;
+	}
+	.f-channel {
+		width: 50%;
+	}
+	.twenty-five {
+		width: 25%;
+	}
+	.fifty {
+		width: 50%;
+	}
+	@media (max-width: 767px) {
+		flex-wrap: wrap;
+		.item-md {
+			margin-bottom: 15px;
+		}
+		.item-md.item-block:nth-child(3) {
+			padding-left: 0;
+			margin-left: 0 !important;
+		}
+		.twenty-five {
+			width: 50%;
+		}
+		.fifty {
+			width: 100%;
+		}
+	}
+}
+.label-md[stacked],
+.label-md[floating] {
+	margin-top: 0;
+}
+.item-label-stacked .text-input-md,
+.item-label-floating .text-input-md {
+	margin: 0;
+	padding: 2px 0 8px;
+}
+.item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+	color: rgba(#000, 0.25);
+}
+// .item-md.item-input.input-has-focus .item-inner {
+// 	border-bottom-color: $bt-blue;
+// 	box-shadow: inset 0 -1px 0 0 #ef4748;
+// }
+.input-has-focus .label-md[stacked], .input-has-focus .label-md[floating],
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .label-md[floating] {
+	color: $bt-blue;
+}
+.item-md.item-input.input-has-focus .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+	border-bottom-color: $bt-blue;
+	box-shadow: inset 0 -1px 0 0 $bt-blue;
+}
+
+// input with rupee symbol
+.has-rupee-symbol {
+	background: transparent;
+	.item-inner {
+		background: #fff;
+	}
+	.input:before {
+		content: '\20B9';
+		top: 1px;
+		position: relative;
+	}
+	&.item-label-stacked .text-input-md {
+	    width: calc(100% - 8px - 6px);
+	    padding-left: 5px;
+	}
+}
+
+// hide label if not needed
+.hide-label .input-wrapper {
+	display: none;
+}
+
+
+
+// check tmrw
+.label-md[floating] {
+	transform: translate3d(8px, 14px, 0);
+	font-size: 18px;
+	// .item-inner {
+	// 	padding: 5px 15px;
+	// }
+}
+.input-has-focus .label-md[floating], .input-has-value .label-md[floating] {
+    transform: translate3d(0, 7px, 0) scale(0.7); // was 0
+}
+
+
+input, input:focus,
+.focus-outline :focus {
+	outline: none;
+	outline: 0;
+}
+
+
+// select
+.select-md .select-icon:after {
+	content: '\f3d0';
+	font-family: 'Ionicons';
+}
+.select-md .select-icon .select-icon-inner {
+	display: none;
+}
+
+
+
+// radio buttons
+.inline-radio {
+	display: flex;
+	.item-md {
+		min-height: 0;
+		width: 33.3%;
+		// padding: 0;
+		&:first-child {
+			padding-left: 0;
+		}
+		// &:last-child {
+		// 	padding-right: 0;
+		// }
+	}
+	.item-block {
+		min-height: 0;
+	}
+}
+
+// range slider
+.range-md .range-bar {
+	top: 20px;
+	height: 4px;
+	background: #e7e7e7;
+}
+.range-md-green .range-bar-active {
+	background: desaturate(lighten($bt-green, 15%), 10%);
+}

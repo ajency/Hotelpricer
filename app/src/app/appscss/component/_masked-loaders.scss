@@ -1,0 +1,2193 @@
+// the animation
+@keyframes placeHolderShimmer{
+	0%{
+		background-position: -500px 0;
+	}
+	100%{
+		background-position: 500px 0;
+	}
+}
+
+// default stuff
+.has-anim-loader {
+	padding: 0;
+}
+
+// the css
+.masked {
+	width: 100%;
+	&__bg {
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite;
+		animation-name: placeHolderShimmer;
+		animation-timing-function: linear;
+		background: #f6f7f8;
+		background: #eeeeee;
+		background: -webkit-gradient(linear, left top, right top, color-stop(8%, #eeeeee), color-stop(18%, #dddddd), color-stop(33%, #eeeeee));
+		background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+		background: linear-gradient(to right,  #eeeeee 8%,#dddddd 18%,#eeeeee 33%);
+		// background-size: 800px 104px;
+		position: relative;
+	}
+	&__elements {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+	&__elem {
+		background: #fff;
+		position: absolute;
+	}
+
+	// for the import xlsx page
+	$heightval: 14px;
+	&--xlsx &__bg {
+		height: 68px;
+	}
+	&--xlsx &__elem {
+		height: $heightval;
+	}
+	&--xlsx &--1,
+	&--xlsx &--14 {
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	&--xlsx &--14 {
+		top: auto;
+		bottom: 0;
+	}
+	&--xlsx &--2 {
+		left: 0;
+		top: $heightval;
+		width: 1%;
+	}
+	&--xlsx &--3 {
+		left: 3%;
+		top: $heightval;
+		width: 7.5%;
+	}
+	&--xlsx &--4 {
+		left: 27%;
+		top: $heightval;
+		width: 6.5%;
+	}
+	&--xlsx &--5 {
+		left: 41%;
+		top: $heightval;
+		width: 2.5%;
+	}
+	&--xlsx &--6 {
+		left: 55%;
+		width: 4.5%;
+		top: $heightval;
+	}
+	&--xlsx &--7 {
+		left: 63%;
+		width: 6.5%;
+		top: $heightval;
+	}
+	&--xlsx &--8 {
+		left: 79%;
+		width: 5.5%;
+		top: $heightval;
+	}
+	&--xlsx &--9 {
+		left: 91%;
+		width: 2%;
+		top: $heightval;
+	}
+	&--xlsx &--10 {
+		left: 96.5%;
+		width: 3.6%;
+		top: $heightval;
+	}
+	&--xlsx &--11 {
+		left: 0;
+		width: 10.5%;
+		top: $heightval * 2;
+		height: $heightval * 2;
+	}
+	&--xlsx &--12 {
+		left: 10.5%;
+		width: 89.6%;
+		top: $heightval * 2;
+		height: $heightval;
+	}
+	&--xlsx &--13 {
+		left: 19.5%;
+		width: 80.6%;
+		height: $heightval;
+		top: $heightval * 3;
+	}
+	@media (max-width: 767px) {
+		$heightval: 13px;
+		&--xlsx {
+			padding: 15px 10px;
+		}
+		&--xlsx &__bg {
+			height: 182px;
+		}
+		&--xlsx &__elem {
+			width: auto;
+		}
+		&--xlsx &--13,
+		&--xlsx &--14 {
+			display: none;
+		}
+		&--xlsx &--1 {
+			left: 6%;
+			right: 28%;
+			top: 0;
+			height: $heightval;
+		}
+		&--xlsx &--2 {
+			left: 0;
+			right: 0;
+			top: $heightval;
+			height: $heightval;
+		}
+		&--xlsx &--3 {
+			left: 37%;
+			right: 0;
+			top: $heightval * 2;
+			height: $heightval;
+		}
+		&--xlsx &--4 {
+			left: 0;
+			right: 0;
+			top: $heightval * 3;
+			height: $heightval;
+		}
+		&--xlsx &--5 {
+			left: 20%;
+			right: 0;
+			top: $heightval * 4;
+			height: $heightval;
+		}
+		&--xlsx &--6 {
+			left: 0;
+			right: 0;
+			top: $heightval * 5;
+			height: $heightval * 3;
+		}
+		&--xlsx &--7 {
+			left: 27%;
+			right: 42%;
+			top: $heightval * 8;
+			height: $heightval;
+		}
+		&--xlsx &--8 {
+			left: 0;
+			right: 0;
+			top: $heightval * 9;
+			height: $heightval;
+		}
+		&--xlsx &--9 {
+			left: 49%;
+			right: 0;
+			top: $heightval * 10;
+			height: $heightval;
+		}
+		&--xlsx &--10 {
+			left: 0;
+			right: 0;
+			top: $heightval * 11;
+			height: $heightval * 2;
+		}
+		&--xlsx &--11 {
+			left: 0;
+			right: 36%;
+			top: $heightval * 13;
+			height: $heightval;
+		}
+		&--xlsx &--12 {
+			left: auto;
+			right: 14%;
+			width: 6%;
+			top: $heightval * 13;
+			height: $heightval;
+		}
+	}
+
+
+	// for the prices page
+	$heightval: 19px;
+	&--prices &__bg {
+		height: 112px;
+	}
+	&--prices &__elem {
+		height: $heightval;
+	}
+	&--prices &--1,
+	&--prices &--16 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--prices &--16 {
+		top: auto;
+		bottom: 0;
+	}
+	&--prices &--2 {
+		left: 0;
+		top: $heightval;
+		width: 1%;
+		height: $heightval;
+	}
+	&--prices &--3 {
+		left: 2.5%;
+		top: $heightval;
+		width: 1.5%;
+		height: $heightval;
+	}
+	&--prices &--4 {
+		left: 0;
+		top: $heightval * 2;
+		width: 4%;
+		height: $heightval * 3;
+	}
+	&--prices &--5 {
+		left: 10%;
+		top: $heightval;
+		width: 2%;
+		height: $heightval * 4;
+	}
+	&--prices &--6 {
+		left: 22%;
+		top: $heightval;
+		width: 1.5%;
+		height: $heightval;
+	}
+	&--prices &--7 {
+		left: 26%;
+		top: $heightval;
+		width: 13.5%;
+		height: $heightval;
+	}
+	&--prices &--8 {
+		left: 10%;
+		top: $heightval * 2;
+		// width: 69.5%;
+		width: 47.5%;
+		height: $heightval;
+	}
+	&--prices &--9 {
+		left: 31%;
+		top: $heightval * 3;
+		// width: 48.5%;
+		width: 26.5%;
+		height: $heightval;
+	}
+	&--prices &--10 {
+		left: 10%;
+		top: $heightval * 4;
+		// width: 69.5%;
+		width: 47.5%;
+		height: $heightval;
+	}
+	&--prices &--11 {
+		left: 48.5%;
+		top: $heightval;
+		// width: 1.5%;
+		width: 9%;
+		height: $heightval;
+	}
+	&--prices &--12 {
+		left: 73.5%;
+		top: $heightval;
+		// width: 1.5%;
+		width: 6.5%;
+		height: $heightval;
+	}
+	&--prices &--13 {
+		left: 73.5%;
+		top: $heightval * 2;
+		// width: 1.5%;
+		width: 26.5%;
+		height: $heightval * 4;
+	}
+	&--prices &--14 {
+		left: 83.5%;
+		top: $heightval;
+		// width: 1.5%;
+		width: 6.5%;
+		height: $heightval;
+	}
+	&--prices &--15 {
+		left: 95.5%;
+		top: $heightval;
+		// width: 1.5%;
+		width: 4.5%;
+		height: $heightval;
+	}
+		// &--prices &--12 {
+		// 	left: 61.5%;
+		// 	top: $heightval;
+		// 	width: 4.5%;
+		// 	height: $heightval;
+		// }
+		// &--prices &--13 {
+		// 	left: 71%;
+		// 	top: $heightval;
+		// 	width: 2%;
+		// 	height: $heightval;
+		// }
+		// &--prices &--14 {
+		// 	left: 77%;
+		// 	top: $heightval;
+		// 	width: 2.5%;
+		// 	height: $heightval;
+		// }
+		// &--prices &--15 {
+		// 	// left: 10%;
+		// 	right: 0;
+		// 	top: $heightval;
+		// 	width: 4%;
+		// 	height: $heightval * 4;
+		// }
+
+	// for competitors page
+	$heightval: 14px;
+
+	&--competitors &__bg {
+		height: 87px;
+	}
+	&--competitors &__elem {
+		height: $heightval;
+	}
+	
+	&--competitors &--1,
+	&--competitors &--16 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--competitors &--16 {
+		top: auto;
+		bottom: 0;
+	}
+	&--competitors &--2 {
+		top: $heightval;
+		width: 0.5%;
+		height: $heightval * 5;
+		left: 0;
+	}
+	&--competitors &--3 {
+		top: $heightval;
+		width: 0.5%;
+		height: $heightval * 5;
+		left: 3.5%;
+	}
+	
+	&--competitors &--4 {
+		left: 21%;
+	    top: $heightval;
+	    width: 3%;
+	    height: $heightval;
+	}
+	&--competitors &--5 {
+		left: 27%;
+	    top: $heightval;
+	    width: 5.5%;
+	    height: $heightval;
+	}
+	
+	&--competitors &--6 {
+		left: 37%;
+	    top: $heightval;
+	    width: 4%;
+	    height: $heightval;
+	}
+	
+	&--competitors &--7 {
+		left: 44%;
+	    top: $heightval;
+	    width: 4%;
+	    height: $heightval;
+	}
+	&--competitors &--8 {
+		left: 51%;
+	    top: $heightval;
+	    width: 5.5%;
+	    height: $heightval;
+	}
+	&--competitors &--9 {
+		left: 60%;
+	    top: $heightval;
+	    width: 7.5%;
+	    height: $heightval;
+	}
+	&--competitors &--10 {
+		left: 87%;
+	    top: $heightval;
+	    width: 3%;
+	    height: $heightval;
+	}
+	&--competitors &--11 {
+		left: 99%;
+	    top: $heightval;
+	    width: 1%;
+	    height: $heightval * 5;
+	}
+	&--competitors &--12 {
+		left: 3.5%;
+	    top: $heightval * 2;
+	    width: 100%;
+	    height: $heightval;
+	}
+	&--competitors &--13 {
+		left: 15%;
+	    top: $heightval * 3;
+	    width: 63.5%;
+	    height: $heightval;
+	}
+	&--competitors &--14 {
+		left: 84%;
+	    top: $heightval * 3;
+	    width: 15%;
+	    height: $heightval;
+	}
+	&--competitors &--15 {
+		left: 0;
+	    top: $heightval * 4;
+	    width: 100%;
+	    height: $heightval * 2;
+	}
+	&--competitors &--17 {
+		left: 71%;
+	    top: $heightval;
+	    width: 7.5%;
+	    height: $heightval;
+	}
+
+	// for competitor-products page
+	$heightval: 15px;
+
+	&--competitor-products &__bg {
+		height: 97px;
+	}
+	&--competitor-products &__elem {
+		height: $heightval;
+	}
+	
+	&--competitor-products &--1,
+	&--competitor-products &--16 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--competitor-products &--16 {
+		top: auto;
+		bottom: 0;
+	}
+	&--competitor-products &--2 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 5;
+		left: 0;
+	}
+	&--competitor-products &--3 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 5;
+		left: 6.5%;
+	}
+	&--competitor-products &--4 {
+		top: $heightval;
+		width: 13.5%;
+		height: $heightval;
+		left: 20%;
+	}
+	&--competitor-products &--5 {
+		top: $heightval;
+		width: 6%;
+		height: $heightval;
+		left: 44%;
+	}
+	&--competitor-products &--6 {
+		top: $heightval;
+		width: 6%;
+		height: $heightval;
+		left: 56%;
+	}
+	&--competitor-products &--7 {
+		top: $heightval;
+		width: 9.5%;
+		height: $heightval;
+		left: 65%;
+	}
+	&--competitor-products &--8 {
+		top: $heightval;
+		width: 10%;
+		height: $heightval;
+		left: 77%;
+	}
+	&--competitor-products &--9 {
+		top: $heightval;
+		width: 10%;
+		height: $heightval;
+		left: 90%;
+	}
+	&--competitor-products &--10 {
+		top: $heightval * 2;
+		width: 93.5%;
+		height: $heightval;
+		left: 6.5%;
+	}
+	&--competitor-products &--11 {
+		top: $heightval * 3;
+		width: 72%;
+		height: $heightval;
+		left: 28%;
+	}
+	&--competitor-products &--13 {
+		top: $heightval * 4;
+		width: 94%;
+		height: $heightval * 2;
+		left: 6.5%;
+	}
+
+	// for prices__sellers tab page
+	$heightval: 15px;
+
+	&--prices_sellerstab &__bg {
+		height: 94px;
+	}
+	&--prices_sellerstab &__elem {
+		height: $heightval;
+	}
+	
+	&--prices_sellerstab &--1,
+	&--prices_sellerstab &--16 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--16 {
+		top: auto;
+		bottom: 0;
+	}
+	&--prices_sellerstab &--2 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 5;
+		left: 0;
+	}
+	&--prices_sellerstab &--3 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 5;
+		left: 5.5%;
+	}
+	&--prices_sellerstab &--4 {
+		top: $heightval;
+		width: 3.5%;
+		height: $heightval;
+		left: 20%;
+	}
+	&--prices_sellerstab &--5 {
+		left: 15%;
+		top: $heightval;
+		width: 1%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--6 {
+		left: 32%;
+		top: $heightval;
+		width: 5%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--7 {
+		left: 50%;
+		top: $heightval;
+		width: 3%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--8 {
+		left: 60%;
+		top: $heightval;
+		width: 3%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--9 {
+		left: 60%;
+		top: $heightval;
+		width: 3%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--10 {
+		left: 68%;
+		top: $heightval;
+		width: 5%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--11 {
+		left: 81%;
+		top: $heightval;
+		width: 10%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--12 {
+		left: 5.5%;
+		top: $heightval * 2;
+		width: 95.5%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--13 {
+		left: 18%;
+		top: $heightval * 3;
+		width: 82%;
+		height: $heightval;
+	}
+	&--prices_sellerstab &--14 {
+		left: 0;
+		top: $heightval * 4;
+		width: 100%;
+		height: $heightval * 2;
+	}
+	&--prices_sellerstab &--15 {
+		left: initial;
+		top: $heightval;
+		width: 15px;
+		height: $heightval * 2;
+		right: 0;
+	}
+	
+	
+
+	// for violations page
+	$heightval: 14px;
+
+	&--violations &__bg {
+		height: 87px;
+	}
+	&--violations &__elem {
+		height: $heightval;
+	}
+	
+	&--violations &--1,
+	&--violations &--10 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--violations &--10 {
+		top: auto;
+		bottom: 0;
+	}
+	&--violations &--2 {
+		top: $heightval;
+		width: 0.5%;
+		height: $heightval * 4;
+		left: 0;
+	}
+	&--violations &--3 {
+		top: $heightval;
+		width: 0.5%;
+		height: $heightval * 4;
+		left: 3.5%;
+	}
+	&--violations &--4 {
+		top: $heightval;
+		width: 12%;
+		height: $heightval;
+		left: 25%;
+	}
+	&--violations &--5 {
+		top: $heightval * 2;
+		width: 28%;
+		height: $heightval;
+		left: 4%;
+	}
+	&--violations &--6 {
+		top: $heightval * 2;
+		width: 85%;
+		height: $heightval * 3;
+		left: 15%;
+	}
+	&--violations &--7 {
+		top: $heightval;
+		width: 17.7%;
+		height: $heightval;
+		left: 40%;
+	}
+	&--violations &--8 {
+		top: $heightval;
+		width: 17.5%;
+		height: $heightval;
+		left: 61%;
+	}
+	&--violations &--9 {
+		top: $heightval;
+		width: 18%;
+		height: $heightval;
+		left: 82%;
+	}
+	&--violations &--11 {
+		bottom: $heightval;
+		width: 100%;
+		height: $heightval;
+		left: 0%;
+	}
+
+	// for summary
+	$heightval: 16px;
+
+	&--summary &__bg {
+		height: 780px;
+	}
+	&--summary &__elem {
+		height: $heightval;
+	}
+	
+	&--summary &--1,
+	&--summary &--10 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--summary &--10 {
+		top: auto;
+		bottom: 0;
+	}
+	&--summary &--2 {
+		top: $heightval;
+		width: $heightval;
+		height: 98%;
+		left: 0;
+	}
+	&--summary &--3 {
+		top: $heightval;
+		width: 60%;
+		height: $heightval;
+		left: 40%;
+	}
+	&--summary &--4 {
+		top: $heightval * 2;
+		width: 100%;
+		height: $heightval * 3;
+		left: 0%;
+	}
+	&--summary &--5 {
+		top: $heightval * 5;
+		width: 12%;
+		height: $heightval;
+		left: 10%;
+	}
+	&--summary &--6 {
+		top: $heightval * 5;
+		width: 12%;
+		height: $heightval;
+		left: 30%;
+	}
+	&--summary &--7 {
+		top: $heightval * 5;
+		width: 15%;
+		height: $heightval;
+		left: 47%;
+	}
+	&--summary &--8 {
+		top: $heightval * 5;
+		// width: 32%;
+		width: 12%;
+		height: $heightval;
+		left: 68%;
+	}
+	&--summary &--9 {
+		top: $heightval * 6;
+		width: 100%;
+		height: $heightval;
+		left: 0%;
+	}
+	&--summary &--11 {
+		top: $heightval * 7;
+		width: 8%;
+		height: $heightval;
+		left: 14%;
+	}
+	&--summary &--12 {
+		top: $heightval * 7;
+		width: 8%;
+		height: $heightval;
+		left: 34%;
+	}
+	&--summary &--13 {
+		top: $heightval * 7;
+		width: 10%;
+		height: $heightval;
+		left: 52%;
+	}
+	&--summary &--14 {
+		top: $heightval * 7;
+		// width: 29%;
+		width: 9%;
+		height: $heightval;
+		left: 71%;
+	}
+	&--summary &--15 {
+		top: $heightval * 8;
+		width: 100%;
+		height: $heightval * 2;
+		left: 0%;
+	}
+	&--summary &--16 {
+		top: $heightval * 10;
+		width: 12%;
+		height: $heightval;
+		left: 10%;
+	}
+	&--summary &--17 {
+		top: $heightval * 10;
+		width: 12%;
+		height: $heightval;
+		left: 30%;
+	}
+	&--summary &--18 {
+		top: $heightval * 10;
+		width: 15%;
+		height: $heightval;
+		left: 47%;
+	}
+	&--summary &--19 {
+		top: $heightval * 10;
+		width: 32%;
+		height: $heightval;
+		left: 68%;
+	}
+	&--summary &--20 {
+		top: $heightval * 11;
+		width: 100%;
+		height: $heightval;
+		left: 0%;
+	}
+	&--summary &--21 {
+		top: $heightval * 12;
+		width: 8%;
+		height: $heightval;
+		left: 14%;
+	}
+	&--summary &--22 {
+		top: $heightval * 12;
+		width: 8%;
+		height: $heightval;
+		left: 34%;
+	}
+	&--summary &--23 {
+		top: $heightval * 12;
+		width: 10%;
+		height: $heightval;
+		left: 52%;
+	}
+	&--summary &--24 {
+		top: $heightval * 12;
+		width: 29%;
+		height: $heightval;
+		left: 71%;
+	}
+	&--summary &--25 {
+		top: $heightval * 13;
+		width: 100%;
+		height: $heightval * 6;
+		left: 0%;
+	}
+	&--summary &--26 {
+		top: $heightval * 19;
+		width: 3%;
+		height: $heightval;
+		left: 16%;
+	}
+	&--summary &--27 {
+		top: $heightval * 19;
+		width: 3%;
+		height: $heightval;
+		left: 27%;
+	}
+	&--summary &--28 {
+		top: $heightval * 19;
+		width: 45%;
+		height: $heightval;
+		left: 39%;
+	}
+	&--summary &--29 {
+		top: $heightval * 20;
+		width: 100%;
+		height: $heightval;
+		left: 0%;
+	}
+	&--summary &--30 {
+		top: $heightval * 21;
+		// width: 70%;
+		height: $heightval * 15;
+		left: 0;
+	}
+	&--summary &--31 {
+		top: $heightval * 36;
+		width: 100%;
+		height: $heightval * 15;
+		left: 0%;
+	}
+	&--summary &--32 {
+		top: $heightval;
+		width: $heightval;
+		height: 98%;
+		right: 0%;
+	}
+
+	&--summary &--33 {
+		top: $heightval * 5;
+		width: 14%;
+		height: $heightval;
+		left: 85%;
+	}
+	
+	&--summary &--34 {
+		top: $heightval * 7;
+		width: 9%;
+		height: $heightval;
+		left: 90%;
+	}
+
+	// for products page
+	$heightval: 15px;
+
+	&--products &__bg {
+		height: 97px;
+	}
+	&--products &__elem {
+		height: $heightval;
+	}
+	
+	&--products &--1,
+	&--products &--10 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--products &--10 {
+		top: auto;
+		bottom: 0;
+		height: $heightval + 7;
+	}
+	&--products &--2 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 5;
+		left: 0;
+	}
+	&--products &--3 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 3;
+		left: 6.5%;
+	}
+	&--products &--4 {
+		top: $heightval;
+		width: 11.5%;
+		height: $heightval;
+		left: 15.5%;
+	}
+	&--products &--5 {
+		top: $heightval * 2;
+		width: 19.5%;
+		height: $heightval;
+		left: 7.5%;
+	}
+	&--products &--6 {
+		top: $heightval * 3;
+		width: 4.5%;
+		height: $heightval;
+		left: 22.5%;
+	}
+	&--products &--7 {
+		top: $heightval * 4;
+		width: 94%;
+		height: $heightval;
+		left: 6.5%;
+	}
+	&--products &--8 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 3;
+		left: 30.5%;
+	}
+	&--products &--9 {
+		top: $heightval;
+		width: 5%;
+		height: $heightval;
+		left: 34.5%;
+	}
+	&--products &--11 {
+		top: $heightval * 2;
+		width: 8%;
+		height: $heightval;
+		left: 31.5%;
+	}
+	&--products &--12 {
+		top: $heightval * 3;
+		width: 2%;
+		height: $heightval;
+		left: 37.5%;
+	}
+
+	&--products &--13 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 3;
+		left: 43%;
+	}
+	&--products &--14 {
+		top: $heightval;
+		width: 6%;
+		height: $heightval;
+		left: 47%;
+	}
+	&--products &--15 {
+		top: $heightval * 2;
+		width: 9%;
+		height: $heightval;
+		left: 44%;
+	}
+	&--products &--16 {
+		top: $heightval * 3;
+		width: 3%;
+		height: $heightval;
+		left: 50%;
+	}
+
+	&--products &--17 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 3;
+		left: 56.5%;
+	}
+	&--products &--18 {
+		top: $heightval;
+		width: 39.5%;
+		height: $heightval;
+		left: 60.5%;
+	}
+	&--products &--19 {
+		top: $heightval * 2;
+		width: 37%;
+		height: $heightval;
+		left: 57.5%;
+	}
+	&--products &--20 {
+		top: $heightval * 3;
+		width: 31.5%;
+		height: $heightval;
+		left: 63%;
+	}
+	&--products &--21 {
+		top: $heightval;
+		width: 1%;
+		height: $heightval * 4;
+		left: initial;
+		right: 0;
+	}
+
+
+
+	@media (max-width: 767px) {
+		$heightval: 16px;
+		&--summary &__bg {
+			height: 750px;
+		}
+		&--summary &__elem {
+			width: auto;
+		}
+		&--summary &--1,
+		&--violations &--10 {
+			height: $heightval;
+		}
+		&--summary &--2 {
+			top: $heightval;
+			width: $heightval;
+			height: 96%;
+			left: 0;
+		}
+		&--summary &--3 {
+			top: $heightval;
+			width: 35%;
+			height: $heightval;
+			left: 65%;
+		}
+		&--summary &--4 {
+			top: $heightval * 2;
+			width: 100%;
+			height: $heightval * 4;
+			left: 0%;
+		}
+		&--summary &--5 {
+			top: $heightval * 2;
+			width: $heightval;
+			height: 60%;
+			left: $heightval;
+		}
+		&--summary &--6 {
+			top: $heightval * 6;
+			width: 31%;
+			height: $heightval;
+			left: 22%;
+		}
+		&--summary &--7 {
+			top: $heightval * 6;
+			width: 35%;
+			height: $heightval;
+			left: 65%;
+		}
+		&--summary &--8 {
+			top: $heightval * 7;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+
+		&--summary &--9 {
+			top: $heightval * 8;
+			width: 21%;
+			height: $heightval;
+			left: 32%;
+		}
+		&--summary &--11 {
+			top: $heightval * 8;
+			width: 25%;
+			height: $heightval;
+			left: 75%;
+		}
+		&--summary &--12 {
+			top: $heightval * 9;
+			width: 100%;
+			height: $heightval * 2;
+			left: 0;
+		}
+
+		&--summary &--13 {
+			top: $heightval * 11;
+			width: 31%;
+			height: $heightval;
+			left: 22%;
+		}
+		&--summary &--14 {
+			top: $heightval * 11;
+			width: 35%;
+			height: $heightval;
+			left: 65%;
+		}
+		&--summary &--15 {
+			top: $heightval * 12;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+
+		&--summary &--16 {
+			top: $heightval * 13;
+			width: 21%;
+			height: $heightval;
+			left: 32%;
+		}
+		&--summary &--17 {
+			top: $heightval * 13;
+			width: 25%;
+			height: $heightval;
+			left: 75%;
+		}
+		&--summary &--18 {
+			top: $heightval * 14;
+			width: 100%;
+			height: $heightval * 2;
+			left: 0;
+		}
+
+		&--summary &--19 {
+			top: $heightval * 16;
+			width: 31%;
+			height: $heightval;
+			left: 22%;
+		}
+		&--summary &--20 {
+			top: $heightval * 16;
+			width: 35%;
+			height: $heightval;
+			left: 65%;
+		}
+		&--summary &--21 {
+			top: $heightval * 17;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+		&--summary &--22 {
+			top: $heightval * 18;
+			width: 21%;
+			height: $heightval;
+			left: 32%;
+		}
+		&--summary &--23 {
+			top: $heightval * 18;
+			width: 25%;
+			height: $heightval;
+			left: 75%;
+		}
+		&--summary &--24 {
+			top: $heightval * 19;
+			width: 100%;
+			height: $heightval * 2;
+			left: 0;
+		}
+
+		&--summary &--25 {
+			top: $heightval * 21;
+			width: 31%;
+			height: $heightval;
+			left: 22%;
+		}
+		&--summary &--26 {
+			top: $heightval * 21;
+			width: 35%;
+			height: $heightval;
+			left: 65%;
+		}
+		&--summary &--27 {
+			top: $heightval * 22;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+		&--summary &--28 {
+			top: $heightval * 23;
+			width: 21%;
+			height: $heightval;
+			left: 32%;
+		}
+		&--summary &--29 {
+			top: $heightval * 23;
+			width: 25%;
+			height: $heightval;
+			left: 75%;
+		}
+		&--summary &--30 {
+			top: $heightval * 29;
+			width: 100%;
+			height: $heightval * 4;
+			left: 0;
+		}
+		&--summary &--31 {
+			top: $heightval * 33;
+			width: 8%;
+			height: $heightval;
+			left: 15%;
+		}
+		&--summary &--32 {
+			top: $heightval * 33;
+			width: 9%;
+			height: $heightval;
+			left: 32%;
+		}
+		&--summary &--33 {
+			top: $heightval * 33;
+			width: 19%;
+			height: $heightval;
+			left: 49%;
+		}
+		&--summary &--34 {
+			top: $heightval * 34;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+
+		&--summary &--35 {
+			top: $heightval * 35;
+			width: 4%;
+			height: $heightval;
+			left: 19%;
+		}
+		&--summary &--36 {
+			top: $heightval * 35;
+			width: 6%;
+			height: $heightval;
+			left: 35%;
+		}
+		&--summary &--37 {
+			top: $heightval * 35;
+			width: 47%;
+			height: $heightval;
+			left: 53%;
+		}
+		&--summary &--38 {
+			top: $heightval * 36;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+		&--summary &--39 {
+			top: $heightval;
+			width: 16px;
+			height: 97%;
+			right: 0;
+		}
+		&--summary &--40 {
+			top: $heightval * 24;
+			width: 100%;
+			height: $heightval * 2;
+			left: 0;
+		}
+		&--summary &--41 {
+			top: $heightval * 26;
+			width: 72%;
+			height: $heightval;
+			left: 24%;
+		}
+		&--summary &--42 {
+			top: $heightval * 27;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+		&--summary &--43 {
+			top: $heightval * 28;
+			width: 64%;
+			height: $heightval;
+			left: 32%;
+		}
+	}
+	
+
+	@media (max-width: 767px) {
+		$heightval: 14px;
+		&--violations &__bg {
+			height: 140px;
+		}
+		&--violations &__elem {
+			width: auto;
+		}
+		&--violations &--1,
+		&--violations &--10 {
+			height: $heightval;
+		}
+		&--violations &--2 {
+			top: $heightval;
+			width: 2%;
+			height: $heightval * 7;
+			left: 0;
+		}
+		&--violations &--3 {
+			top: $heightval;
+			width: 2%;
+			height: $heightval * 3;
+			left: 10%;
+		}
+		&--violations &--4 {
+			top: $heightval;
+			width: 48%;
+			height: $heightval;
+			left: 52%;
+		}
+		&--violations &--5 {
+			top: $heightval * 2;
+			width: 90%;
+			height: $heightval;
+			left: 10%;
+		}
+		&--violations &--6 {
+			top: $heightval * 3;
+			width: 56%;
+			height: $heightval;
+			left: 44%;
+		}
+		&--violations &--7 {
+			top: $heightval * 4;
+			width: 100%;
+			height: $heightval * 2;
+			left: 0;
+		}
+		&--violations &--8 {
+			top: $heightval * 5;
+			width: 4%;
+			height: $heightval * 4;
+			left: 0;
+		}
+		&--violations &--9 {
+			top: $heightval * 7;
+			width: 100%;
+			height: $heightval;
+			left: 0%;
+		}
+		&--violations &--11 {
+			top: $heightval * 6;
+			width: 22%;
+			height: $heightval;
+			left: 15%;
+		}
+		&--violations &--12 {
+			top: $heightval * 6;
+			width: 20%;
+			height: $heightval;
+			left: 50%;
+		}
+		&--violations &--13 {
+			top: $heightval * 6;
+			width: 20%;
+			height: $heightval;
+			left: 80%;
+		}
+		&--violations &--14 {
+			top: $heightval * 8;
+			width: 24%;
+			height: $heightval;
+			left: 13%;
+		}
+		&--violations &--15 {
+			top: $heightval * 8;
+			width: 24%;
+			height: $heightval;
+			left: 46%;
+		}
+		&--violations &--16 {
+			top: $heightval * 8;
+			width: 16%;
+			height: $heightval;
+			left: 84%;
+		}
+	}
+
+	@media (max-width: 767px) {
+		$heightval: 15px;
+		
+		&--competitors &__bg {
+			//height: 144px;
+			height: 160px;
+			margin-left: -15px;
+			margin-right: -15px;
+		}
+		&--competitors &__elem {
+			width: auto;
+		}
+		&--competitors &--1,
+		&--competitors &--16 {
+			height: $heightval;
+		}
+
+		&--competitors &--16 {
+			height: $heightval * 2 - 5;
+		}
+
+		&--competitors &--2 {
+			width: 10px;
+			top: $heightval;
+			height: $heightval * 9;
+			left: 0;
+		}
+		&--competitors &--3 {
+			left: 40px;
+			width: 10px;
+			top: $heightval;
+			height: $heightval * 4;
+		}
+		&--competitors &--4 {
+			left: 50px;
+			width: 150px;
+			top: $heightval * 2;
+			height: $heightval;
+		}
+		&--competitors &--5 {
+			left: 0;
+			width: 100%;
+			top: $heightval * 4;
+			height: $heightval * 2;
+		}
+		&--competitors &--6 {
+			left: 49%;
+			width: 85px;
+			top: $heightval;
+			height: $heightval * 4;
+		}
+		&--competitors &--7 {
+			left: 96%;
+			width: $heightval;
+			top: $heightval;
+			height: $heightval * 9;
+		}
+		&--competitors &--8 {
+			left: 35%;
+			width: $heightval * 4;
+			top: $heightval *3;
+			height: $heightval;
+		}
+		&--competitors &--9 {
+			left: 13%;
+			width: 13%;
+			top: $heightval * 6;
+			height: $heightval;
+		}
+		&--competitors &--10 {
+			left: 39%;
+			width: 9%;
+			top: $heightval * 6;
+			height: $heightval;
+		}
+		&--competitors &--11 {
+			left: 55%;
+			width: 6%;
+			top: $heightval * 6;
+			height: $heightval;
+		}
+		&--competitors &--12 {
+			left: 68%;
+			width: 11%;
+			top: $heightval * 6;
+			height: $heightval;
+		}
+		&--competitors &--13 {
+			left: 90%;
+			width: 11%;
+			top: $heightval * 6;
+			height: $heightval;
+		}
+		&--competitors &--14 {
+			left: 0;
+			width: 100%;
+			top: $heightval * 7;
+			height: $heightval;
+		}
+		&--competitors &--15 {
+			left: 16%;
+			width: 10%;
+			top: $heightval * 8;
+			height: $heightval;
+		}
+		&--competitors &--17 {
+			left: 35%;
+			width: 13%;
+			top: $heightval * 8;
+			height: $heightval;
+		}
+		&--competitors &--18 {
+			left: 56%;
+			width: 5%;
+			top: $heightval * 8;
+			height: $heightval;
+		}
+		&--competitors &--19 {
+			left: 73%;
+			width: 6%;
+			top: $heightval * 8;
+			height: $heightval;
+		}
+		&--competitors &--20 {
+			left: 87%;
+			width: 9%;
+			top: $heightval * 8;
+			height: $heightval;
+		}
+	}
+
+	// for competitor-products page
+	@media (max-width: 767px) {
+		$heightval: 15px;
+		
+		&--competitor-products &__bg {
+			//height: 144px;
+			height: 171px;
+		}
+		&--competitor-products &__elem {
+			width: auto;
+		}
+		&--competitor-products &--1,
+		&--competitor-products &--16 {
+			height: $heightval;
+		}
+
+		&--competitor-products &--16 {
+			height: $heightval;
+		}
+
+		&--competitor-products &--2 {
+			width: 2%;
+			top: $heightval;
+			height: $heightval * 10;
+			left: 0;
+		}
+		&--competitor-products &--3 {
+			left: 16%;
+			width: 4%;
+			top: $heightval;
+			height: $heightval * 3;
+		}
+		&--competitor-products &--4 {
+			left: 54%;
+			width: 46%;
+			top: $heightval;
+			height: $heightval;
+		}
+		&--competitor-products &--5 {
+			left: 16%;
+			width: 84%;
+			top: $heightval * 2;
+			height: $heightval;
+		}
+		&--competitor-products &--6 {
+			right: 0;
+			width: 2%;
+			top: $heightval * 3;
+			height: $heightval * 8;
+			left: initial;
+		}
+		&--competitor-products &--7 {
+			width: 100%;
+			top: $heightval * 4;
+			height: $heightval * 3;
+			left: 0;
+		}
+		&--competitor-products &--8 {
+			width: 3%;
+			top: $heightval * 7;
+			height: $heightval;
+			left: 14%;
+		}
+		&--competitor-products &--9 {
+			width: 56%;
+			top: $heightval * 7;
+			height: $heightval;
+			left: 42%;
+		}
+		&--competitor-products &--10 {
+			width: 100%;
+			top: $heightval * 8;
+			height: $heightval;
+			left: 0%;
+		}
+		&--competitor-products &--11 {
+			width: 1%;
+			top: $heightval * 9;
+			height: $heightval;
+			left: 16%;
+		}
+		&--competitor-products &--12 {
+			width: 1%;
+			top: $heightval * 9;
+			height: $heightval;
+			left: 31%;
+		}
+		&--competitor-products &--13 {
+			width: 37%;
+			top: $heightval * 9;
+			height: $heightval;
+			left: 46%;
+		}
+		&--competitor-products &--14 {
+			width: 100%;
+			top: $heightval * 10;
+			height: $heightval;
+			left: 0%;
+		}		
+	}
+
+	// for pricing rule page
+	$heightval: 14px;
+
+	&--pricing-rules &__bg {
+		height: 83px;
+	}
+	&--pricing-rules &__elem {
+		height: $heightval;
+	}
+	
+	&--pricing-rules &--1,
+	&--pricing-rules &--16 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--pricing-rules &--16 {
+		top: auto;
+		bottom: 0;
+	}
+	&--pricing-rules &--2 {
+		top: $heightval;
+		width: 0.5%;
+		height: $heightval * 4;
+		left: 0;
+	}
+	&--pricing-rules &--3 {
+		top: $heightval;
+		width: 2.5%;
+		height: $heightval;
+		left: 5%;
+	}
+	&--pricing-rules &--4 {
+		top: $heightval;
+		width: 3%;
+		height: $heightval;
+		left: 11%;
+	}
+	&--pricing-rules &--5 {
+		top: $heightval;
+		width: 10%;
+		height: $heightval;
+		left: 27%;
+	}
+	&--pricing-rules &--6 {
+		top: $heightval;
+		width: 3.5%;
+		height: $heightval;
+		left: 43%;
+	}
+	&--pricing-rules &--7 {
+		top: $heightval;
+		width: 3.5%;
+		height: $heightval;
+		left: 56%;
+	}
+	&--pricing-rules &--8 {
+		top: $heightval;
+		width: 3.5%;
+		height: $heightval;
+		left: 69%;
+	}
+	&--pricing-rules &--9 {
+		top: $heightval;
+		width: 20%;
+		height: $heightval;
+		left: 80%;
+	}
+	&--pricing-rules &--10 {
+		top: $heightval * 2;
+		width: 89.5%;
+		height: $heightval;
+		left: 0;
+	}
+	&--pricing-rules &--11 {
+		top: $heightval * 3;
+		width: 14%;
+		height: $heightval;
+		left: 0;
+	}
+	&--pricing-rules &--12 {
+		top: $heightval * 3;
+		width: 37.5%;
+		height: $heightval;
+		left: 35%;
+	}
+	&--pricing-rules &--13 {
+		top: $heightval * 3;
+		width: 5.5%;
+		height: $heightval;
+		left: 84%;
+	}
+	&--pricing-rules &--14 {
+		top: $heightval * 4;
+		width: 100%;
+		height: $heightval;
+		left: 0;
+	}
+
+
+	@media (max-width: 767px) {
+		$heightval: 17px;
+		&--prices {
+			// padding: 15px 10px;
+		}
+		&--prices &__bg {
+			height: 153px;
+		}
+		&--prices &__elem {
+			width: auto;
+		}
+		&--prices &--1,
+		&--prices &--16 {
+			height: $heightval;
+		}
+		&--prices &--12,
+		&--prices &--13,
+		&--prices &--14 {
+			display: none;
+		}
+		&--prices &--2,
+		&--prices &--15 {
+			width: 3%;
+			height: auto;
+			top: $heightval;
+			bottom: $heightval;
+			left: 0;
+		}
+		&--prices &--15 {
+			left: auto;
+			right: 0;
+		}
+		&--prices &--3 {
+			left: 14%;
+			top: $heightval;
+			width: 3%;
+			height: $heightval * 4;
+		}
+		&--prices &--4 {
+			left: 34%;
+			top: $heightval;
+			width: 3%;
+			height: $heightval;
+		}
+		&--prices &--5 {
+			left: 44%;
+			top: $heightval;
+			width: 53%;
+			height: $heightval;
+		}
+		&--prices &--6 {
+			left: 15%;
+			top: $heightval * 2;
+			width: 82%;
+			height: $heightval;
+		}
+		&--prices &--7 {
+			left: 70%;
+			top: $heightval * 3;
+			width: 27%;
+			height: $heightval;
+		}
+		&--prices &--8 {
+			left: 15%;
+			top: $heightval * 4;
+			width: 82%;
+			height: $heightval;
+		}
+		&--prices &--9 {
+			left: 0;
+			top: $heightval * 5;
+			width: 98%;
+			height: $heightval * 2;
+		}
+		&--prices &--10 {
+			left: 13%;
+			top: $heightval * 7;
+			width: 5%;
+			height: $heightval;
+		}
+		&--prices &--11 {
+			left: 27%;
+			top: $heightval * 7;
+			width: 56%;
+			height: $heightval;
+		}
+		// &--prices &--12 {
+		// 	left: 0;
+		// 	top: $heightval * 7;
+		// 	width: 100%;
+		// 	height: $heightval;
+		// }
+	}
+
+	// for pricing rule page
+	@media (max-width: 767px) {
+		$heightval: 14px;
+		
+		&--pricing-rules &__bg {
+			//height: 144px;
+			height: 123px;
+		}
+		&--pricing-rules &__elem {
+			width: auto;
+		}
+		&--pricing-rules &--1,
+		&--pricing-rules &--16 {
+			height: $heightval;
+		}
+
+		&--pricing-rules &--16 {
+			height: $heightval;
+		}
+
+		&--pricing-rules &--2 {
+			width: 2.5%;
+			top: $heightval;
+			height: $heightval * 7;
+			left: 0;
+		}
+		&--pricing-rules &--3 {
+			width: 4%;
+			top: $heightval;
+			height: $heightval;
+			left: 14%;
+		}
+		&--pricing-rules &--4 {
+			width: 48%;
+			top: $heightval;
+			height: $heightval;
+			left: 39%;
+		}
+		&--pricing-rules &--5 {
+			width: 73%;
+			top: $heightval * 2;
+			height: $heightval;
+			left: 14%;
+		}
+		&--pricing-rules &--6 {
+			width: 4%;
+			top: $heightval * 3;
+			height: $heightval;
+			left: 14%;
+		}
+		&--pricing-rules &--7 {
+			width: 23%;
+			top: $heightval * 3;
+			height: $heightval;
+			left: 64%;
+		}
+		&--pricing-rules &--8 {
+			width: 100%;
+			top: $heightval * 4;
+			height: $heightval * 3; 
+			left: 0;
+		}
+		&--pricing-rules &--9 {
+			width: 46%;
+			top: $heightval * 7;
+			height: $heightval; 
+			left: 38%;
+		}
+		&--pricing-rules &--10 {
+			width: 2.5%;
+			top: $heightval;
+			height: $heightval * 7;
+			right: 0;
+			left: initial;
+		}
+	}
+
+	@media (max-width: 767px) {
+		$heightval: 15px;
+		&--prices_sellerstab &__bg {
+			height: 174px;
+		}
+		&--prices_sellerstab &__elem {
+			width: auto;
+		}
+		&--prices_sellerstab &--1,
+		&--prices_sellerstab &--10 {
+			height: $heightval;
+		}
+		&--prices_sellerstab &--2 {
+			top: $heightval;
+			width: 3%;
+			height: $heightval * 10;
+			left: 0;
+		}
+		&--prices_sellerstab &--3 {
+			top: $heightval;
+			width: 4%;
+			height: $heightval * 3;
+			left: 15%;
+		}
+		&--prices_sellerstab &--4 {
+			top: $heightval;
+			width: 3%;
+			height: $heightval;
+			left: 40%;
+		}
+		&--prices_sellerstab &--5 {
+			top: $heightval;
+			width: 22%;
+			height: $heightval;
+			left: 51%;
+		}
+		&--prices_sellerstab &--6 {
+			top: $heightval * 2;
+			width: 85%;
+			height: $heightval;
+			left: 15%;
+		}
+		&--prices_sellerstab &--7 {
+			top: $heightval * 3;
+			width: 38%;
+			height: $heightval;
+			left: 43%;
+		}
+		&--prices_sellerstab &--8 {
+			top: $heightval * 4;
+			width: 100%;
+			height: $heightval * 2;
+			left: 0;
+		}
+		&--prices_sellerstab &--9 {
+			top: $heightval * 6;
+			width: 30%;
+			height: $heightval;
+			left: 30%;
+		}
+		&--prices_sellerstab &--11 {
+			top: $heightval * 7;
+			width: 100%;
+			height: $heightval * 2;
+			left: 0;
+		}
+		&--prices_sellerstab &--12 {
+			top: $heightval * 9;
+			width: 30%;
+			height: $heightval;
+			left: 25%;
+		}
+		&--prices_sellerstab &--13 {
+			top: $heightval * 10;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+		&--prices_sellerstab &--14 {
+			top: $heightval;
+			width: 3%;
+			height: $heightval * 10;
+			left: initial;
+			right: 0
+		}
+	}
+
+	// for products page
+	@media (max-width: 767px) {
+		// for products page
+		$heightval: 15px;
+
+		&--products &__bg {
+			height: 152px;
+		}
+		&--products &__elem {
+			height: $heightval;
+		}
+		
+		&--products &--1,
+		&--products &--10 {
+			top: 0;
+			left: 0;
+			right: 0;
+			height: $heightval;
+		}
+		&--products &--10 {
+			top: auto;
+			bottom: 0;
+			height: $heightval + 2;
+		}
+		&--products &--2 {
+			top: $heightval;
+			width: 3%;
+			height: $heightval * 9;
+			left: 0;
+		}
+		&--products &--3 {
+			top: $heightval;
+			width: 3%;
+			height: $heightval * 4;
+			left: 19.5%;
+		}
+		&--products &--4 {
+			top: $heightval;
+			width: 38%;
+			height: $heightval;
+			left: 45%;
+		}
+		&--products &--5 {
+			top: $heightval * 2;
+			width: 63.5%;
+			height: $heightval;
+			left: 19.5%;
+		}
+		&--products &--6 {
+			top: $heightval * 3;
+			width: 37%;
+			height: $heightval;
+			left: 63%;
+		}
+		&--products &--7 {
+			top: $heightval * 4;
+			width: 81%;
+			height: $heightval;
+			left: 19.5%;
+		}
+		&--products &--8 {
+			top: $heightval * 5;
+			width: 100%;
+			height: $heightval;
+			left: 0;
+		}
+		&--products &--9 {
+			top: $heightval * 6;
+			width: 3%;
+			height: $heightval * 3;
+			left: 13%;
+		}
+		&--products &--11 {
+			top: $heightval * 6;
+			width: 14%;
+			height: $heightval;
+			left: 26%;
+		}
+		&--products &--12 {
+			top: $heightval * 7;
+			width: 24%;
+			height: $heightval;
+			left: 16%;
+		}
+		&--products &--13 {
+			top: $heightval * 8;
+			width: 8%;
+			height: $heightval;
+			left: 32%;
+		}
+		&--products &--14 {
+			top: $heightval * 6;
+			width: 3%;
+			height: $heightval * 3;
+			left: 50%;
+		}
+		&--products &--15 {
+			top: $heightval * 6;
+			width: 14%;
+			height: $heightval;
+			left: 61%;
+		}
+		&--products &--16 {
+			top: $heightval * 7;
+			width: 24%;
+			height: $heightval;
+			left: 51%;
+		}
+		&--products &--17 {
+			top: $heightval * 8;
+			width: 9%;
+			height: $heightval;
+			left: 66%;
+		}
+		&--products &--18 {
+			top: $heightval * 6;
+			width: 3%;
+			height: $heightval * 3;
+			left: 84%;
+		}
+		&--products &--19 {
+			top: $heightval;
+			width: 3%;
+			height: $heightval * 9;
+			left: initial;
+			right: 0;
+		}
+		
+		&--products &--20 {
+			top: $heightval * 7;
+			width: 13%;
+			height: $heightval;
+			left: 84%;
+		}
+	}
+}

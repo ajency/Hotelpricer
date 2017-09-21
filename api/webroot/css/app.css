@@ -1,0 +1,32 @@
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+
+.shell_container{
+    background:black;
+    color:white !important;
+    padding:10px;
+    min-height: 100px;
+    max-height:100px;
+    overflow: scroll;
+}
+
+span.more_data{
+    cursor:pointer !important;
+}
+
+.data_loader{
+    text-align:center;
+}

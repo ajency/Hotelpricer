@@ -1,0 +1,215 @@
+%direction-prop {
+	content: "";
+    position: absolute;
+    border-width: 5px;
+    border-style: solid;
+}
+
+$tooltip-width: 150px;
+
+.tooltip {
+	position: relative;
+    display: inline-block;
+    cursor: pointer;
+    &__content {
+    	font-size: 12px;
+    	line-height: 1.6;
+    	visibility: hidden;
+	    position: absolute;
+	    width: $tooltip-width;
+	    background-color: #555;
+	    color: #fff;
+	    text-align: center;
+	    padding: 9px;
+	    border-radius: 3px;
+	    z-index: 1;
+	    opacity: 0;
+	    transition: opacity .6s;
+	    white-space: normal;
+    }
+    &:hover {
+    	.tooltip__content {
+    		visibility: visible;
+    		opacity: 1;
+    	}
+    }
+    
+    .direction-top {
+		bottom: 125%;
+		left: 50%;  
+		margin-left: $tooltip-width / -2;
+		&:after {
+			@extend %direction-prop;
+		    top: 100%;
+		    left: 50%;
+		    margin-left: -5px;
+		    border-color: #555 transparent transparent transparent;
+		}
+    }
+    .direction-right {
+    	top: -5px;
+  		// left: 125%;
+  		right: -1 * $tooltip-width;
+  		&:after {
+  			@extend %direction-prop;
+		    top: 50%;
+		    right: 100%;
+		    margin-top: -5px;
+		    border-color: transparent #555 transparent transparent;
+  		}  
+    }
+    .direction-bottom {
+    	top: 135%;
+		left: 50%;  
+		margin-left: $tooltip-width / -2;
+		&:after {
+			@extend %direction-prop;
+		    bottom: 100%;
+		    left: 50%;
+		    margin-left: -5px;
+		    border-color: transparent transparent #555 transparent;
+		}
+    }
+    .direction-left {
+    	top: -5px;
+		bottom:auto;
+		// right: 128%;  
+		left: -1 * $tooltip-width;
+    	&:after {
+    		@extend %direction-prop;
+		    top: 50%;
+		    left: 100%;
+		    margin-top: -5px;
+		    border-color: transparent transparent transparent #555;
+    	}
+    }
+
+    // large-tooltip
+    $tooltip-battle-width: 300px;
+    &--battle &__content {
+	    width: $tooltip-battle-width;
+	    background-color: #fff;
+	    color: #000;
+	    text-align: left;
+	    padding: 12px;
+	    border-radius: 3px;
+	    box-shadow: 0 0 5px rgba(0,0,0,0.1), 0 8px 22px rgba(0,0,0,0.1);
+	    &:before {
+	    	z-index: 1;
+	    	transform: scale(1.1);
+	    }
+	    &:after {
+	    	z-index: 2;
+	    }
+    }
+  //   &--battle .direction-top {
+		// bottom: 125%;
+		// left: 50%;  
+		// margin-left: $tooltip-battle-width / -2;
+		// &:after, &:before {
+		// 	@extend %direction-prop;
+		//     top: 100%;
+		//     left: 50%;
+		//     margin-left: -5px;
+		//     border-color: #555 transparent transparent transparent;
+		// }
+		// &:before {
+		// 	border-color: #ddd transparent transparent transparent;
+		// 	top: 103%;
+		// }
+  //   }
+  //   &--battle .direction-right {
+  //   	top: -5px;
+  // 		// left: 125%;
+  // 		right: -1 * $tooltip-battle-width;
+  // 		&:after, &:before {
+  // 			@extend %direction-prop;
+		//     top: 50%;
+		//     right: 100%;
+		//     margin-top: -5px;
+		//     border-color: transparent #fff transparent transparent;
+  // 		}  
+		// &:before {
+		// 	right: 101%;
+		// 	border-color: transparent #ddd transparent transparent;
+		// }
+  //   }
+    &--battle .direction-bottom {
+    	top: 115%;
+		left: 50%;  
+		margin-left: $tooltip-battle-width / -2;
+		&:after, &:before {
+			@extend %direction-prop;
+		    bottom: 100%;
+		    left: 50%;
+		    margin-left: -5px;
+		    border-color: transparent transparent #fff transparent;
+		}
+		&:before {
+			bottom: 101%;
+			border-color: transparent transparent #ddd transparent;
+		}
+    }
+  //   &--battle .direction-left {
+  //   	top: -5px;
+		// bottom:auto;
+		// // right: 128%;  
+		// left: -1 * $tooltip-battle-width;
+  //   	&:after, &:before {
+  //   		@extend %direction-prop;
+		//     top: 50%;
+		//     left: 100%;
+		//     margin-top: -5px;
+		//     border-color: transparent transparent transparent #fff;
+  //   	}
+		// &:before {
+		// 	left: 103%;
+		// 	border-color: transparent transparent transparent #ddd;
+		// }
+  //   }
+
+    // for the battlefield tooltip - grid
+    &__header {
+    	padding: 10px 0;
+    	border-bottom: 1px solid $border-base;
+    }
+    &__row {
+    	padding-top: 8px;
+    }
+    .title {
+    	width: 50%;
+    }
+    .has-cont {
+    	width: 25%;
+    }
+    .dashed:after {
+    	content: '-';
+    	float: right;
+    	padding-right: 8px;
+    }
+    .current-t, .current-v {
+    	width: 100%;
+    }
+}
+
+
+.circle {
+	width: 10px;
+	height: 10px;
+	margin-left: 2px;
+	border-radius: 50%;
+	display: inline-block;
+	vertical-align: middle;
+	&.red {
+		background: $bt-red;
+	}
+	&.blue {
+		background: $alert-blue;
+	}
+	&.green {
+		background: $alert-green;
+	}
+	&.orange {
+		background: $bt-orange;
+	}
+}

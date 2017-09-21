@@ -1,0 +1,48 @@
+login-overlay {
+	.img {
+		min-width: 14px;
+		margin-right: 8px;
+	}
+}
+
+.marketplace-sell_id {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 60px 16px;
+	@media (max-width: 767px) {
+		padding: 30px 16px;
+	}
+	.marketplace-dismiss {
+		cursor: pointer;
+		position: absolute;
+		top: 15px;
+		right: 15px;
+	}
+	.filters__search {
+		border: initial;
+		width: 350px;
+		@media (max-width: 767px) {
+			flex-direction: column;
+			width: 100%;
+		}
+		input {
+			border: 1px solid #e0e0e0;
+			box-shadow: 0 0 1px #e0e0e0;
+			width: 100%;
+		}
+		button {
+			margin: 0;
+		}
+	}
+}
+
+.popover-md {
+	.popover-content.marketplace-sellerid {
+		@media (min-width: 767px) {
+			width: 600px;
+		}
+	}
+}

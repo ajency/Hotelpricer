@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <script data-ionic="inject">
+    (function(w){var i=w.Ionic=w.Ionic||{};i.version='3.3.0';i.angular='4.1.2';i.staticDir='build/';})(window);
+  </script>
+  <meta charset="UTF-8">
+  <title>Tracker App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+  <link rel="icon" sizes="256x256" href="assets/icon/favicon256.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ef4748">
+
+  <!-- ErrLytics snippet for js error tracking -->
+  <!-- <script type='text/javascript'>
+    window._errLyticsConfig = {
+        privateKey: 'Z9pF3IMcWo1BX2JKfTlohit7rGxSiUM3kl1C6msZuIg'
+    }
+  </script>
+  <script type='text/javascript' crossorigin='anonymous' src='https://cdn.errlytics.com/errlytics.min.js'></script> -->
+
+  <!-- cordova.js required for cordova apps -->
+  <!-- <script src="/cordova.js"></script> -->
+  <noscript>Please enable javascript to run this app!</noscript>
+
+  <link href="/build/main.css" rel="stylesheet">
+
+</head>
+<base href="/">
+<body>
+
+<div id="splash" style="position: relative; top: 45%; text-align: center;"></div>
+<script>
+  var splashImg = new Image();
+  var splashContainer = document.getElementById('splash');
+  splashImg.src = "assets/img/pwa-loading.gif";
+  splashImg.onload = function(){
+    console.log("appending splash")
+    splashContainer.appendChild(splashImg);
+  }
+
+  window.onload = function(){
+    console.log("removing splash")
+    splashContainer.parentNode.removeChild(splashContainer);
+    splashContainer = null;
+    splashImg.onload = null;
+    splashImg = null;
+  }
+</script>
+<!-- Ionic's root component and where the app will load -->
+<ion-app></ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js" defer></script>
+
+  <!-- The bundle js is generated during the build process -->
+  <script src="build/main.js" defer></script>
+
+<!--<script src="https://static.filestackapi.com/v3/filestack.js"></script>-->
+ <!--<script src="assets/libs/moment.min.js"></script>-->
+ <script src="init-service-worker.js" defer></script>
+</body>
+</html>

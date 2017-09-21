@@ -1,0 +1,28 @@
+pagination-controls {
+	padding: 15px;
+	text-align: center;
+	margin-bottom: 35px;
+}
+.ngx-pagination li {
+	padding: 14px !important;
+	a {
+		color: $bt-blue !important;
+	}
+	a:hover, button:hover {
+		background: transparent;
+	}
+}
+.ngx-pagination .current {
+	background: transparent !important;
+	// opacity: 0.45;
+	color: #cacaca !important;
+}
+@media (max-width: 767px) {
+	.ngx-pagination li {
+		display: none !important;
+		&.pagination-previous,
+		&.pagination-next {
+			display: inline-block !important;
+		}
+	}
+}

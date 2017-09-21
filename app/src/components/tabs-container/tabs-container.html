@@ -1,0 +1,37 @@
+ <ion-header class=""> 
+
+   <ion-navbar no-padding [ngClass]="{'menu-opened': menuOpen}"> 
+		<ion-title> 
+			<div class="container">
+        		<div class="header-main" padding-horizontal>
+					<!-- Main Nav tabs -->
+					<ul class="nav pri-menu pri-to-nav">
+						<li (click)="toggleMenu()" class="visible-xs pri-menu__hb"> <ion-icon name="menu"></ion-icon></li>
+						<li class="pri-menu__title hasub"><h1>Pricer</h1></li>
+						<li class="pri-menu__wrap hidden-xs-inline-block">
+							<ul class="pri-menu__full">
+								<!--<li *ngFor="let tab of activeTabsList" (click)="navTo(tab.segment);" [ngClass]="isActive(tab)"><a>{{tab.name}}</a></li>-->
+								<li (click)="navTo('dashboard');" id="summary" [ngClass]="{active: activeTabsList.dashboard.active}"><a>Dashboard</a></li>
+								<li (click)="navTo('prices','all');" id="prices" [ngClass]="{active: activeTabsList.prices.active}"><a>Prices</a></li>
+								<li [ngClass]="{active: activeTabsList.competitors.active}"><a>Competitors</a></li>
+								<!-- .... commented out analytics and settings as analytics will be part of the summary page - renamed to "Dashboard" .... -->
+								<!-- <li [ngClass]="{active: activeTabsList.analytics.active}"><a>Analytics</a></li> -->
+								<li [ngClass]="{active: activeTabsList.products.active}"><a>Products</a></li>
+								<li [ngClass]="{active: activeTabsList.pricing_rules.active}"><a>Pricing Rules</a></li>
+								<!-- .... settings will be part of the user popover below ... -->
+								<!-- <li [ngClass]="{active: activeTabsList.settings.active}"><a>Settings</a></li> -->
+							</ul>
+						</li>
+						<!-- .... user popover will appear here and logout + settings will be a part of it .... -->
+						<li (click)="signOut()" class="pri-menu__logout"><a>Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</ion-title>
+	 </ion-navbar> 
+
+ </ion-header> 
+
+
+
+

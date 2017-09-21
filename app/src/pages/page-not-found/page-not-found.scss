@@ -1,0 +1,33 @@
+page-page-not-found {
+	.container {
+		max-width: 600px;
+		padding: 0 25px;
+		margin: auto;
+		padding-top: 100px;
+	}
+	.404 {
+		margin-bottom: -50px;
+	}
+	hr {
+		margin: 0 -25px;
+	}
+	.last-p * {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	@media (max-width: 767px) {
+		.container {
+			padding: 15px;
+		}
+		img {
+			margin: 0;
+		}
+		hr {
+			margin: 0;
+		}
+	}
+
+	a.download-link{
+		cursor: pointer !important;
+	}
+}

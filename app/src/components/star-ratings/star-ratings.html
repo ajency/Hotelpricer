@@ -1,0 +1,15 @@
+<!-- .... for the amazon like star rating below are the classes .... -->
+<!-- .... 0.0 stars - "star-0_0"   |   0.5 stars - "star-0_5"   |   1.0 stars - "star-1_0" .... -->
+<!-- .... 1.5 stars - "star-1_5"   |   2.0 stars - "star-2_0"   |   2.5 stars - "star-2_5" .... -->
+<!-- .... 3.0 stars - "star-3_0"   |   3.5 stars - "star-3_5"   |   4.0 stars - "star-4_0" .... -->
+<!-- .... 4.5 stars - "star-4_5"   |   5.0 stars - "star-5_0"   |                          .... -->
+<div 
+  class="amazon-stars inline-elem" 
+  [ngClass]="{'star-0_0': starcount == 0 || ( starcount > 0 && starcount < 0.5 ) ,'star-0_5': starcount == 0.5 || ( starcount > 0.5 && starcount < 1 ),
+        'star-1_0': starcount == 1 || ( starcount > 1 && starcount < 1.5 ), 'star-1_5': starcount == 1.5 || ( starcount > 1.5 && starcount < 2 ),
+        'star-2_0': starcount == 2 || ( starcount > 2 && starcount < 2.5 ), 'star-2_5': starcount == 2.5 || ( starcount > 2.5 && starcount < 3 ), 
+        'star-3_0': starcount == 3 || ( starcount > 3 && starcount < 3.5 ), 'star-3_5': starcount == 3.5 || ( starcount > 3.5 && starcount < 4 ), 
+        'star-4_0': starcount == 4 || ( starcount > 4 && starcount < 4.5 ), 'star-4_5': starcount == 4.5 || ( starcount > 4.5 && starcount < 5 ), 
+        'star-5_0': starcount == 5 || ( starcount > 5 && starcount < 5.5 )}"
+>
+</div>

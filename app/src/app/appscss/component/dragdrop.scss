@@ -1,0 +1,12 @@
+.drag-n-drop {
+	text-align: center;
+	padding: 25px;
+	background: rgba($border-base, 0.3);
+	border: 2px dashed $bt-green;
+	// text-transform: uppercase;
+	line-height: 1.8;
+	color: #b2b2b2;
+	strong {
+		color: #000;
+	}
+}

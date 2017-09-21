@@ -1,0 +1,580 @@
+<!--
+  Generated template for the CreaterulePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="hidden-xs">
+
+  <ion-navbar no-padding>
+		<ion-title> 
+			<!--<ion-title>Pricer - Create Rule</ion-title>-->
+			<div class="container">
+				<div class="header-main" padding-horizontal>
+					<!-- Main Nav tabs -->
+					<ul class="nav pri-menu pri-to-nav">
+						<li (click)="goBack()" class="visible-xs pri-menu__hb"> <ion-icon name="menu"></ion-icon></li>
+						<li class="pri-menu__title hasub"><h1>Pricer</h1></li>
+						<li class="pri-menu__wrap hidden-xs-inline-block">
+							<ul class="pri-menu__full">
+								<li routerLinkActive="active" class="active"><a routerLink="/summary">Dashboard</a></li>
+								<li routerLinkActive="active"><a routerLink="/prices">Prices</a></li>
+								<!-- <li><a href="#">Competitors</a></li> -->
+								<!-- <li><a href="#">Violations</a></li> -->
+								<!-- <li><a href="#">Analytics</a></li> -->
+								<!-- <li><a href="#">Products</a></li> -->
+								<!--<li><a href="#">Pricing Rules</a></li>-->
+								<!--<li><a href="#">Settings</a></li>-->
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div class="container" padding-horizontal>
+		<div class="header-secondary replace-header">
+			<ul class="nav pri-menu">
+				<li class="visible-xs pri-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>
+				<li class="pri-menu__title"><h2>Create a Rule</h2></li>
+				<li class="buttons-right">
+					<ul class="pri-menu__full">
+						<li class="hidden-xs"><button ion-button outline small color="dark">Save</button></li>
+						<li><button ion-button small color="green" class="white-in-small">Save and Activate</button></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="inner-container">
+			<ion-grid no-padding>
+				<ion-row align-items-stretch>
+					<ion-col col-md-7 col-12>
+						<div class="section-label" margin-top margin-bottom padding-top><strong>Basic details</strong></div>
+						<ion-list class="basic-details" padding-bottom>
+							<ion-item class="f-channel" no-padding>
+								<ion-label>Channel</ion-label>
+								<ion-select interface="popover" placeholder="Select One">
+									<ion-option>Amazon India</ion-option>
+									<ion-option>Flipkart</ion-option>
+									<ion-option>SnapDeal</ion-option>
+									<ion-option>Paytm</ion-option>
+								</ion-select>
+							</ion-item>
+							<!-- <ion-item class="f-channel" no-padding>
+								<ion-label floating>Channel</ion-label>
+								<ion-input type="text"></ion-input>
+							</ion-item> -->
+							<ion-item class="f-rule" no-padding>
+								<ion-label floating>Rule Name</ion-label>
+								<ion-input type="text"></ion-input>
+							</ion-item>
+							<ion-item class="f-desc" no-padding>
+								<ion-label floating>Rule Description</ion-label>
+								<ion-input type="text"></ion-input>
+							</ion-item>
+						</ion-list>
+						<div class="compete-with filter-like-wrap single" padding-bottom>
+							<div class="section-label" margin-top margin-bottom padding-top>
+								<strong>Compete with</strong>
+								<!-- .... add class "open" to show the helper info .... -->
+								<div class="helper-info">
+									<ion-icon name="md-help"></ion-icon>
+									<div class="helper-info__panel">
+										<strong>Select the rules to compete with other sellers</strong><br>
+										<span class="text-lighter">You can use one of these pre-made templates too</span>
+										<div class="templates" padding-top>
+											<div class="template one">
+												Beat by 1%; compete with everyone
+												<a class="download-link" float-right>Use</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<hr no-margin>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									I'm the only seller
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Cost Price">
+											<ion-option>Cost Price</ion-option>
+											<ion-option>Option 2</ion-option>
+										</ion-select>
+									</ion-item>
+									<ion-item class="hide-label-not filter-like small" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="+">
+											<ion-option>+</ion-option>
+											<ion-option>-</ion-option>
+										</ion-select>
+									</ion-item>
+									<div class="input-with-dropdown filter-like">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+									<div class="single__result">
+										<span class="what">CP</span>
+										<span class="modifier">+</span>
+										<span class="value">10%</span>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									Amazon is lowest
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Amazon Price">
+											<ion-option>Amazon Price</ion-option>
+											<ion-option>Option 2</ion-option>
+										</ion-select>
+									</ion-item>
+									<ion-item class="hide-label-not filter-like small" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="+">
+											<ion-option>+</ion-option>
+											<ion-option>-</ion-option>
+										</ion-select>
+									</ion-item>
+									<div class="input-with-dropdown filter-like">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+									<div class="single__result">
+										<span class="what">Az</span>
+										<span class="modifier">+</span>
+										<span class="value">10%</span>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									Another seller is lowest
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Beat By">
+											<ion-option>Beat By</ion-option>
+											<ion-option>Option 2</ion-option>
+										</ion-select>
+									</ion-item>
+									<ion-item class="hide-label-not filter-like small" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="+">
+											<ion-option>+</ion-option>
+											<ion-option>-</ion-option>
+										</ion-select>
+									</ion-item>
+									<div class="input-with-dropdown filter-like">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+									<div class="single__result">
+										<span class="what">Seller</span>
+										<span class="modifier">+</span>
+										<span class="value">10%</span>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									An FBA listing is lowest
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Cost Price">
+											<ion-option>Beat By</ion-option>
+											<ion-option>Option 2</ion-option>
+										</ion-select>
+									</ion-item>
+									<ion-item class="hide-label-not filter-like small" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="+">
+											<ion-option>+</ion-option>
+											<ion-option>-</ion-option>
+										</ion-select>
+									</ion-item>
+									<div class="input-with-dropdown filter-like">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+									<div class="single__result">
+										<span class="what">FBA</span>
+										<span class="modifier">+</span>
+										<span class="value">10%</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="min-max radio-btns">
+							<div class="section-label" margin-top margin-bottom padding-top><strong>Min and Max Prices</strong></div>
+							<hr no-margin>
+							<div class="text-lighter" padding-vertical>Choose how you wish your Min/Max Prices (Inc. shipping) to be determined in this repricing rule</div>
+							<ion-list radio-group class="inline-radio rule-radio" no-margin>
+								<ion-item>
+									<ion-label>Product Min/Max only</ion-label>
+									<ion-radio checked="true" value="productMinMax" color="green"></ion-radio>
+								</ion-item>
+								<ion-item>
+									<ion-label>Plus/Minus INR/%</ion-label>
+									<ion-radio value="plusMinusINR" color="green"></ion-radio>
+								</ion-item>
+								<ion-item>
+									<ion-label>New min/max for this rule</ion-label>
+									<ion-radio value="newMinMax" color="green"></ion-radio>
+								</ion-item>
+								<!-- .... the ion-item below must be shown only if the radio btn selected is not "Product Min/Max only" .... -->
+								<!-- .... to show remove class "hidden" .... -->
+								<div class="showhiderow filter-like-wrap single hidden" no-padding>
+									<!-- .... show the row below when "Plus/Minus INR/%" radio btn is selected .... -->
+									<div class="showfor-plusMinusINR">
+										<div class="flex single__row" padding-top>
+											<div class="single__col single--label">
+												Min Price
+											</div>
+											<div class="single__col single--inputs flex">
+												<div class="val-in-q">Min Product Price</div>
+												<ion-item class="hide-label-not filter-like small" no-padding>
+													<!-- <ion-label>Channel</ion-label> -->
+													<ion-select interface="popover" placeholder="+">
+														<ion-option>+</ion-option>
+														<ion-option>-</ion-option>
+													</ion-select>
+												</ion-item>
+												<div class="input-with-dropdown filter-like">
+													<ion-item no-padding>
+														<ion-input type="text" placeholder="value"></ion-input>
+													</ion-item>
+													<ion-item class="hide-label-not small" no-padding>
+														<!-- <ion-label>Channel</ion-label> -->
+														<ion-select interface="popover" placeholder="%">
+															<ion-option>%</ion-option>
+															<ion-option><span class="rupee">&#8377;</span></ion-option>
+														</ion-select>
+													</ion-item>
+												</div>
+											</div>
+										</div>
+										<div class="flex single__row" padding-top>
+											<div class="single__col single--label">
+												Max Price
+											</div>
+											<div class="single__col single--inputs flex">
+												<div class="val-in-q">Max Product Price</div>
+												<ion-item class="hide-label-not filter-like small" no-padding>
+													<!-- <ion-label>Channel</ion-label> -->
+													<ion-select interface="popover" placeholder="+">
+														<ion-option>+</ion-option>
+														<ion-option>-</ion-option>
+													</ion-select>
+												</ion-item>
+												<div class="input-with-dropdown filter-like">
+													<ion-item no-padding>
+														<ion-input type="text" placeholder="value"></ion-input>
+													</ion-item>
+													<ion-item class="hide-label-not small" no-padding>
+														<!-- <ion-label>Channel</ion-label> -->
+														<ion-select interface="popover" placeholder="%">
+															<ion-option>%</ion-option>
+															<ion-option><span class="rupee">&#8377;</span></ion-option>
+														</ion-select>
+													</ion-item>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- .... show the row below when "New min/max for this rule" radio btn is selected .... -->
+									<div class="showfor-newMinMax">
+										<div class="flex single__row has-fw" padding-top>
+											<div class="single-col full-width info-alert" margin-vertical>
+												<strong>Please note.</strong> Choosing this option will overwrite any min/max values for products that you choose to price with this rule
+											</div>
+											<div class="single__col single--label">
+												<div>Min Price</div><br>
+												<div class="input-with-dropdown filter-like">
+													<input type="text" class="norm-input" placeholder="value" />
+													<span class="rupee helper">&#8377;</span>
+												</div>
+											</div>
+											<div class="single__col single--inputs">
+												<div>Max Price</div><br>
+												<div class="input-with-dropdown filter-like">
+													<input type="text" class="norm-input" placeholder="value" />
+													<span class="rupee helper">&#8377;</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</ion-list>
+						</div>
+						<div class="one-drops filter-like-wrap single" padding-vertical>
+							<div class="section-label" margin-vertical padding-top><strong>Scenarios</strong></div>
+							<hr no-margin>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									Winning BuyBox
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like wider" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Do not reprice further">
+											<ion-option>Do not reprice further</ion-option>
+											<ion-option>Increase price by...</ion-option>
+										</ion-select>
+									</ion-item>
+									<!-- .... remove class "hidden" of the below object if the option selected is "Increase price by" .... -->
+									<div class="input-with-dropdown filter-like hidden">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									There's no competition
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like wider" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Do not reprice further">
+											<ion-option>Do not reprice further</ion-option>
+											<ion-option>Increase price by...</ion-option>
+										</ion-select>
+									</ion-item>
+									<!-- .... remove class "hidden" of the below object if the option selected is "Increase price by" .... -->
+									<div class="input-with-dropdown filter-like hidden">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									Competition below your min
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like wider" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Do not reprice further">
+											<ion-option>Do not reprice further</ion-option>
+											<ion-option>Increase price by...</ion-option>
+										</ion-select>
+									</ion-item>
+									<!-- .... remove class "hidden" of the below object if the option selected is "Increase price by" .... -->
+									<div class="input-with-dropdown filter-like hidden">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									Competition matches your max
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like wider" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Do not reprice further">
+											<ion-option>Do not reprice further</ion-option>
+											<ion-option>Increase price by...</ion-option>
+										</ion-select>
+									</ion-item>
+									<!-- .... remove class "hidden" of the below object if the option selected is "Increase price by" .... -->
+									<div class="input-with-dropdown filter-like hidden">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									Min Price limit
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like wider" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Do not reprice further">
+											<ion-option>Do not reprice further</ion-option>
+											<ion-option>Increase price by...</ion-option>
+										</ion-select>
+									</ion-item>
+									<!-- .... remove class "hidden" of the below object if the option selected is "Increase price by" .... -->
+									<div class="input-with-dropdown filter-like hidden">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									Max Price limit
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like wider" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Do not reprice further">
+											<ion-option>Do not reprice further</ion-option>
+											<ion-option>Increase price by...</ion-option>
+										</ion-select>
+									</ion-item>
+									<!-- .... remove class "hidden" of the below object if the option selected is "Increase price by" .... -->
+									<div class="input-with-dropdown filter-like hidden">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<!-- <ion-label>Channel</ion-label> -->
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div>
+								</div>
+							</div>
+							<div class="flex single__row" padding-top>
+								<div class="single__col single--label">
+									Shipping
+								</div>
+								<div class="single__col single--inputs flex">
+									<ion-item class="hide-label-not filter-like wider" no-padding>
+										<!-- <ion-label>Channel</ion-label> -->
+										<ion-select interface="popover" placeholder="Free">
+											<ion-option>Free</ion-option>
+											<ion-option>Option 2</ion-option>
+										</ion-select>
+									</ion-item>
+									<!-- .... not sure what option the above one has, in case an input field is needed uncomment the one below .... -->
+									<!-- .... remove class "hidden" of the below object if the option selected is "Increase price by" .... -->
+									<!-- <div class="input-with-dropdown filter-like hidden">
+										<ion-item no-padding>
+											<ion-input type="text" placeholder="value"></ion-input>
+										</ion-item>
+										<ion-item class="hide-label-not small" no-padding>
+											<ion-select interface="popover" placeholder="%">
+												<ion-option>%</ion-option>
+												<ion-option><span class="rupee">&#8377;</span></ion-option>
+											</ion-select>
+										</ion-item>
+									</div> -->
+								</div>
+							</div>
+						</div>
+						<div margin-vertical padding-vertical>
+							<a class="download-link" padding-vertical>+ <span>Show Advanced Settings</span></a>
+						</div>
+						<hr margin-vertical>
+						<div class="flex form-footer">
+							<div class="hidden-xs" style="width: 100%;">
+								<a class="download-link" margin-bottom padding-bottom><span>Discard</span></a>
+							</div>
+							<div class="">
+								<button ion-button outline small color="dark">Save</button>
+							</div>
+							<div class="">
+								<button ion-button small color="green">Save and Activate</button>
+							</div>
+						</div>
+						<br>
+						<br>
+						<br>
+					</ion-col>
+					<!-- <ion-col col-md-5 col-12> -->
+						<!-- blank -->
+					<!-- </ion-col> -->
+				</ion-row>
+			</ion-grid>
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer>
+	<footer>
+		<div class="text-center" padding-vertical>&copy; Browntape 2017</div>
+	</footer>
+</ion-footer>

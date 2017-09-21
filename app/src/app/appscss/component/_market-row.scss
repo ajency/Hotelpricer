@@ -1,0 +1,49 @@
+.market-row {
+	.marketplaces {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.prod-title {
+		opacity: 0.45;
+		font-size: 16px;
+	}
+	&__header {
+		align-items: center;
+		padding-top: 0;
+		padding-bottom: 0;
+		border-bottom: 0 !important;
+		margin-bottom: 0;
+	}
+	&__action {
+		width: 40% !important;
+	}
+	&--on .prod-title {
+		opacity: 1;
+	}
+	&__content {
+		display: none;
+		// border-top: 1px solid $border-base;
+		padding: 16px;
+	}
+	&--open &__content {
+		display: block;
+	}
+	&__toggle {
+		width: 40px !important;
+	}
+}
+
+// .market-row:first-child {
+// 	margin-top: 8px;
+// }
+.market-row + .market-row {
+	border-top: 1px solid $border-base;
+}
+
+@media (max-width: 767px) {
+	.market-row {
+		&__content {
+			background: desaturate(darken($bt-grey, 5%), 8%);
+		}
+	}
+}

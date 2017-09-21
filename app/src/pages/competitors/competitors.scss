@@ -1,0 +1,159 @@
+page-competitors {
+	.header-secondary {
+		.pri-menu {
+			display: flex;
+			align-items: center;
+		}
+		.buttons-right {
+			white-space: nowrap;
+			font-size: 12px;
+		}
+	}
+
+	.competitors {
+		.market-place_col,
+		.seller-name_col,
+		.graph-col {
+			@media (max-width: 767px) {
+				padding-bottom: 10px;
+				margin-bottom: 10px;
+				border-bottom: 1px solid #ccc;
+			}
+		}
+		@media screen and (max-width: 767px) {
+			.market-place_col {
+				order: 1;
+				width: 10%;
+			}
+			.seller-name_col {
+				order: 2;
+				width: 40%;
+			}
+			.graph-col {
+				order: 3;
+				width: 50%;
+				text-align: right !important;
+			}
+			/* .tracked-since_col {
+				order: 3;
+				text-align: right;
+				width: 50%;
+			} */
+			.other_col {
+				order: 4;
+				display: flex;
+				flex-basis: 100%;
+				overflow-x: auto;
+				white-space: nowrap;
+				.tabular__cell {
+					width: 100%;
+					// margin: 5px 15px;
+					margin: 5px 14px 0px 14px;
+					//text-align: center;
+				}
+			}
+			margin-left: -15px;
+			margin-right: -15px;
+		}
+
+		@media (max-width: 767px) {
+			.other_col {
+				&::-webkit-scrollbar { 
+				    display: none; 
+				}
+				/* .mop {
+					order: 1;
+				}
+				.mrp {
+					order: 2;
+				}
+				.cheapest {
+					order: 3;
+				}
+				.competing {
+					order: 4;
+				}
+				.buybox {
+					order: 5;
+				}
+				.fbm {
+					order: 6;
+				}
+				.stockouts {
+					order: 7;
+				}
+				.tracked-since_col {
+					order: 8;
+				} */
+
+				
+				.mop,
+				.mrp,
+				.cheapest,
+				.competing,
+				.buybox,
+				.fbm,
+				.stockouts {
+					span,
+					strong {
+						// font-weight: 600;
+						font-size: 120%;
+					}
+					small {
+						color: #858585;
+					}
+				}
+			}
+		}
+
+		.other_col {
+			.competing {
+				span {
+					font-size: 120%;
+					font-weight: 600;
+				}
+			}
+			
+			// .mop,
+			// .mrp {
+			// 	span {
+			// 		color: $bt-red;
+			// 	}
+			// }
+			.product-icon {
+				position: relative;
+				top: -3px;
+			}
+			.bb {
+				top: -1px;
+			}
+		}
+
+		.graph-col {
+			text-align: center;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		.filters {
+			margin: 0 -15px;
+			margin-bottom: 15px;
+		}
+	}
+
+	a{
+		cursor: pointer;
+	}
+
+	.showPointer {
+		cursor: pointer !important;
+	}
+	.competitors-theader.scroll-fixed-header {
+		position: fixed;
+		top: 75px;
+		width: 1138px;
+		padding: 15px 0;
+	    background: #fff;
+	    z-index: 99;
+	}
+}

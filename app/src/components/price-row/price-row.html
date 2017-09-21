@@ -1,0 +1,290 @@
+<!-- Had to seperate views because of differences in styling  -->
+<!-- The view for the rows in the prices page  -->
+<div *ngIf="!sellertabview" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()" class="tabular__row flex clickable">
+				<div class="tabular-mob-header">
+					<div class="header-secondary replace-header">
+						<ul class="nav pri-menu">
+							<!-- <li (click)="hideProductDetails(item)" class="visible-xs pri-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li> -->
+							<li class="pri-menu__title"><h2>Product Details</h2></li>
+						</ul>
+					</div>
+				</div>
+				<div [hidden]="sellertabview" class="tabular__cell cell-1 hidden-xs t-check">
+					<ion-item no-padding>
+						<ion-checkbox [disabled]="!isOnline" color="dark" no-padding></ion-checkbox>
+					</ion-item>
+				</div>
+				<div class="tabular__cell cell-7 flex t-product fixed-xs">
+					<div class="img-wrap" margin-right [ngStyle]="{'background-image': 'url(' +  (item.product_details.product_image_url || './assets/img/no-img.png') + ')'}">
+					<!--<div class="img-wrap" margin-right [ngStyle]="{'background-image': 'url(' +  te + ')'}">-->
+						<!--<img [src]="item.product_details.product_image_url" onError="this.src='./assets/img/no-img.png';" width="65" alt="">-->
+					</div>
+					<div class="text-wrap">
+						&nbsp;<span [hidden]="item.product_details.sku_code" class="sku-code">{{item.channel_details.listing_id || naText}}</span>
+						<span [hidden]="!item.product_details.sku_code" class="sku">{{item.product_details.sku_code || naText}}</span>
+						<a target="blank" [href]="item.product_details.product_url">
+							<span class="marketplaces" [ngClass]="{'m-amazon': item.channel_details.channel_name == 'Amazon','m-flipkart': item.channel_details.channel_name == 'Flipkart', 'm-snapdeal': item.channel_details.channel_name == 'Snapdeal', 'm-paytm': item.channel_details.channel_name == 'Paytm'}" >
+								<span class="m-h"></span>
+							</span>
+						</a>
+
+						<h6 class="prod-title">
+							<a target="blank" [style.color]="item.product_details.product_name ? '' : 'grey'" title="{{item.product_details.product_name || naText}}" [href]="item.product_details.product_url" >{{item.product_details.product_name || titleNaText}}</a>
+						</h6>
+						<span class="text-lighter">Last tracked: {{item.repricing.last_tracked_on || naText}}</span>
+					</div>
+				</div>
+				<div class="tabular__cell cell-3 t-price text-right">
+					<!-- .... show this span only if there's a violation .... -->
+					<!-- .... also add a class to the parent 'tabular__row' instructions at the div .... -->
+					<span class="violation-icon tooltip" [hidden]="!item.repricing.violation_type || item.repricing.violation_type == 'N/A' || item.repricing.violation_type == 'NA' || item.repricing.violation_type == 'n/a' || item.repricing.violation_type == 'na'">
+						<img src="./assets/img/viol.png" alt="">
+						<span class="tooltip__content direction-bottom text-left">
+							Violation Type: <strong>{{ item.repricing.violation_type || naText }}</strong>
+						</span>
+					</span>
+					<!-- .... if has buybox then color="orange" else color="light" .... -->
+					<ion-badge [hidden]="item.repricing.is_buy_box == 'no'" class="bb" color="orange" text-uppercase>BB</ion-badge>
+					<span [hidden]="item.product_details.in_stock" class="amount visible-xs" style="color: #ef4748;">Currently Unavailable</span>
+					<span class="price">
+						<span [style.display]="item.repricing.my_price && item.repricing.my_price != 'N/A' ? 'inherit' : 'none'" class="rupee">&#8377;</span>
+						<span class="amount">{{item.repricing.my_price > 0 ? item.repricing.my_price.toLocaleString() : naText}}</span>
+						<!-- .... if is lowest then color="success" else color="light" .... -->
+						<ion-badge [hidden]="!item.product_details.in_stock || item.repricing.is_min == 'no'" color="success" text-uppercase>Lowest</ion-badge>
+					</span>
+					<div [hidden]="!item.product_details.in_stock || item.product_details.sold_by_me" class="amount not-sold" >
+						<!-- <ion-icon name="warning" color="orange"></ion-icon>  -->
+						<span class="text-lighter"> Not sold by you</span>
+					</div>
+				</div>
+				<div class="tabular__cell cell-7 t-battle text-center">
+					<div class="tooltip tooltip--battle">
+						<span [hidden]="!item.product_details.in_stock || item.repricing.tracked_sellers_count > 1">No competitors</span>
+						<span *ngIf="item.product_details.in_stock && item.repricing.tracked_sellers_count > 1 && item.repricing.market_min == item.repricing.market_max">All sellers at same price</span>
+						<price-battlefield
+							*ngIf="item.product_details.in_stock && item.repricing.tracked_sellers_count > 1 && item.repricing.market_min != item.repricing.market_max"
+							[mymin]="item.repricing.my_min"
+							[mymax]="item.repricing.my_max"
+							[marketmin]="item.repricing.market_min"
+							[marketmax]="item.repricing.market_max"
+							[myprice]="item.repricing.my_price"
+							[buyboxprice]="item.repricing.buy_box_price"
+							[isbuybox]="item.repricing.is_buy_box"
+							[ismin]="item.repricing.is_min"
+							[mrp]="item.product_details.mrp"
+							[salesrank]="item.product_details.sales_rank"
+							[rankobtained]="item.rankobtained"
+							[subject]="item.parentsubjectstream"
+							[forcehover]="sellertabview"
+							>
+						</price-battlefield>
+						 <!-- <div class="tooltip__content direction-bottom text-left"> -->
+							 <!-- MRP: <strong>{{ item.product_details.mrp || naText }}</strong> Rank: <strong>{{ item.product_details.sales_rank || naText }}</strong> -->
+							<!-- <div class="tooltip__header flex">
+								<div class="title"></div>
+								<div class="has-cont">Min</div>
+								<div class="has-cont">Max</div>
+							</div>
+							<div class="tooltip__row flex">
+								<div class="title">
+									<img src="./assets/img/my-range.png" alt="">
+									My Range
+								</div>
+								<div class="has-cont dashed"><span class="rupee">&#8377;</span> {{ item.repricing.my_min ? item.repricing.my_min.toLocaleString() : naText }}</div>
+								<div class="has-cont"><span class="rupee">&#8377;</span> {{ item.repricing.my_max ? item.repricing.my_max.toLocaleString() : naText }}</div>
+							</div>
+							<div class="tooltip__row flex">
+								<div class="title">
+									<img src="./assets/img/comp.png" alt="">
+									Competition
+								</div>
+								<div class="has-cont dashed"><span class="rupee">&#8377;</span> {{ item.repricing.market_min ? item.repricing.market_min.toLocaleString() : naText }}</div>
+								<div class="has-cont"><span class="rupee">&#8377;</span> {{ item.repricing.market_max ? item.repricing.market_max.toLocaleString() : naText }}</div>
+							</div>
+							<br>
+							<hr>
+							<div class="tooltip__row flex">
+								<div class="current-t">
+									<img src="./assets/img/battle-field-red-tri.png"> My current price
+								</div>
+								<div class="current-v text-right">
+									<span class="rupee">&#8377;</span> {{ item.repricing.my_price ? item.repricing.my_price.toLocaleString() : naText }} <span class="circle" [ngClass]="{'green': item.repricing.is_min == 'yes', 'red': item.repricing.is_min != 'yes'}"></span>
+								</div>
+							</div>
+							<div class="tooltip__row flex">
+								<div class="current-t">
+									<img src="./assets/img/battle-field-orange-dot.png" style="margin: 0 2px;"> BuyBox at
+								</div>
+								<div class="current-v text-right">
+									<span class="rupee">&#8377;</span> {{ item.repricing.buy_box_price ? item.repricing.buy_box_price.toLocaleString() : naText }} <span class="circle" [ngClass]="{'green': item.repricing.is_buy_box == 'yes', 'red': item.repricing.is_buy_box != 'yes'}"></span>
+								</div>
+							</div> -->
+						<!-- </div>  -->
+					</div>
+					<span [hidden]="item.product_details.in_stock" class="amount" style="color: #ef4748;"><br/>Currently Unavailable</span>
+				</div>
+				<!-- <div class="tabular__cell cell-5 t-rule"> -->
+					<!-- {{item.repricing.rule_id | pricingRule:item.channel_details.channel_id }} -->
+				<!-- </div>  -->
+				<div class="tabular__cell cell-2 pricer-count t-seller">
+					<span class="seller-icon"><ion-icon name="md-person"></ion-icon></span> <strong class="big">{{item.repricing.tracked_sellers_count || naText}}</strong>
+					<!-- <span class="pricer-count__legend">Sellers</span> -->
+				</div>
+				<div class="tabular__cell cell-3 pricer-count t-listing flex">
+					<div>
+						<span class="product-icon"></span> <strong>{{item.repricing.tracked_products_count || '1'}}</strong>
+					</div>
+
+					<!-- add button commented -->
+					<!-- <div margin-left [hidden]="!item.open">
+						<a (click)="item.selectedDetail = 'info'; segmentClick(item, editPrFlag)" class="decoration-none"><ion-icon name="ios-add-outline"></ion-icon> Add</a>
+					</div> -->
+
+					<!-- <span class="pricer-count__legend">Listings</span> -->
+				</div>
+				<div class="tabular__cell cell-5 t-battle text-center flex-center">
+					<!-- <google-chart [data]="demochartData"></google-chart> -->
+
+					<pricer-loader [hidden]="!loadingPriceTrend"></pricer-loader> 
+					<div [hidden]="loadingPriceTrend"> 
+						<strong [hidden]="item.chartData">No Data</strong> 
+						<strong *ngIf="item.chartData && item.chartData.dataTable && item.chartData.dataTable.length <= 2">Not enough data</strong> 
+						<google-chart *ngIf="item.chartData && item.chartData.dataTable && item.chartData.dataTable.length > 2" [data]="item.chartData"></google-chart>
+					</div> 
+				</div>
+
+				<div [hidden]="sellertabview" class="tabular__cell cell-2 t-battle text-center">
+					<!-- add button commented -->
+					<div margin-left [hidden]="!item.open">
+						<a (click)="item.selectedDetail = 'info'; segmentClick(item, editPrFlag)" class="decoration-none"><ion-icon name="ios-add-outline"></ion-icon> Add</a>
+					</div>
+				</div>
+				<!-- The tabbed/rows -->
+				<!-- its gone now  -->
+				<!-- <div class="tabbed tabular__moreinfo" padding-horizontal [ngClass]="{'product-info-tab': item.productTabOpen}">
+					<ion-segment [(ngModel)]="item.selectedDetail">
+						<ion-segment-button value="seller" (click)="segmentClick(item)">
+							Sellers
+						</ion-segment-button>
+						<ion-segment-button value="info" (click)="segmentClick(item)">
+							Product Info
+						</ion-segment-button>
+						<ion-segment-button value="activity" (click)="segmentClick(item, $event)">
+							Activity
+						</ion-segment-button>
+					</ion-segment>
+				</div> -->
+</div>
+
+<!-- The view in the header of the sellers modal/popup  -->
+<div *ngIf="sellertabview" class="tabular__row flex" [ngClass]="{'violated': item.repricing.violated, 'disabled-row': !item.product_details.in_stock}">
+	<!-- <div class="text-wrap">
+	<div class="tabular m-t-5">
+		<div class="flex t-product cell-three-fourth">
+		<div class="img-wrap" margin-right [ngStyle]="{'background-image': 'url(' +  (item.product_details.product_image_url || './assets/img/no-img.png') + ')'}">
+
+		</div>
+		<div class="text-wrap">
+			<span class="sku">{{item.channel_details.listing_id || naText}}</span> <span class="marketplaces m-flipkart" [ngClass]="{'m-amazon': item.channel_details.channel_name == 'Amazon','m-flipkart': item.channel_details.channel_name == 'Flipkart', 'm-snapdeal': item.channel_details.channel_name == 'Snapdeal', 'm-paytm': item.channel_details.channel_name == 'Paytm'}" ><span class="m-h"></span></span>
+			<h6 class="prod-title">
+			<a target="blank" title="{{item.product_details.product_name || naText}}" [href]="item.product_details.product_url" >{{item.product_details.product_name || naText}}</a>
+			</h6>
+
+		</div>
+		</div>
+	</div>
+	</div> -->
+
+	<!-- test -->
+	<div class="tabular__cell cell-8 flex t-product fixed-xs">
+		<div class="img-wrap" margin-right [ngStyle]="{'background-image': 'url(' +  (item.product_details.product_image_url || './assets/img/no-img.png') + ')'}">
+		<!--<div class="img-wrap" margin-right [ngStyle]="{'background-image': 'url(' +  te + ')'}">-->
+			<!--<img [src]="item.product_details.product_image_url" onError="this.src='./assets/img/no-img.png';" width="65" alt="">-->
+		</div>
+		<div class="text-wrap">
+			<span [hidden]="!item.product_details.sku_code" class="sku">{{item.product_details.sku_code || naText}}</span>
+			&nbsp;<span [hidden]="item.product_details.sku_code" class="sku-code">{{item.channel_details.listing_id || naText}}</span>
+
+			<a target="blank" [href]="item.product_details.product_url" >
+				<span class="marketplaces" [ngClass]="{'m-amazon': item.channel_details.channel_name == 'Amazon','m-flipkart': item.channel_details.channel_name == 'Flipkart', 'm-snapdeal': item.channel_details.channel_name == 'Snapdeal', 'm-paytm': item.channel_details.channel_name == 'Paytm'}" ><span class="m-h"></span></span>
+			</a>
+			<!-- <span [hidden]="item.product_details.sold_by_me" class="amount">Not sold by you</span> -->
+			<h6 class="prod-title">
+				<a target="blank" [style.color]="item.product_details.product_name ? '' : 'grey'" title="{{item.product_details.product_name || naText}}" [href]="item.product_details.product_url" >{{item.product_details.product_name || titleNaText}}</a>
+			</h6>
+			<span class="text-lighter last-tracked-date">Last tracked: {{item.repricing.last_tracked_on || naText}}</span>
+		</div>
+	</div>
+
+
+	<div class="tabular__cell cell-2 t-price text-right">
+		<!-- <div padding-bottom>Price</div> -->
+		<!-- .... show this span only if there's a violation .... -->
+		<!-- .... also add a class to the parent 'tabular__row' instructions at the div .... -->
+		<span class="violation-icon tooltip" [hidden]="!item.repricing.violation_type || item.repricing.violation_type == 'N/A' || item.repricing.violation_type == 'NA' || item.repricing.violation_type == 'n/a' || item.repricing.violation_type == 'na'">
+			<img src="./assets/img/viol.png" alt="">
+			<span class="tooltip__content direction-bottom text-left">
+				Violation Type: <strong>{{ item.repricing.violation_type || naText }}</strong>
+			</span>
+		</span>
+		<!-- .... if has buybox then color="orange" else color="light" .... -->
+		<ion-badge [hidden]="item.repricing.is_buy_box == 'no'" class="bb" color="orange" text-uppercase>BB</ion-badge>
+		<span class="price">
+			<span class="rupee" [style.display]="item.repricing.my_price && item.repricing.my_price != 'N/A' ? 'inherit' : 'none'">&#8377;</span>
+			<span class="amount">{{item.repricing.my_price > 0 ? item.repricing.my_price.toLocaleString() : naText}}</span>
+			<!-- .... if is lowest then color="success" else color="light" .... -->
+			<ion-badge [hidden]="!item.product_details.in_stock || item.repricing.is_min == 'no'" color="success" text-uppercase>Lowest</ion-badge>
+		</span>
+		<div [hidden]="!item.product_details.in_stock || item.product_details.sold_by_me" class="amount not-sold">
+			<!-- <ion-icon name="warning" color="orange"></ion-icon>  -->
+			<span class="text-lighter"> Not sold by you</span>
+		</div>
+	</div>
+
+	<div class="tabular__cell cell-9 t-battle text-center">
+		<div class="tooltip tooltip--battle">
+			<span [hidden]="!allSellersStockedOut && (!item.product_details.in_stock || item.repricing.tracked_sellers_count > 1)">No competitors</span>
+			<span *ngIf="!allSellersStockedOut && item.product_details.in_stock && item.repricing.tracked_sellers_count > 1 && item.repricing.market_min == item.repricing.market_max">All sellers at same price</span>
+			<price-battlefield
+				*ngIf="item.product_details.in_stock && item.repricing.tracked_sellers_count > 1 && item.repricing.market_min != item.repricing.market_max"
+				[mymin]="item.repricing.my_min"
+				[mymax]="item.repricing.my_max"
+				[marketmin]="item.repricing.market_min"
+				[marketmax]="item.repricing.market_max"
+				[myprice]="item.repricing.my_price"
+				[buyboxprice]="item.repricing.buy_box_price"
+				[isbuybox]="item.repricing.is_buy_box"
+				[ismin]="item.repricing.is_min"
+				[mrp]="item.product_details.mrp"
+				[salesrank]="item.product_details.sales_rank"
+				[forcehover]="true"
+			>
+			</price-battlefield>
+		</div>
+		<span [hidden]="item.product_details.in_stock" class="amount" style="color: #ef4748;"><br/>Currently Unavailable</span>
+	</div>
+
+
+
+	<div class="tabular__cell cell-3 pricer-count t-listing">
+	<!-- <div padding-bottom>Listings</div> -->
+		<span class="seller-icon"><ion-icon name="md-person"></ion-icon></span> <strong class="big fosz16">{{item.repricing.tracked_sellers_count || naText}}</strong>
+		<span class="pricer-count__legend text-lighter">Sellers</span>
+	</div>
+	<div class="tabular__cell cell-3 pricer-count t-seller">
+		<!-- <div padding-bottom>Sellers</div> -->
+		<span class="product-icon"></span> <strong>{{item.repricing.tracked_products_count || '1'}}</strong>
+		<span class="pricer-count__legend text-lighter">Mapped Listings</span>
+	</div>
+
+	<div class="tabular__cell cell-4 price-variation text-center flex-center">
+		<pricer-loader [hidden]="!loadingPriceTrend"></pricer-loader> 
+		<div [hidden]="loadingPriceTrend"> 
+			<strong [hidden]="item.chartData">No Data</strong> 
+			<strong *ngIf="item.chartData && item.chartData.dataTable && item.chartData.dataTable.length <= 2">Not enough data</strong> 
+			<google-chart *ngIf="item.chartData && item.chartData.dataTable && item.chartData.dataTable.length > 2" [data]="item.chartData"></google-chart>
+		</div> 
+	</div>
+</div>
+
+

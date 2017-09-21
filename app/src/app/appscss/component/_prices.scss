@@ -1,0 +1,80 @@
+.price {
+	display: inline-block;
+	padding-bottom: 3px;
+	margin: 0 3px;
+	.rupee {
+		opacity: 0.45;
+	}
+	.amount {
+		font-size: 16px;
+		font-weight: 500;
+		margin-left: 3px;
+	}
+	.badge {
+		margin-top: 3px;
+		// font-size: 12px;
+		font-size: 10px;
+		display: block;
+		height: 4px;
+
+		overflow: hidden;
+		line-height: 5;
+		padding: 0 2px;
+	}
+	&.big .rupee {
+		font-size: 80%;
+	}
+	&.big .amount {
+		font-size: 18px;
+		font-weight: bold;
+	}
+}
+
+.violation-icon {
+	display: inline-block;
+	font-size: 0;
+	vertical-align: top;
+}
+.open > div > .price .badge {
+	height: auto;
+	padding: 3px 2px;
+	line-height: 1;
+}
+.bb {
+	vertical-align: top;
+	position: relative;
+	top: 2px;
+}
+.pricer-count {
+	&__legend {
+		// display: none;
+		display: block;
+		// color: $bt-grey;
+	}
+}
+@media screen and (max-width: 767px) {
+	// .bb {
+	// 	position: absolute;
+	// 	top: 15px;
+	// 	right: 15px;
+	// }
+	// .open .bb {
+	// 	top: 70px;
+	// }
+	.price {
+		.amount {
+			font-size: 20px;
+		}
+		.badge {
+			margin-top: 7px;
+		}
+	}
+	.not-sold{
+		display: inline;
+	}
+	.pricer-count {
+		strong {
+			font-size: 20px;
+		}
+	}
+}

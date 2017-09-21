@@ -1,0 +1,135 @@
+page-competitor-products {
+	.header-secondary {
+		padding: 5px 0 0;
+		.pri-menu {
+			display: flex;
+			align-items: center;
+		}
+		.buttons-right {
+			white-space: nowrap;
+			font-size: 12px;
+			li {
+				border-left: 1px solid #ddd;
+				a {
+					padding: 0 15px;
+				}
+			}
+		}
+	}
+
+	.competitor-products {
+		@media (max-width: 767px) {
+			margin-left: -15px;
+			margin-right: -15px;
+			.t-product {
+				width: 100%;
+				order: 1;
+				margin-bottom: 15px;
+			}
+			.t-seller {
+				order: 2;
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			.other-col {
+				order: 3;
+				width: 100%;
+				justify-content: space-between;
+				.other-col__child {
+					&:first-child {
+						order: 2;
+						width: 80%;
+						text-align: right;
+					}
+					&:last-child {
+						order: 1;
+						width: 20%;
+						.tabular__cell {
+							margin: 0 2px;
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.back-to-link {
+		margin-top: 15px;		
+		a {
+			text-decoration: none;
+			font-size: 12px;
+			ion-icon {
+				padding-right: 5px;
+			}
+		}																						;
+	}
+
+	.show-all-section {
+		justify-content: space-between;
+		border-top: 1px solid $border-base;
+		border-right: 1px solid $border-base;
+		border-left: 1px solid $border-base;
+		@media (max-width: 767px) {
+			flex-direction: column;
+			background: #f6f5f0;
+			border: none;
+			margin-left: -15px;
+			margin-right: -15px;
+		}
+		.show-all-link {
+			align-self: flex-end;
+			@media (max-width: 767px) {
+				padding-left: 46px;
+				margin-top: 15px;
+				align-self: flex-start;
+			}
+		}
+		.to-column {
+			.flex:last-child {
+				margin-top: 5px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		.filters {
+			margin: 0 -15px;
+			margin-bottom: 15px;
+		}
+	}
+
+	a{
+		cursor: pointer !important;
+	}
+
+	.to-column-xs {
+		.text-wrap {
+			max-width: 50%;
+		}
+	}
+	@media (max-width: 767px) {
+		.seller-name_col {
+			.flex {
+				& > .text-wrap {
+					width: 14%;
+					& + .to-column {
+						width: 84%;
+						.to-column-xs {
+							flex-direction: column;
+							.text-wrap {
+								width: 100%;
+								h6 {
+									margin-bottom: 5px;
+								}
+							}
+							span:last-child {
+								padding-left: 0;
+							}
+						}
+					}
+				}
+			}
+		}	
+	}
+}

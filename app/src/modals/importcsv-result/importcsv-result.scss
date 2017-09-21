@@ -1,0 +1,44 @@
+page-importcsv-result {
+	@media (max-width: 767px) {
+		.tabular {
+			// .cell-one-fourth, .cell-three-fourth {
+			// 	width: 50%;
+			// }
+			.cell-one-fourth {
+				flex-grow: 2;
+				flex-shrink: 2;
+				flex-basis: 35%;
+			}
+			.cell-three-fourth {
+				flex-grow: 1;
+				flex-shrink: 1;
+				flex-basis: 65%;
+				max-width: 65%;
+				padding-right: 8px;
+			}
+		}
+	}
+
+	.csv-result-footer{
+		min-height:93px;
+	}
+}
+
+product-ResultProcessed{
+	color: #fff;
+    background-color: #309100;
+}
+
+productResultCrawling{
+	color: #fff;
+    background-color: #E8AA31;
+}
+
+productResultFailed{
+	color: #fff;
+    background-color: #f53d3d;
+}
+
+a{
+	cursor: pointer !important;
+}

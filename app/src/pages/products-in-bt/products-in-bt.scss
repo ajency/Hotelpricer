@@ -1,0 +1,67 @@
+page-products-in-bt {
+	.products-in-bt {
+		.track-markets_col {
+			justify-content: space-between;
+			.tabular__cell {
+				text-align: center;
+			}
+		}
+		.combo-col {
+			.price {
+				margin-top: 5px;
+			}
+		}
+		@media (max-width: 767px) {
+			.product-col,
+			.actions-col {
+				flex-basis: 50%;
+				width: 50%;
+				margin-bottom: 15px;
+			}
+			.product-col {
+				order: 1;
+			}
+			.actions-col {
+				order: 2;
+			}
+			
+			.combo-col {
+				order: 3;
+				width: 100%;
+				overflow-y: hidden;
+				overflow-x: scroll;
+				.tabular__cell {
+					width: 100%;
+					text-align: left; 
+					&:not(:first-child) {
+						margin: 0 15px;
+					}
+				}
+				.price {
+					margin-top: 5px;
+					.amount {
+						font-size: 15px;
+					}
+				}
+				.img-holder {
+					border: 1px solid #ccc;
+					border-radius: 20px;
+					width: 82px;
+					padding: 4px;
+				}
+			}
+
+			.tabular__row {
+				margin-left: -15px;
+				margin-right: -15px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		.filters {
+			margin: 0 -15px;
+			margin-bottom: 15px;
+		}
+	}
+}

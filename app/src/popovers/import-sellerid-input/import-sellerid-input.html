@@ -1,0 +1,64 @@
+<ion-content class="text-center">
+	<div class="wrapper marketplace-sell_id">
+			<!-- <button ion-button (click)="dismiss()"> -->
+				<ion-icon [hidden]="!addNewSeller || sellerIds.length == 0" (click)="hideNewSellerView()" name="md-arrow-round-back" class="marketplace-backto"></ion-icon>
+				<ion-icon name="md-close" class="marketplace-dismiss" (click)="dismiss()"></ion-icon>
+			<!-- </button> -->
+		<!-- <h4 class="popover__title">Enter Seller ID</h4> -->
+		<pricer-loader [hidden]="retrievedSellers"></pricer-loader>
+		<div [hidden]="sellerIds.length == 0 || addNewSeller" class="sellerID_wrapper">
+			<!-- if previous upload exist -->
+			<img src="../assets/img/marketplace-sell_id.png" alt="">
+			<h4 class="text-md-dark">Please select your {{payload.marketplace_id == 1 ? 'Amazon' : payload.marketplace_id == 2 ? 'Flipkart' : 'Marketplace'}} seller ID</h4>
+			<p margin-bottom>We need your seller ID so that we can distinguish you from the other sellers selling the products you upload. </p>
+
+			<ion-list radio-group [(ngModel)]="sellerID" class="m-b-5">
+				<ion-item *ngFor="let seller of sellerIds">
+					<ion-label no-padding>{{seller.label}}</ion-label>
+					<ion-radio color="green" no-padding value="{{seller.value}}"></ion-radio>
+				</ion-item>
+			</ion-list>
+
+			<div class="text-left">
+				<button ion-button clear (click)="addSeller()" color="secondary"><ion-icon name="md-add"></ion-icon>&nbsp; Add New</button>
+			</div>
+
+			<div [hidden]="!sellerID" style="width: 100%;">
+				<button (click)="submit(sellerID)" ion-button color="green">Proceed</button>
+			</div>
+
+			<!-- /if previous upload exist -->
+			<div [hidden]="!failureMessage" class="error error--danger">
+				{{failureMessage}}
+			</div>
+
+			<div padding-top class="text-md-dark">
+				Not sure how to get the seller ID? <br>
+				Click <a (click)="downloadFile('amazonSeller','amazon_sellerID')">here for Amazon</a> or <a (click)="downloadFile('flipkartSeller','flipkart_sellerID')">here for Flipkart</a> steps.
+			</div>
+		</div>
+
+		<div [hidden]="!addNewSeller" class="sellerID_wrapper">
+			<img src="../assets/img/marketplace-sell_id.png" alt="">
+			<h4 class="text-md-dark">Please enter your {{payload.marketplace_id == 1 ? 'Amazon' : payload.marketplace_id == 2 ? 'Flipkart' : 'Marketplace'}} seller ID</h4>
+			<p margin-bottom>We need your seller ID so that we can distinguish you from the other sellers selling the products you upload. </p>
+
+			<div class="filters__search flex">
+				<input [(ngModel)]="sellerID" type="text" class="form-control" placeholder="Enter seller ID" padding-left>
+				<button [disabled]="updateSeller" [class.loading]="updateSeller" (click)="submit(sellerID)" ion-button color="green">Proceed</button>
+			</div>
+
+
+			<div [hidden]="!failureMessage" class="error error--danger">
+				{{failureMessage}}
+			</div>
+
+			<div margin-top padding-top class="text-md-dark">
+				Not sure how to get the seller ID? <br>
+				Click <a (click)="downloadFile('amazonSeller','amazon_sellerID')">here for Amazon</a> or <a (click)="downloadFile('flipkartSeller','flipkart_sellerID')">here for Flipkart</a> steps.
+			</div>
+		</div>
+
+
+	</div>
+</ion-content>

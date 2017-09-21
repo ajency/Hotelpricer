@@ -1,0 +1,26 @@
+{
+    "dev": {
+        "keep_warm": false,
+        "lambda_description": "Repricing Development Module",
+        "lambda_handler": "dispatcher.dispatch",
+        "timeout_seconds": 300,
+
+        "manage_roles": false,
+        "role_name": "lambdaRepricer",
+
+        "profile": "default",
+
+        "app_function": "dispatcher.dispatch",
+        "aws_region": "us-east-1",
+        "s3_bucket": "zappa-2h3m88en2"
+    },
+    "production": {
+        "keep_warm": false,
+        "lambda_description": "Repricing Module",
+        "lambda_handler": "dispatcher.dispatch",
+        "timeout_seconds": 300,
+
+        "manage_roles": false,
+        "role_name": "lambdaRepricer"
+    }
+}

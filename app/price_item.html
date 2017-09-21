@@ -1,0 +1,277 @@
+			<div class="tabular__row flex" *ngFor="let item of productList | paginate: paginationConfig">
+				<div class="tabular-mob-header">
+					<div class="header-secondary replace-header">
+						<ul class="nav pri-menu">
+							<li (click)="goBack()" class="visible-xs pri-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>
+							<li class="pri-menu__title"><h2>Product Details</h2></li>
+						</ul>
+					</div>
+				</div>
+				<div class="tabular__cell cell-1 hidden-xs t-check">
+					<ion-item no-padding>
+						<ion-checkbox color="dark" no-padding></ion-checkbox>
+					</ion-item>
+				</div>
+				<div class="tabular__cell cell-9 flex t-product">
+					<div class="img-wrap" margin-right style="background-image: url()">
+						<img [src]="item.product_details.product_image_url" width="65" alt="">
+					</div>
+					<div class="text-wrap">
+						<span class="sku">{{item.channel_details.listing_id || naText}}</span> <span class="marketplaces m-flipkart"><span class="m-h"></span></span>
+						<h6 class="prod-title" no-margin><a  >{{item.product_details.product_name || naText}}</a></h6>
+					</div>
+				</div>
+				<div class="tabular__cell cell-6 t-price">
+					<!-- .... show this span only if there's a violation .... -->
+					<!-- .... also add a class to the parent 'tabular__row' instructions at the div .... -->
+					<!--<span class="violation-icon">
+						<img src="../assets/img/viol.png" alt="">
+					</span>-->
+					<span class="price">
+						<span class="rupee">&#8377;</span><span class="amount">{{item.repricing.my_price || naText}}</span>
+						<!-- .... if is lowest then color="success" else color="light" .... -->
+						<ion-badge [hidden]="item.repricing.is_min == 'no'" color="success" text-uppercase>Lowest</ion-badge>
+					</span>
+					<!-- .... if has buybox then color="orange" else color="light" .... -->
+					<ion-badge [hidden]="item.repricing.is_buy_box == 'no'" class="bb" color="orange" text-uppercase>BB</ion-badge>
+				</div>
+				<div class="tabular__cell cell-5 t-rule">
+					Algorithmic Rule
+				</div> <!--21-->
+				<div class="tabular__cell cell-2 pricer-count t-listing">
+					<span class="product-icon"></span> <strong>{{item.repricing.tracked_listings || naText}}</strong>
+					<span class="pricer-count__legend">Listings</span>
+				</div>
+				<div class="tabular__cell cell-2 pricer-count t-seller">
+					<span class="seller-icon"><ion-icon name="md-person"></ion-icon></span> <strong class="big">{{item.repricing.tracked_sellers_count || naText}}</strong>
+					<span class="pricer-count__legend">Sellers</span>
+				</div>
+				<div class="tabular__cell cell-5 t-battle">
+					<!-- the svg -->
+				</div>
+				<!-- The tabbed/rows -->
+				<div class="tabbed tabular__moreinfo" padding>
+					<ion-segment [(ngModel)]="pet">
+						<ion-segment-button value="info">
+							Product Info
+						</ion-segment-button>
+						<ion-segment-button value="seller">
+							Sellers
+						</ion-segment-button>
+						<ion-segment-button value="activity">
+							Activity
+						</ion-segment-button>
+					</ion-segment>
+
+					<div [ngSwitch]="pet" class="tabbed__panels">
+						<ion-list *ngSwitchCase="'info'" padding no-margin>
+							<ion-grid no-padding>
+								<ion-row align-items-stretch no-padding>
+									<ion-col col-sm-12 col-md-4 class="into-card">
+										<div class="flex counts" margin-top>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">4500</span>
+												</span>
+												<span class="count-single__text">MRP</span>
+											</div>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">750</span>
+												</span>
+												<span class="count-single__text">Cost Price</span>
+											</div>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">1000</span>
+												</span>
+												<span class="count-single__text">MOP</span>
+											</div>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">100</span>
+												</span>
+												<span class="count-single__text">Shipping Price</span>
+											</div>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">1400</span> -
+													<span class="rupee">&#8377;</span><span class="amount">2000</span>
+												</span>
+												<span class="count-single__text">Your Min - Max price</span>
+											</div>
+											<hr style="width: 100%;">
+											<div class="count-single" margin-top>
+												<span class="count-single__text" inline-block margin-right>Pricing Rule</span>
+												<span class="count-single__rule"><strong>Algorithmic Pricer</strong></span>
+											</div>
+										</div>
+									</ion-col>
+									<ion-col col-sm-12 col-md-8 class="border-left into-card">
+										<div padding class="competitors-list">
+											<small class="competitors-list__label">Competitors</small>
+											<p>ABCDEFG1234, JKS457WW5DF, ABCDEFG1234, JKS457WW5DF, ABCDEFG1234, JKS457WW5DF, ABCDEFG1234, JKS457WW5DF</p>
+										</div>
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+							<!-- fab -->
+						</ion-list>
+
+						<ion-list *ngSwitchCase="'seller'">
+							<div class="seller-table tabular">
+								<div class="tabular__header flex hidden-xs">
+									<div class="tabular__cell cell-7">Seller</div>
+									<div class="tabular__cell cell-4">ASIN</div>
+									<div class="tabular__cell cell-4">Tracked Since</div>
+									<div class="tabular__cell cell-3">Stockouts</div>
+									<div class="tabular__cell cell-4">Status</div>
+									<div class="tabular__cell cell-4">Buybox Ownership</div>
+									<div class="tabular__cell cell-4">Price</div>
+									<!-- <div class="tabular__cell cell-5"></div> -->
+								</div>
+								<!-- .... in mobile on tap add/toggle class "open-ss" .... -->
+								<div class="tabular__row flex">
+									<div class="tabular__cell cell-7 flex t-sellname">
+										<div class="img-wrap" margin-right>
+											<img src="../assets/img/iphone.png" width="35" alt="">
+										</div>
+										<div class="text-wrap">
+											<h6 class="prod-title" no-margin>
+												<a  >Amazing Seller</a>
+												<span class="marketplaces m-amazon"><span class="m-h"></span></span>
+											</h6>
+										</div>
+									</div>
+									<div class="tabular__cell cell-4 t-sellasin">ABCDEFG1234</div>
+									<div class="tabular__cell cell-4 t-sellupdate">12 Apr 17. 10:00</div>
+									<div class="tabular__cell cell-3 t-stockout">-- <span class="visible-xs-inline-block">stockouts</span></div>
+									<div class="tabular__cell cell-4 t-status">Active</div>
+									<div class="tabular__cell cell-4 t-bb">14 <span class="visible-xs-inline-block">BuyBox ownership</span></div>
+									<div class="tabular__cell cell-4 t-sellprice">
+										<!-- .... show this span only if there's a violation .... -->
+										<!-- .... also add a class to the parent 'tabular__row' instructions at the div .... -->
+										<span class="violation-icon">
+											<img src="../assets/img/viol.png" alt="">
+										</span>
+										<span class="price">
+											<span class="rupee">&#8377;</span><span class="amount">4500</span>
+											<!-- .... if is lowest then color="success" else color="light" .... -->
+											<ion-badge color="success" text-uppercase>Lowest</ion-badge>
+										</span>
+										<!-- .... if has buybox then color="orange" else color="light" .... -->
+										<ion-badge class="bb" color="orange" text-uppercase>BB</ion-badge>
+									</div>
+									<!-- <div class="tabular__cell cell-5"></div> -->
+								</div>
+							</div>
+						</ion-list>
+
+						<ion-list *ngSwitchCase="'activity'">
+							<div class="activity-log">
+								<div class="activity" padding>
+									<div class="activity__day">Today</div>
+									
+									<!-- .... Classes have to be added to the div "activity__single" .... -->
+									<!-- .... CLASSES FOR DIFFERENT ACTIVITIES .... -->
+									<!-- .... ================================ .... -->
+									<!-- .... REPRICED - "activity-reprice" .... -->
+									<!-- .... BUYBOX GOT - "activity-bb got" .... -->
+									<!-- .... BUYBOX LOST - "activity-bb lost" .... -->
+									<!-- .... LOWEST PRICE GOT - "activity-lowest got" .... -->
+									<!-- .... LOWEST PRICE LOST - "activity-lowest lost" .... -->
+									<!-- .... RULE CHANGED - "activity-rule" .... -->
+
+									<!-- .... CLASSES FOR EXPAND/COLLAPSE .... -->
+									<!-- .... =========================== .... -->
+									<!-- .... "activity--opened" .... -->
+									<div class="activity__single activity-reprice" margin-left>
+										<div class="activity__time">11:30 AM</div>
+										<div class="activity__action">Repriced</div>
+										<div class="activity__params">
+											<div class="activity__from activity__value">
+												<span class="price">
+													<span class="rupee">&#8377;</span><span class="amount">4650</span>
+												</span>
+											</div>
+											<div class="activity__arr"></div>
+											<div class="activity__to activity__value">
+												<span class="price">
+													<span class="rupee">&#8377;</span><span class="amount">4500</span>
+												</span>
+											</div>
+										</div>
+										<div class="activity__expanded" margin-top>expanded content goes here</div>
+									</div>
+
+									<div class="activity__single activity-bb got" margin-left>
+										<div class="activity__time">11:30 AM</div>
+										<div class="activity__action">BuyBox acquired</div>
+										<div class="activity__params"></div>
+										<div class="activity__expanded" margin-top>expanded content goes here</div>
+									</div>
+
+									<div class="activity__single activity-lowest lost" margin-left>
+										<div class="activity__time">11:30 AM</div>
+										<div class="activity__action">Lowest price achieved</div>
+										<div class="activity__params"></div>
+										<div class="activity__expanded" margin-top>expanded content goes here</div>
+									</div>
+
+									<div class="activity__single activity-rule" margin-left>
+										<div class="activity__time">11:30 AM</div>
+										<div class="activity__action">Repricing rule changed</div>
+										<div class="activity__params">
+											<div class="activity__from activity__value">
+												<span class="price">
+													<span class="amount">Default Rule</span>
+												</span>
+											</div>
+											<div class="activity__arr"></div>
+											<div class="activity__to activity__value">
+												<span class="price">
+													<span class="amount">Algorithmic Pricer</span>
+												</span>
+											</div>
+										</div>
+										<div class="activity__expanded" margin-top>expanded content goes here</div>
+									</div>
+
+									<div class="activity__single activity-reprice" margin-left>
+										<div class="activity__time">11:30 AM</div>
+										<div class="activity__action">Repriced</div>
+										<div class="activity__params">
+											<div class="activity__from activity__value">
+												<span class="price">
+													<span class="rupee">&#8377;</span><span class="amount">4650</span>
+												</span>
+											</div>
+											<div class="activity__arr"></div>
+											<div class="activity__to activity__value">
+												<span class="price">
+													<span class="rupee">&#8377;</span><span class="amount">4500</span>
+												</span>
+											</div>
+										</div>
+										<div class="activity__expanded" margin-top>expanded content goes here</div>
+									</div>
+
+									<div class="activity__single activity-bb got" margin-left>
+										<div class="activity__time">11:30 AM</div>
+										<div class="activity__action">BuyBox acquired</div>
+										<div class="activity__params"></div>
+										<div class="activity__expanded" margin-top>expanded content goes here</div>
+									</div>
+
+									<div class="activity__single activity-lowest lost" margin-left>
+										<div class="activity__time">11:30 AM</div>
+										<div class="activity__action">Lowest price achieved</div>
+										<div class="activity__params"></div>
+										<div class="activity__expanded" margin-top>expanded content goes here</div>
+									</div>
+								</div>
+							</div>
+						</ion-list>
+					</div>
+				</div>
+			</div>

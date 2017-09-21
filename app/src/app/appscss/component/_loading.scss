@@ -1,0 +1,39 @@
+.loading {
+	width: 94px;
+	&:after {
+		content: '';
+		display: block;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		border-top: 2px solid #fff;
+		border-left: 2px solid transparent;
+		border-right: 2px solid #fff;
+		border-bottom: 2px solid transparent;
+		animation: rrr 0.5s linear infinite;
+		margin: 0;
+		padding: 0;
+		margin: 0 auto;
+	}
+	.button-inner {
+		display: none;
+	}
+}
+
+@keyframes rrr {
+	0% {
+		transform: rotateZ(0);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+
+.loading-spinner {
+	// opacity: 0.45;
+	&.inline {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 5px;
+	}
+}

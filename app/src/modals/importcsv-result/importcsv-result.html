@@ -1,0 +1,78 @@
+<ion-header class="popup__header">
+  <ion-toolbar>
+    <ion-title>
+      <h1 class="popup__title" no-margin>
+        <small>Result</small><br>
+        <strong>{{results.filename}}</strong>
+      </h1>
+    </ion-title>
+    <ion-buttons start class="popup__dismiss">
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="popup__content">
+  <div class="tabular stay-table">
+    <div class="tabular__header flex no-bg">
+      <div class="tabular__cell cell-three-fourth">Listing ID</div>
+      <div class="tabular__cell cell-one-fourth">Status</div>
+    </div>
+      <!--<div class="tabular__row flex">
+        <div class="tabular__cell cell-three-fourth">
+          <h6 class="prod__title text-ellipsis" no-margin>ABD1338KL</h6>
+        </div>
+        <div class="tabular__cell cell-one-fourth">
+          <ion-badge color="green">Processed</ion-badge>
+        </div>
+      </div>
+      <div class="tabular__row flex">
+        <div class="tabular__cell cell-three-fourth">
+          <h6 class="prod__title text-ellipsis" no-margin>ABD1338KL</h6>
+        </div>
+        <div class="tabular__cell cell-one-fourth">
+          <ion-badge color="orange">Crawling...</ion-badge> <div class="loading-spinner inline"><img src="../assets/img/loading2.gif" alt=""></div>
+        </div>
+      </div>
+      <div class="tabular__row flex">
+        <div class="tabular__cell cell-three-fourth">
+          <h6 class="prod__title text-ellipsis" no-margin>ABD1338KL</h6>
+        </div>
+        <div class="tabular__cell cell-one-fourth">
+          <ion-badge color="danger">Failed!</ion-badge>
+        </div>
+      </div>-->
+
+      <!--badge-md-green , badge-md-orange , badge-md-danger-->
+      <pricer-loader [hidden]="results.listing && results.listing.length > 0 || pollError"></pricer-loader>
+      <div class="tabular__row flex" *ngIf="results.listing.length == 0 && pollError" style="justify-content: center;">
+        <strong [hidden]="importPending">An error occured while loading sheet row results!</strong>
+        <strong [hidden]="!importPending">Sheet is still being imported!</strong>
+			</div>
+      <div class="tabular__row flex" *ngFor="let item of results.listing | paginate: paginationConfig">
+        <div class="tabular__cell cell-three-fourth">
+          <h6 class="prod__title text-ellipsis" no-margin>{{item.listing_id}}</h6>
+        </div>
+        <div class="tabular__cell cell-one-fourth" style="white-space: nowrap;">
+          <ion-badge [color]="appservice.setBadgeColor(item.status)" >{{item.status == 'Failed' ? 'Retrying shortly' : item.status }}</ion-badge>
+          <span [hidden]="item.status != 'Crawling'">
+            <svg version="1.1" class="loading-spinner inline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+              <path fill="#ef4748" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z" transform="rotate(240 25 25)" stroke-width="1" stroke="#ef4748">
+                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform>
+              </path>
+            </svg>
+          </span>
+        </div>
+      </div>
+      <!-- <pagination-controls (pageChange)="pagChanged($event)" autoHide="true"></pagination-controls> -->
+  </div>
+</ion-content>
+
+<ion-footer class="csv-result-footer">
+	<footer [hidden]="paginationConfig.totalItems <= paginationConfig.itemsPerPage">
+    <pagination-controls (pageChange)="pagChanged($event)" autoHide="true"></pagination-controls>
+  </footer>
+</ion-footer>
+

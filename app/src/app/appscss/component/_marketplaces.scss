@@ -1,0 +1,118 @@
+.marketplaces {
+	width: 50px;
+	height: 48px;
+	padding: 0 !important;
+	// background: #eee;
+}
+.m-h {
+	display: block;
+	width: 35px;
+	height: 35px;
+	margin: 0 auto;
+	background-image: url(../assets/img/marketplaces-sprite.png);
+	background-repeat: no-repeat;
+	background-position: left 2px top 12px;
+}
+// .m-paytm {
+// 	width: 100px;
+// 	.m-h {
+// 		width: 90px;
+// 	}
+// }
+.m-amazon .m-h {
+	// background-position: left top;
+}
+.m-flipkart .m-h {
+	background-position: left -49px top 10px;
+}
+.m-snapdeal .m-h {
+	background-position: left -98px top 10px;
+}
+.m-paytm .m-h {
+	background-position: left -137px top 10px;
+}
+@media screen and (max-width: 767px) {
+	.show-white {
+		.marketplaces {
+			padding-top: 1px;
+		}
+		.m-h {
+			margin-top: 3px;
+		}
+		.m-amazon .m-h {
+			background-position: left 2px top -22px;
+		}
+		.m-flipkart .m-h {
+			background-position: left -49px top -22px;
+		}
+		.m-snapdeal .m-h {
+			background-position: left -98px top -22px;
+		}
+		.m-paytm .m-h {
+			background-position: left -137px top -22px;
+		}
+	}
+}
+
+
+
+.marketplace-tabs {
+	display: flex;
+	// width: 100%;
+	overflow-x: auto;
+	margin-right: -15px;
+	flex-grow: 1;
+	ul {
+		display: flex;
+	}
+}
+.to-crawl{
+	flex-grow: 2;
+	padding: 0 20px 5px;
+	.sku-code{
+		width: 100%;
+		max-width: 100%;
+	    text-align: center;
+	    background: #f8f8f8;
+	    color: #383838;
+	    font-size: 13px;
+	    ion-icon{
+	    	font-size: 1.8em;
+	    	position: relative;
+	    	top: 4px;
+	    	left: -8px;
+	    	line-height: 0;
+	    	color: $bt-red;
+	    }
+	}
+	@media(max-width: 920px){
+		display: none;
+	}
+}
+.text-wrap .marketplaces {
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid $border-base;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	margin-left: 8px;
+	.m-h {
+		transform: scale(0.7) translateY(-9px) translateX(-4px);
+	}
+}
+.seller-table .marketplaces {
+	width: 25px;
+	height: 25px;
+	.m-h {
+		transform: scale(0.6) translateY(-15px) translateX(-10px);
+	}
+}
+.text-wrap.big .marketplaces {
+	width: 40px;
+	height: 40px;
+	.m-h {
+		transform: scale(0.8) translateY(-4px) translateX(1px);
+	}
+}
+

@@ -1,0 +1,582 @@
+<ion-header>
+	<div class="tabular-mob-header visible-xs">
+		<div class="header-secondary replace-header">
+			<ul class="nav pri-menu">
+				<li (click)="dismiss()" class="visible-xs pri-menu__hb popup__dismiss"> <ion-icon name="ios-arrow-back"></ion-icon></li>
+				<li class="pri-menu__title"><h2>Product Details</h2></li>
+			</ul>
+		</div>
+	</div>
+   <ion-toolbar>
+    <ion-title>
+      <!-- <h1 class="popup__title flex" no-margin> -->
+
+
+    <div class="tabular full-width">
+		<price-row 
+			[item]="item" 
+			[loadingpricetrend]="loadingPriceTrend" 
+			[sellertabview]="true"
+			[ngClass]="{'violated': item.repricing.violated, 'disabled-row': !item.product_details.in_stock}"
+		>
+		</price-row> 
+    </div>
+
+
+        <!-- /test -->
+      <!-- </h1> -->
+    </ion-title>
+    <ion-buttons start class="popup__dismiss hidden-xs">
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+	</ion-buttons>
+
+	<ion-segment [(ngModel)]="item.selectedDetail">
+		<ion-segment-button value="seller" (click)="segmentClick(item)">
+			Sellers
+		</ion-segment-button>
+		<ion-segment-button value="info" (click)="segmentClick(item)">
+			Product Info
+		</ion-segment-button>
+		<ion-segment-button value="activity" (click)="segmentClick(item, $event)">
+			Activity
+		</ion-segment-button>
+	</ion-segment>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content (click)="hideAllFilters($event)" padding>
+  		<div class="tabbed tabular__moreinfo" padding-horizontal [ngClass]="{'product-info-tab': item.productTabOpen}">
+			<!-- <ion-segment [(ngModel)]="item.selectedDetail">
+				<ion-segment-button value="seller" (click)="segmentClick(item)">
+					Sellers
+				</ion-segment-button>
+				<ion-segment-button value="info" (click)="segmentClick(item)">
+					Product Info
+				</ion-segment-button>
+				<ion-segment-button value="activity" (click)="segmentClick(item, $event)">
+					Activity
+				</ion-segment-button>
+			</ion-segment> -->
+
+			<div [ngSwitch]="item.selectedDetail" class="tabbed__panels">
+
+				<ion-list *ngSwitchCase="'seller'">
+					<div class="seller-table tabular" [attr.offsetid]="item.product_details.id">
+						<div class="tabular__header flex hidden-xs">
+							<div class="tabular__cell cell-5">Seller</div>
+							<div class="tabular__cell cell-3">Tracked Since</div>
+							<!-- <div class="tabular__cell cell-2 text-center">Stockouts</div> -->
+							<div class="tabular__cell cell-2 text-center">Status</div>
+
+							<div class="tabular__cell cell-10 flex other_column">
+								<div class="tabular__cell cell-6 text-center">BB Won
+									<span class="tooltip">
+										<ion-icon name="md-help-circle" class=""></ion-icon>
+										<span class="tooltip__content direction-bottom " text-capitalize>
+											Total number of times seller has won BuyBox
+										</span>
+									</span>
+								</div>
+								<div class="tabular__cell cell-6 text-center">BB Lost
+									<span class="tooltip">
+										<ion-icon name="md-help-circle" class=""></ion-icon>
+										<span class="tooltip__content direction-bottom " text-capitalize>
+											Total number of times seller has lost BuyBox
+										</span>
+									</span>
+								</div>
+								<div class="tabular__cell cell-8 text-center">
+									Won Lowest Price
+								</div>
+								<div class="tabular__cell cell-8 text-center">
+									Lost Lowest Price
+								</div>
+							</div>
+							<!-- .... anchor with class "sort-col" is the sorting icon there are 3 classes for the 2 states .... -->
+							<!-- .... NOT SORTED - "neutral" .... -->
+							<!-- .... ASCENDING - "asc" .... -->
+							<!-- .... DESCENDING - "dsc" .... -->
+							<div class="tabular__cell cell-2 text-right">Price <a (click)="orderSellersByPrice(item)" class="sort-col neutral" [ngClass]="{'neutral': !item.sortDirection, 'asc': item.sortDirection == 'dsc', 'dsc': item.sortDirection == 'asc'}"></a></div>
+							<div class="tabular__cell cell-3 text-right price-diff" padding-right>Price Difference</div>
+							<div class="tabular__cell cell-4 text-center" padding-right>Price Trend</div>
+							<div class="tabular__cell cell-1 text-right">
+								<a class="" (click)="hideFilter =!hideFilter"><img alt="" src="./assets/img/filter.png"></a>
+							</div>
+						</div>
+
+						<!-- filters -->
+						<!-- filters will be hidden on default -->
+						<div class="filters flex flex-items-center sellers-filter" [class.noFilter]="hideFilter">
+							<!-- <div class="filters flex flex-items-center sellers-filter"> -->
+							<label margin-left padding-right class="hidden-xs" >Filter By: </label>
+							<div class="filters__wrap flex-items-center">
+								<div class="bt-dropdown" [ngClass]="{'open': sellerFilterOptions.status.open, 'filtered': sellerFilterOptions.status.filtered}">
+									<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+									<!-- .... just adding the class will show the dropdown .... -->
+									<!-- .... if any of the elements are selected then add class "filtered" to parent div "bt-dropdown" .... -->
+									<button (click)="toggleFilterDrop('seller', 'status')" ion-button color="dark" outline no-margin class="bt-dropdown__btn button-drop btn-search">
+										<span class="plusicon visible-xs-inline-block"></span> Status  <ion-icon name="ios-arrow-down" class="icon-small hidden-xs"></ion-icon>
+									</button>
+									<div class="bt-dropdown__dd">
+										<ion-list radio-group class="m-b-0" [(ngModel)]="sellerFilterOptions.status.selected" (ionChange)="updateSellerFilter('status')">
+										<ion-item *ngFor="let status of sellerFilterOptions.status.options">
+											<ion-label no-padding >{{status.label}}</ion-label>
+											<ion-radio no-padding checked="true" [value]="status.slug" color="green"></ion-radio>
+										</ion-item>
+										</ion-list>
+									</div>
+								</div>
+
+								<div class="bt-dropdown" [ngClass]="{'open': sellerFilterOptions.bb_ownership.open, 'filtered': sellerFilterOptions.bb_ownership.filtered}">
+
+									<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+									<!-- .... just adding the class will show the dropdown .... -->
+									<button (click)="toggleFilterDrop('seller', 'bb_ownership')" ion-button color="dark" outline no-margin class="bt-dropdown__btn button-drop">
+										<span class="plusicon visible-xs-inline-block"></span> BuyBox Ownership <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+									</button>
+									<div class="bt-dropdown__dd range-dd">
+										<ion-list class="filter-boxes inline" padding-horizontal>
+											<ion-item>
+												<ion-label stacked>Min</ion-label>
+												<ion-input min="1"  type="number" [(ngModel)]="sellerFilterOptions.bb_ownership.min"></ion-input>
+											</ion-item>
+											<ion-item>
+												<ion-label stacked>Max</ion-label>
+												<ion-input min="1"  type="number" [(ngModel)]="sellerFilterOptions.bb_ownership.max"></ion-input>
+											</ion-item>
+										</ion-list>
+
+										<div [hidden]="bbBannerHidden" class="error error--danger">
+											Min should be less than Max!
+										</div>
+										 <div style="text-align: center;" padding-horizontal class="apply-btn">
+											<button ion-button color="green" class="btn-apply" block  no-margin (click)="applyBboFilter()">Apply</button>
+										</div>  
+
+									</div>
+								</div>
+
+								<button (click)="resetSellerFilter()" ion-button color="secondary" no-margin class="btn-reset" clear><ion-icon name="md-refresh" class="hidden-xs"></ion-icon><span class="visible-xs">Reset</span></button>
+
+								<label margin-right padding-left class="hidden-xs">{{ filteredArray.length >= 0 ? filteredArray.length.toLocaleString() : naText}} Records Found</label>
+							</div>
+
+							
+						</div>
+						<!-- /filters -->
+						
+						<!-- add 'default' class to "seller-col__holder" on filters hidden & 'on-filter' once filter is shown -->
+						<div class="seller-col__holder default" [ngClass]="{'default': hideFilter, 'on-filter': !hideFilter}">
+						<!-- .... in mobile on tap add/toggle class "open-ss" .... -->
+						<div [hidden]="item.sellerSubscription || ( item.asyncSellers && item.asyncSellers.length > 0 ) " style="text-align: center;" padding-vertical>
+							<strong [hidden]="item.error">Could not find any sellers for this item</strong>
+							<strong [hidden]="!item.error">Could not load results at the moment!</strong>
+						</div>
+						<!-- <div class="tabular__row flex" [hidden]="!item || item.sellerSubscription || ( item.asyncSellers && item.asyncSellers.length > 0 ) || !item.error" style="justify-content: center;">
+						<strong>Could not load results at the moment!</strong>
+						</div> -->
+						<!-- <div class="tabular__row flex has-anim-loader seller-loader_tabs" [hidden]="!item.sellerSubscription" *ngFor="let dummy of dummySellers">
+							<div class="masked masked--prices_sellerstab">
+								<div class="masked__bg">
+									<div class="masked__elements">
+										<div class="masked__elem masked--1"></div>
+										<div class="masked__elem masked--2"></div>
+										<div class="masked__elem masked--3"></div>
+										<div class="masked__elem masked--4"></div>
+										<div class="masked__elem masked--5"></div>
+										<div class="masked__elem masked--6"></div>
+										<div class="masked__elem masked--7"></div>
+										<div class="masked__elem masked--8"></div>
+										<div class="masked__elem masked--9"></div>
+										<div class="masked__elem masked--10"></div>
+										<div class="masked__elem masked--11"></div>
+										<div class="masked__elem masked--12"></div>
+										<div class="masked__elem masked--13"></div>
+										<div class="masked__elem masked--14"></div>
+										<div class="masked__elem masked--15"></div>
+										<div class="masked__elem masked--16"></div>
+									</div>
+								</div>
+							</div>
+						</div> -->
+						<div class="tabular__row flex open-ss" [ngClass]="{'is-current-seller': seller.is_current_seller, 'disabled-row': seller.is_stocked_out}" *ngFor="let seller of ( item.asyncSellers | sellerStatus : sellerFilterOptions.status.selected | sellerBBownership: sellerFilterOptions.bb_ownership ) | paginate: item.sellersPageConfig">
+						<!--<div class="tabular__row flex open-ss" [hidden]="!item.sellers.length" [ngClass]="{'is-current-seller': seller.is_current_seller}" *ngFor="let seller of item.sellers">	-->
+							<div class="tabular__cell cell-5 flex t-sellname">
+								<div class="img-wrap" margin-right [ngStyle]="{'background-image': 'url(' +  (seller.product_image || './assets/img/no-img.png') + ')'}">
+								</div>
+								<div class="text-wrap">
+									<h6 class="prod-title" no-margin title="{{seller.seller || naText}}">
+										<a target="blank" [href]="seller.seller_url">{{seller.seller || naText}}</a>
+										<!-- <span class="marketplaces" [ngClass]="{'m-amazon': item.channel_details.channel_name == 'Amazon','m-flipkart': item.channel_details.channel_name == 'Flipkart', 'm-snapdeal': item.channel_details.channel_name == 'Snapdeal', 'm-paytm': item.channel_details.channel_name == 'Paytm'}"><span class="m-h"></span></span> -->
+									</h6>
+									<star-ratings [stars]="seller.rating"></star-ratings>
+									<!-- <span class="text-lighter">{{seller.rating || naText}}</span> -->
+									<span class="text-lighter" [hidden]="!seller.rating_count">({{ seller.rating_count ? seller.rating_count.toLocaleString() : '' }} ratings)</span>
+								</div>
+							</div>
+							<div class="tabular__cell cell-3 t-sellasin"><div>{{seller.listing_id  || naText}} <ion-badge class="asin-badge text-lighter" color="dark" text-uppercase>ASIN</ion-badge></div><div class="text-lighter">{{seller.tracked_since || naText}}</div></div>
+							<!-- <div class="tabular__cell cell-5 t-sellupdate visible-xs">{{seller.tracked_since || naText}}</div> -->
+							<!-- <div class="tabular__cell cell-2 t-stockout text-center"> <span>{{ seller.stockouts_count ? seller.stockouts_count : '--' }}</span> <span class="visible-xs-inline-block">stockouts</span></div>  -->
+							<div class="tabular__cell cell-2 t-status text-center">
+								<div class="visible-xs-inline-block">Status:</div>
+								{{ seller.is_stocked_out ? 'Stocked Out' : 'Active' }}
+									<ion-badge [hidden]="!seller.is_current_seller" color="blue" class="current-user">You</ion-badge>
+							</div>
+
+							<div class="tabular__cell cell-10 flex other_column">
+								<div class="tabular__cell cell-6 text-center">
+									<span>{{ seller.buy_box_ownership >= 0 ? seller.buy_box_ownership : naText }}</span> 
+									<span class="visible-xs-inline-block">BB Won</span>
+								</div>
+
+								<div class="tabular__cell cell-6 text-center">
+								<span>{{ seller.lost_buy_box >= 0 ? seller.lost_buy_box : naText }}</span>
+								<span class="visible-xs-inline-block">BB Lost</span>
+								</div>
+
+								<div class="tabular__cell cell-8 text-center">
+									<span>{{ seller.won_lowest_price >= 0 ? seller.won_lowest_price : naText }}</span>
+									<span class="visible-xs-inline-block">Won Lowest Price</span>
+								</div>
+								<div class="tabular__cell cell-8 text-center">
+									<span>{{ seller.lost_lowest_price >= 0 ? seller.lost_lowest_price : naText }}</span>
+									<span class="visible-xs-inline-block">Lost Lowest Price</span>
+								</div>
+							</div>
+
+							<div class="tabular__cell cell-2 t-sellprice text-right">
+								<!-- .... show this span only if there's a violation .... -->
+								<!-- .... also add a class to the parent 'tabular__row' instructions at the div .... -->
+								<span [hidden]="!seller.violation_type" class="violation-icon tooltip">
+									<img src="./assets/img/viol.png" alt="">
+									<span class="tooltip__content direction-bottom text-left">
+										Violation Type: <strong>{{ seller.violation_type || naText }}</strong>
+									</span>
+								</span>
+								<!-- .... if has buybox then color="orange" else color="light" .... -->
+								<ion-badge [hidden]="seller.buy_box != 'yes'" class="bb" color="orange" text-uppercase>BB</ion-badge>
+								<span class="price">
+									<span class="rupee" [style.display]="seller.price && seller.price != 'N/A' ? 'inherit' : 'none'">&#8377;</span>
+									<span class="amount">{{seller.price > 0 ? seller.price.toLocaleString() : naText}}</span>
+									<!-- .... if is lowest then color="success" else color="light" .... -->
+									<ion-badge [hidden]="seller.lowest != 'yes'" color="success" text-uppercase>Lowest</ion-badge>
+								</span>
+							</div>
+							<div class="tabular__cell cell-3 text-right price-diff">
+								 <div [hidden]="seller.is_current_seller">
+									<div [hidden]="seller.price_diff == 0" class="flex-end">
+										<ion-icon *ngIf="seller.price_diff > 0" color="green" md="md-arrow-dropup" class="icon-md-secondary"></ion-icon>
+										<ion-icon *ngIf="seller.price_diff < 0" color="danger" md="md-arrow-dropdown" class="icon-md-danger"></ion-icon>
+										<span class="rupee" [style.display]="seller.price_diff && seller.price_diff != 'N/A' ? 'inherit' : 'none'">&#8377;</span>
+										&nbsp;<span class="amount fw600">{{seller.price_diff > 0 || seller.price_diff < 0 ? seller.price_diff.toLocaleString() : naText}}</span>
+									</div>
+									<div *ngIf="seller.price_diff > 0" class="m-t--5">Above your price</div>
+									<div *ngIf="seller.price_diff < 0" class="m-t--5">Below your price</div>
+									<div *ngIf="seller.price_diff == 0" class="m-t--5">At your price</div>
+								</div>
+							</div>
+
+							<div class="tabular__cell cell-4 flex-center price-var" style="text-align: center;">
+								<pricer-loader [hidden]="!loadingPriceTrend"></pricer-loader>
+								<div [hidden]="loadingPriceTrend">
+									<strong [hidden]="seller.price_variation">No Data</strong>
+									<strong *ngIf="seller.price_variation && seller.price_variation.dataTable && seller.price_variation.dataTable.length <= 2">Not enough data</strong>
+									<google-chart *ngIf="seller.price_variation && seller.price_variation.dataTable && seller.price_variation.dataTable.length > 2" [data]="seller.price_variation"></google-chart>
+								</div>
+							</div>
+
+							<div class="tabular__cell cell-1">
+								
+							</div>
+						</div>
+
+						<div *ngIf="item.asyncSellers.length > 0 && emptySellers" style="text-align: center;" padding-vertical>
+							<strong>No sellers to list</strong>
+						</div> 
+
+						<div [style.display]="item.sellerSubscription ? 'block' : 'none'" style="text-align: center;" padding-vertical>
+							<pricer-loader></pricer-loader>
+						</div>
+						<div class="tabular__row flex" *ngIf="item.asyncSellers && item.asyncSellers.length > 0 && item.allsellersfetched" style="justify-content: center;">
+							<strong>All sellers fetched</strong>
+						</div>
+
+						</div>
+						<!-- <pagination-controls [id]="item.product_details.id" (pageChange)="selerPageChange($event,item)" autoHide="true"></pagination-controls>  -->
+					</div>
+				</ion-list>
+
+				
+
+				<ion-list *ngSwitchCase="'info'" no-margin>
+					<pricer-loader [hidden]="!loadingProduct"></pricer-loader>
+					<div [hidden]="loadingProduct">
+						<div [hidden]="editProductInfo" class="fadeIn">
+							<ion-fab right bottom>
+								<button [disabled]="!isOnline" (click)="editProduct(item)" ion-fab mini color="danger"><ion-icon name="md-create"></ion-icon></button>
+							</ion-fab>
+							<ion-grid no-padding>
+								<ion-row align-items-stretch no-padding>
+									<ion-col col-sm-12 col-md-4 class="into-card">
+										<div class="flex counts" padding>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">{{item.product_details_from_api.mrp ? item.product_details_from_api.mrp.toLocaleString() : naText}}</span>
+												</span>
+												<span class="count-single__text">MRP</span>
+											</div>
+											<!-- <div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">{{item.product_details_from_api.cost_price ? item.product_details_from_api.cost_price.toLocaleString() : naText}}</span>
+												</span>
+												<span class="count-single__text">Cost Price</span>
+											</div>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">{{item.product_details_from_api.mop ? item.product_details_from_api.mop.toLocaleString() : naText}}</span>
+												</span>
+												<span class="count-single__text">MOP</span>
+											</div>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">{{item.product_details_from_api.shipping ? item.product_details_from_api.shipping.toLocaleString() : naText}}</span>
+												</span>
+												<span class="count-single__text">Shipping Price</span>
+											</div>
+											<div class="count-single">
+												<span class="price big">
+													<span class="rupee">&#8377;</span><span class="amount">{{item.product_details_from_api.min ? item.product_details_from_api.min.toLocaleString() : naText}}</span> -
+													<span class="rupee">&#8377;</span><span class="amount">{{item.product_details_from_api.max ? item.product_details_from_api.max.toLocaleString() : naText}}</span>
+												</span>
+												<span class="count-single__text">Your Min - Max price</span>
+											</div>
+											<div [hidden]="!item.product_details_from_api.sku_code" class="count-single" style="min-width: 100%;">
+												<span class="sku m-b-5">
+													{{item.product_details_from_api.sku_code}}
+												</span>
+												<span class="count-single__text">SKU Code</span>
+											</div> -->
+											<hr style="width: 100%;">
+											<!-- <div class="count-single m-b-0" margin-top>
+												<span class="count-single__text" inline-block margin-right>Pricing Rule</span>
+												<span class="count-single__rule"><strong>{{item.repricing.rule_id | pricingRule:item.channel_details.channel_id }}</strong></span>
+												<br>
+												<br>
+											</div> -->
+											<span class="text-lighter m-b-16" margin>Product added: {{ item.product_details_from_api.created_at || naText }}</span>
+										</div>
+									</ion-col>
+									<ion-col col-sm-12 col-md-8 class="border-left into-card competitors-list__cover">
+										<div class="competitors-list" padding>
+											<!-- <small class="competitors-list__label">Additional Listings</small><br/>
+											<small class="text-lighter">The listing IDs of the products which you think are competing with this product on the Marketplace</small>
+											<p>{{item.product_details_from_api.tracked_listings || naText}}</p> -->
+
+											<div class="visible-xs" margin-bottom>Competitors</div>
+											<div class="tabular">
+												<div class="tabular__header flex hidden-xs">
+													<div class="tabular__cell cell-20">Competing Listings</div>
+													<!-- <div class="tabular__cell cell-5">Sellers</div> -->
+													<!-- <div class="tabular__cell cell-5" [hidden]="listing.crawl_status != 'failed'">Status</div> -->
+												</div>
+
+												<div class="tabular__row" [hidden]="item.product_details_from_api.products_to_be_tracked && item.product_details_from_api.products_to_be_tracked.length > 0" style="text-align: center;">
+													<strong>No competing products</strong>
+												</div>
+												<div *ngFor="let listing of item.product_details_from_api.products_to_be_tracked" class="tabular__row flex">
+													<div class="tabular__cell cell-20 flex competing-list_col">
+														<div class="img-wrap" margin-right [ngStyle]="{'background-image': 'url(' + (listing.product_image || './assets/img/no-img.png') + ')'}">
+
+														</div>
+														<div class="text-wrap" style="padding:2px">
+															<span class="sku-code">{{ listing.listing_id || naText }}</span>
+															<h6 class="prod-title" no-margin><a target="blank" [href]="listing.listing_url">{{ listing.product_title || naText }}</a></h6>
+														</div>
+													</div>
+													<!-- <div class="tabular__cell cell-5 sellers-col">
+														<span class="seller-icon"><ion-icon name="md-person"></ion-icon></span> <strong class="big">5</strong>
+													</div> -->
+													<!-- <div class="tabular__cell cell-5 status-col" [hidden]="listing.crawl_status != 'failed'">
+														<span class="text-lighter">Retrying Shortly</span>
+													</div> -->
+												</div>
+
+											</div>
+
+										</div>
+
+
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+						</div>
+						<!-- fab -->
+						<div [hidden]="!editProductInfo" class="fadeIn">
+							<ion-toolbar class="edit-info-toolbar">
+								<ion-buttons start>
+								<button (click)="hideProductEdit()" ion-button icon-only>
+									<ion-icon name="ios-arrow-back"></ion-icon>
+								</button>
+								</ion-buttons>
+								<ion-title>Edit Competitors</ion-title>
+							</ion-toolbar>
+
+							<page-edit-single-prices #productEdit [item]="item" [productdetailsfromapi]="item.product_details_from_api" (productObtained)="hideProductEdit($event)"></page-edit-single-prices>
+						</div>
+					</div>
+				</ion-list>
+
+				<ion-list *ngSwitchCase="'activity'" class="activity-tab">
+					<div class="activity-log">
+						<!-- filters -->
+						<div class="filters activity-filters flex flex-items-center" [hidden]="item.fetchingActivity">
+							<label margin-left class="hidden-xs" padding-right>Filter By: </label>
+							<div class="filters__wrap">
+								<div class="bt-dropdown" [ngClass]="{'open': actFilterOptions.activity_actions.open, 'filtered': actFilterOptions.activity_actions.filtered}">
+									<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+									<!-- .... just adding the class will show the dropdown .... -->
+									<!-- .... if any of the elements are selected then add class "filtered" to parent div "bt-dropdown" .... -->
+									<button (click)="toggleFilterDrop('activity')" [disabled]="!actFilter.activity_action && item.sortedActivity && item.sortedActivity.length == 0" ion-button color="dark" outline no-margin class="bt-dropdown__btn button-drop btn-search">
+										<span class="plusicon visible-xs-inline-block"></span> Activity Type  <ion-icon name="ios-arrow-down" class="icon-small hidden-xs"></ion-icon>
+									</button>
+									<div class="bt-dropdown__dd">
+										<ion-list radio-group class="m-b-0" [(ngModel)]="actFilterOptions.activity_actions.selected" (ionChange)="updateActFilter()">
+										  <ion-item *ngFor="let acType of actFilterOptions.activity_actions.options">
+										    <ion-label no-padding >{{acType.label}}</ion-label>
+										    <ion-radio no-padding [value]="acType.slug" color="green"></ion-radio>
+										  </ion-item>
+										</ion-list>
+									</div>
+								</div>
+
+								<button (click)="resetActFilter(item)" ion-button color="secondary" no-margin class="btn-reset" clear><ion-icon name="md-refresh" class="hidden-xs"></ion-icon><span class="visible-xs">Reset</span></button>
+							</div>
+						</div>
+						<!-- /filters -->
+
+						<div class="tabular__row" [hidden]="item.fetchingActivity || ( item.sortedActivity && item.sortedActivity.length > 0 ) || item.acterror" style="text-align: center;">
+							<strong>No activity found</strong>
+						</div>
+
+						<div class="tabular__row flex" [hidden]="item.fetchingActivity || ( item.sortedActivity && item.sortedActivity.length > 0 ) || !item.acterror" style="justify-content: center;">
+							<strong>Could not load activities at the moment!</strong>
+						</div>
+
+						<div class="activity" padding *ngFor="let activity of item.sortedActivity">
+							<div class="activity__day">{{activity[0].created}}</div>
+
+							<!-- .... Classes have to be added to the div "activity__single" .... -->
+							<!-- .... CLASSES FOR DIFFERENT ACTIVITIES .... -->
+							<!-- .... ================================ .... -->
+							<!-- .... REPRICED - "activity-reprice" .... -->
+							<!-- .... BUYBOX GOT - "activity-bb got" .... -->
+							<!-- .... BUYBOX LOST - "activity-bb lost" .... -->
+							<!-- .... LOWEST PRICE GOT - "activity-lowest got" .... -->
+							<!-- .... LOWEST PRICE LOST - "activity-lowest lost" .... -->
+							<!-- .... RULE CHANGED - "activity-rule" .... -->
+							<!-- .... SELLER PRICE CHANGED - "activity-seller-price" .... -->
+							<!-- .... SELLER RATING CHANGED - "activity-seller-rating" .... -->
+							<!-- .... SELLER RATING COUNT CHANGED - "activity-seller-rating-count" .... -->
+							<!-- .... SELLER STOCKOUT - "activity-seller-stockout" .... -->
+
+							<!-- .... CLASSES FOR EXPAND/COLLAPSE .... -->
+							<!-- .... =========================== .... -->
+							<!-- .... "activity--opened" .... -->
+							<div class="activity__single" (click)="toggleActivityDrop(childact)"
+							[ngClass]="{
+								'activity--opened': childact.opened,
+								'activity-bb': childact.action == 'buy_box_acquired',
+								'got': childact.action == 'buy_box_acquired',
+								'activity-seller-price': childact.action == 'seller_price_changed',
+								'activity-seller-rating': childact.action == 'seller_rating_changed',
+								'activity-seller-rating-count': childact.action == 'seller_rating_count_changed',
+								'activity-seller-stockout': childact.action == 'seller_stockout'
+								}"
+							margin-left *ngFor="let childact of activity">
+								<div class="activity__time">{{ childact.createdtime | date:'shortTime'}}</div>
+								<div class="activity__action">{{childact.content}}</div>
+								<div class="activity__params">
+									<div class="activity__value">
+										<span>{{childact.details && childact.details[1] ? childact.details[1].value : naText }}</span>
+									</div>
+									<div [hidden]="childact.action == 'seller_stockout'" class="activity__from activity__value">
+										<span class="price">
+											<span *ngIf="childact.action == 'seller_price_changed'" class="rupee">&#8377;</span><span class="amount">{{childact.details && childact.details[2] ? truncate(childact.details[2].value).toLocaleString() : naText}}</span>
+										</span>
+									</div>
+									<div [hidden]="childact.action == 'seller_stockout'" class="activity__arr"></div>
+									<div [hidden]="childact.action == 'seller_stockout'" class="activity__to activity__value">
+										<span class="price">
+											<span *ngIf="childact.action == 'seller_price_changed'" class="rupee">&#8377;</span><span class="amount">{{ childact.details && childact.details[3] ? truncate(childact.details[3].value).toLocaleString() : naText}}</span>
+										</span>
+									</div>
+								</div>
+								<div class="activity__expanded" margin-top>
+									<div class="flex" *ngFor="let detail of childact.details">
+										<div class="text-lighter labeled">
+											{{detail.label}}:
+										</div>
+										<div class="">
+											<!-- <strong> -->
+												{{detail.value ? detail.value.toLocaleString() : naText}}
+											<!-- </strong> -->
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!--<div class="activity__single activity-rule" margin-left>
+								<div class="activity__time">11:30 AM</div>
+								<div class="activity__action">Repricing rule changed</div>
+								<div class="activity__params">
+									<div class="activity__from activity__value">
+										<span class="price">
+											<span class="amount">Default Rule</span>
+										</span>
+									</div>
+									<div class="activity__arr"></div>
+									<div class="activity__to activity__value">
+										<span class="price">
+											<span class="amount">Algorithmic Pricer</span>
+										</span>
+									</div>
+								</div>
+								<div class="activity__expanded" margin-top>expanded content goes here</div>
+							</div>-->
+
+							<!--<div class="activity__single activity-reprice" margin-left>
+								<div class="activity__time">11:30 AM</div>
+								<div class="activity__action">Repriced</div>
+								<div class="activity__params">
+									<div class="activity__from activity__value">
+										<span class="price">
+											<span class="rupee">&#8377;</span><span class="amount">4650</span>
+										</span>
+									</div>
+									<div class="activity__arr"></div>
+									<div class="activity__to activity__value">
+										<span class="price">
+											<span class="rupee">&#8377;</span><span class="amount">4500</span>
+										</span>
+									</div>
+								</div>
+								<div class="activity__expanded" margin-top>expanded content goes here</div>
+							</div>-->
+						</div>
+
+						<div [style.display]="item.fetchingActivity ? 'inherit' : 'none'" style="text-align: center;" padding-vertical>
+							<pricer-loader></pricer-loader>
+						</div>
+
+						<div class="tabular__row flex" *ngIf="item.sortedActivity && item.sortedActivity.length > 0 && item.allactfetched" style="justify-content: center;">
+							<strong>All activity fetched</strong>
+						</div>
+					</div>
+				</ion-list>
+			</div>
+        </div>
+</ion-content>

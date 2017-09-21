@@ -1,0 +1,62 @@
+page-reset-login {
+
+.pricer-wrap {
+	margin-top: 25px;
+	padding: 25px;
+	border-radius: 3px;
+	background: #fff;
+	box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+.pricer-title {
+	margin-bottom: 0;
+}
+.pricer-sub {
+	font-weight: normal;
+	margin-top: 0;
+	margin-bottom: 25px;
+	opacity: 0.45;
+}
+.pricer-footer {
+	padding: 20px 25px;
+	margin: 10px -25px -25px;
+	background: $bt-grey;
+	border-top: 2px solid darken($bt-grey, 5%);
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+	.item-block {
+		background: transparent;
+		.checkbox-md {
+			margin-right: 8px;
+			margin-left: 0;
+		}
+		.item-inner {
+			border: 0;
+		}
+	}
+}
+.list-md, ion-list, .list-ios {
+	margin-bottom: 0;
+}
+
+.button-md,
+.item-md .item-button {
+	margin: 0px;
+	padding: 15px 22px;
+	height: auto;
+	font-size: 14px;
+	font-weight: 500;
+}
+}
+
+@media (max-width: 767px) {
+	ion-app .login-page .container[padding-horizontal] {
+		padding: 0;
+	}
+	ion-app.md .login-page .scroll-content,
+	ion-app .login-page .scroll-content {
+		padding: 0;
+	}
+}

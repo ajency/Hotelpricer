@@ -1,0 +1,68 @@
+page-settings {
+	.settings {
+		.change-pwd {
+			ion-item {
+				padding-left: 0;
+			}
+			.text-input-md {
+			    margin-left: 0;
+			    margin-right: 0;
+			    margin-top: 0;
+			    margin-bottom: 0;
+			    padding: 8px 13px;
+			    width: calc(100% - 8px - 8px);
+			    border: 1px solid #dedede;
+			    width: 100%;
+			}
+			.list-md .item-block .item-inner {
+			    border-bottom: initial;
+			}
+			.item-md.item-block .item-inner {
+			    padding-right: 0;
+			    border-bottom: initial;
+			}
+			& .item-input:last-child {
+			    border-bottom: initial;
+			}
+		}
+		.connect-bt {
+			border-right: 1px solid #dedede;
+			img {
+				margin: 0 auto;
+				display: block;
+				margin-top: 30px;
+				margin-bottom: 30px;
+			}
+			@media (max-width: 767px) {
+				border-right: initial;
+			}
+			div {
+				max-width: 350px;
+				margin: 0 auto;
+				p {
+					line-height: 24px;
+				}
+			}
+		}
+		.change-pwd {
+			h6 {
+				padding-left: 16px;
+				@media (max-width: 767px) {
+					padding-left: 0;
+				}
+			}
+			padding-left: 16px;
+			@media (max-width: 767px) {
+				padding-left: 0;
+			}
+		}
+		@media (max-width: 767px) {
+			.connect-bt,
+			.change-pwd {
+				width: 100%;
+			    flex: 0 0 100%;
+			    max-width: 100%;
+			}
+		}
+	}
+}

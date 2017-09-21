@@ -1,0 +1,94 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="hidden-xs">
+
+  <ion-navbar no-padding>
+		<ion-title> 
+		<!--<ion-title>Pricer - Settings</ion-title>-->
+			<div class="container">
+				<div class="header-main" padding-horizontal>
+					<!-- Main Nav tabs -->
+					<ul class="nav pri-menu pri-to-nav">
+						<li class="visible-xs pri-menu__hb"> <ion-icon name="menu"></ion-icon></li>
+						<li class="pri-menu__title hasub"><h1>Pricer</h1></li>
+						<li class="pri-menu__wrap hidden-xs-inline-block">
+							<ul class="pri-menu__full">
+								<li><a href="#">Dashboard</a></li>
+								<li><a href="#">Prices</a></li>
+								<!-- <li><a href="#">Competitors</a></li> -->
+								<!-- <li><a href="#">Violations</a></li> -->
+								<!-- <li class="active"><a href="#">Products</a></li> -->
+								<!-- <li><a href="#">Pricing Rules</a></li> -->
+							</ul>
+						</li>
+						<li class="pri-menu__logout"><a href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content  class="background-bt-grey-xs">
+	<div class="container settings" padding-horizontal>
+
+		<div class="header-secondary replace-header">
+			<ul class="nav pri-menu flex">
+				<li class="visible-xs pri-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>
+				<li class="pri-menu__title hidden-xs hasub"><h2>Settings</h2></li>
+				<li class="pri-menu__wrap marketplace-tabs show-white">
+					<ul class="pri-menu__full">
+						<li class="active"><a>General</a></li>
+						<li><a>Pricing Rules</a></li>
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+
+		<ion-grid>
+		  <ion-row>
+		    <ion-col col-8 class="connect-bt">
+		    	<div>
+		    		<img src="../assets/img/bt-to-repricer.png" alt="">
+		      		<h6>You haven't connected your Browntape account!</h6>
+		      		<p class="text-lighter">You can import the products you have on Browntape to be tracked and repriced here.</p>
+
+		      		<button ion-button block>Connect your BT account</button>
+		      	</div>
+		    </ion-col>
+
+		    <ion-col col-4 class="change-pwd">
+		     	<h6 padding-left>Change your Password</h6>
+		     	<ion-list class="change-pwd">
+
+		     		<ion-item>
+		     			<ion-input type="password" value="" placeholder="Original password"></ion-input>
+		     		</ion-item>
+
+		     	  	<ion-item>
+		     	    	<ion-input type="password" placeholder="New password"></ion-input>
+		     	 	</ion-item>
+		     		
+		     		<ion-item>
+		     			<ion-input type="password" placeholder="Confirm password"></ion-input>
+		     		</ion-item>
+		     	</ion-list>
+
+		     	<div text-right>
+					<button ion-button color="green" >Change Password</button>
+				</div>
+		    </ion-col>
+
+		  </ion-row>
+		</ion-grid>
+
+	</div>
+
+</ion-content>

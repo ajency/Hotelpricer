@@ -1,0 +1,99 @@
+import-sellerid-input {
+	.img {
+		min-width: 14px;
+		margin-right: 8px;
+	}
+}
+
+.marketplace-sell_id {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 30px 16px;
+	@media (max-width: 767px) {
+		padding: 30px 16px;
+	}
+	.marketplace-dismiss,
+	.marketplace-backto {
+		cursor: pointer;
+		position: absolute;
+	}
+	.marketplace-dismiss {
+		top: 15px;
+		right: 15px;
+	}
+
+	.marketplace-backto {
+		top: 15px;
+		left: 15px;
+	}
+	.filters__search {
+		border: initial;
+		width: 350px;
+		margin: auto;
+		@media (max-width: 767px) {
+			// flex-direction: column;
+			width: 100%;
+			input{
+				height: 36px;
+				&:focus{
+					height: 36px;
+				}
+			}
+		}
+		input {
+			border: 1px solid #e0e0e0;
+			box-shadow: 0 0 1px #e0e0e0;
+			width: 100%;
+			margin-right: 6px;
+		}
+		button {
+			margin: 0;
+		}
+	}
+	.seller-id-select_cover {
+		display: flex;
+		.seller-id-select {
+			margin-top: 6px;
+			width: 100%;
+			margin-right: 15px;
+			text-align: left;
+		}
+		@media (max-width: 767px) {
+			display: block;
+		}
+	}
+
+}
+
+.popover-md {
+	.popover-content.marketplace-sellerid {
+		top: 100px !important;
+		@media (min-width: 767px) {
+			width: 600px;
+		}
+		@media (max-width: 767px) {
+			width: 90%;
+		}
+	}
+}
+
+.seller-id-dropdown.bt-dropdown{
+	display: block;
+	width: 100%;
+	.button{
+		width: 100%;
+	}
+	.button-inner{
+		justify-content: space-between;
+	}
+}
+
+@media(min-width: 768px){
+	.sellerID_wrapper{
+		width: 100%;
+		max-width: 80%
+	}
+}

@@ -1,0 +1,59 @@
+.star-rating {
+	ion-icon {
+		font-size: 16px;
+	}
+	.ion-md-star,
+	.ion-md-star-half {
+		color: $star-yellow;
+		font-size: 18px;
+	}
+	.ion-md-star-outline {
+		color: #000;
+		opacity: 0.25;
+	}
+	span {
+		margin-left: 8px;
+	}
+}
+
+.amazon-stars {
+	width: 82px;
+	min-width: 82px;
+	height: 20px;
+	background: url(../assets/img/amazon-star.png) no-repeat;
+	background-repeat: no-repeat;
+	background-position: left top;
+	&.star-0_0 {
+		background-position: left 100% top;
+	}
+	&.star-0_5 {
+		background-position: left 80% bottom 2px;
+	}
+	&.star-1_0 {
+		background-position: left 80% top;
+	}
+	&.star-1_5 {
+		background-position: left 60% bottom 2px;
+	}
+	&.star-2_0 {
+		background-position: left 60% top;
+	}
+	&.star-2_5 {
+		background-position: left 40% bottom 2px;
+	}
+	&.star-3_0 {
+		background-position: left 40% top;
+	}
+	&.star-3_5 {
+		background-position: left 20% bottom 2px;
+	}
+	&.star-4_0 {
+		background-position: left 20% top;
+	}
+	&.star-4_5 {
+		background-position: left bottom 2px;
+	}
+	&.star-5_0 {
+		background-position: left top 1px;
+	}
+}

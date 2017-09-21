@@ -1,0 +1,60 @@
+.helper-info {
+	float: right;
+	position: relative;
+	ion-icon {
+		font-size: 13px;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 50%;
+		background: $border-base;
+		text-align: center;
+	}
+	&__panel {
+		padding: 15px;
+		display: none;
+	}
+	&.open &__panel {
+		display: block;
+	}
+	@media (min-width: 768px) {
+		&__panel {
+			width: 350px;
+			position: absolute;
+			right: -375px;
+			top: -15px;
+			border-left: 1px solid $border-base;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f6f5f0+0,f6f5f0+100&1+0,0+100 */
+			background: -moz-linear-gradient(left, rgba($border-base, 0.5) 0%, rgba($border-base,0) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, rgba($border-base, 0.5) 0%,rgba($border-base,0) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, rgba($border-base, 0.5) 0%,rgba($border-base,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f5f0', endColorstr='#00f6f5f0',GradientType=1 ); /* IE6-9 */
+		}
+	}
+	.template {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	@media (min-width: 768px) and (max-width: 991px) {
+		&__panel {
+			width: 280px;
+			right: -300px;
+		}
+	}
+	@media (max-width: 767px) {
+		float: none;
+		margin-top: -20px;
+		ion-icon {
+			float: right;
+			margin-bottom: 15px;
+		}
+		&__panel {
+			padding: 15px;
+			clear: both;
+			background: #f6f5f0;
+			margin: 0 -16px;
+			margin-bottom: -16px;
+		}
+	}
+}

@@ -1,0 +1,9 @@
+stated crawl-high shell
+/var/www/repricer_env/repricer/api/cmd/crawl-high.sh: line 3: /var/www/repricer-api/api/bin/cake: No such file or directory
+ended crawl-high shell
+stated crawl-high shell
+/var/www/repricer_env/repricer/api/cmd/crawl-high.sh: line 3: /var/www/repricer-api/api/bin/cake: No such file or directory
+ended crawl-high shell
+stated crawl-low shell
+/var/www/repricer_env/repricer/api/cmd/crawl-low.sh: line 3: /var/www/repricer-api/api/bin/cake: No such file or directory
+ended crawl-low shell

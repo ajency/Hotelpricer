@@ -1,0 +1,73 @@
+.btn.btn-primary {
+	background: $bt-green;
+	border-radius: 0;
+	border: 0;
+}
+
+.download-link {
+	min-width: 45px;
+	color: $bt-blue;
+	text-decoration: none;
+	display: inline-block;
+	padding: 7px 0;
+	background: transparent;
+	font-weight: 500;
+	.icon {
+		color: #000;
+		font-size: 11px;
+		width: 17px;
+		height: 17px;
+		line-height: 15px;
+		display: inline-block;
+		text-align: center;
+		opacity: 0.3;
+		border: 1px solid #000;
+		border-radius: 50%;
+		margin-right: 6px;
+	}
+	span {
+		text-decoration: underline;
+	}
+}
+
+
+
+.button {
+	text-transform: none;
+	font-weight: 500;
+}
+
+
+@media (max-width: 767px) {
+	.white-in-small {
+		background: #fff;
+		color: #000;
+	}
+	// .fab-in-small-wrap {
+	// 	position: absolute;
+	// }
+	.fab-in-small {
+		position: absolute;
+		bottom: 60px;
+		right: 15px;
+		border-radius: 50%;
+		width: 60px;
+		height: 60px;
+		font-size: 18px;
+		background-color: $bt-green;
+		color: #fff;
+		box-shadow: 0 4px 6px 0 rgba(0,0,0,.14), 0 4px 5px rgba(0,0,0,.1);
+	}
+}
+
+
+// buttons in the user popover
+.user__links {
+	.button-md {
+		height: 4.2rem;
+		font-weight: 400;
+	}
+	.button-inner {
+		justify-content: flex-start;
+	}
+}

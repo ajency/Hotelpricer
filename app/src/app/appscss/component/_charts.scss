@@ -1,0 +1,207 @@
+.legend {
+	margin-top: 25px;
+	&__vals {
+		width: 75%;
+	}
+	&__dur {
+		width: 25%;
+	}
+	.color {
+		display: inline-block;
+		margin-right: 5px;
+		// vertical-align: middle;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		&.blue {
+			background: $alert-blue;
+		}
+		&.green {
+			background: $alert-green;
+		}
+		&.red {
+			background: $bt-red;
+		}
+	}
+	@media (max-width: 767px) {
+		align-items: flex-end;
+		&__vals {
+			width: 70%;
+		}
+		&__dur {
+			width: 30%;
+		}
+		.text {
+			display: block;
+		}
+	}
+}
+
+.range{
+	align-items: center;
+	flex-wrap: wrap;
+	&__select{
+		cursor: pointer;
+		padding: 5px;
+		margin: 0 5px;
+		color: #585858;
+		transition: all 0.3s ease;
+		&:hover{
+			// color: $bt-red;
+			box-shadow: inset 0 -3px 0 $bt-red;
+		}
+		&.active{
+			font-weight: 500;
+			// color: $bt-red;
+			// border-bottom: 3px solid $bt-red;
+			box-shadow: inset 0 -3px 0 $bt-red;
+		}
+	}
+
+	my-date-range-picker{
+		margin: 0 0 0 15px;
+		.mydrp{
+			border-radius: 0;
+			border-left: 0;
+			border-right: 0;
+			border-top: 0;
+			*{
+				font-family: inherit;
+			}
+			.selector{
+				box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.2);
+				border-radius: 0;
+			}
+			.icon-mydrpcalendar{
+				&:before{
+					font-family: "Ionicons";
+					content: "\f2ab";
+				}
+			}
+			.icon-mydrpremove{
+				&:before{
+					font-family: "Ionicons";
+					content: "\f2c0";
+				}
+			}
+			.icon-mydrpleft{
+				font-size: 16px;
+				&:before{
+					font-family: "Ionicons";
+					content: '\f3cf';
+				}
+			}
+			.icon-mydrpright{
+				font-size: 16px;
+				&:before{
+					font-family: "Ionicons";
+					content: '\f3d1';
+				}
+			}
+			.icon-mydrpup{
+				&:before{
+					font-family: "Ionicons";
+					content: "\f3d8";
+				}
+			}
+			.icon-mydrpdown{
+				&:before{
+					font-family: "Ionicons";
+					content: "\f3d0";
+				}
+			}
+			.headerclearbtn, .headerokbtn{
+				display: none;
+			}
+			.weekdaytitle{
+				background-color: #E0E0E0;
+				text-transform: lowercase;
+				font-size: 13px;
+			}
+			.caltable,
+			.daycell,
+			.monthcell,
+			.monthtable,
+			.weekdaytitle,
+			.yearcell,
+			.yeartable,
+			.sunday{
+				color: #222;
+			}
+			.nextmonth,
+			.prevmonth{
+				color: #d0d0d0;
+			}
+			.currmonth{
+				background-color: transparent;
+			}
+			.range{
+				// background-color: $bt-red;
+				// color: #fff;
+				// font-weight: normal;
+				color: #ef4748;
+				// border: 0;
+				background: #eee;
+				.currmonth{
+					font-weight: 500;
+				}
+				.sunday{
+					color: #ef4748;
+				}
+			}
+			.selecteddaybegin,
+			.selecteddayend,
+			.selectedmonth .monthvalue,
+			.selectedyear .yearvalue{
+				background-color: transparent;
+				// background-color: $bt-red;
+				// color: #fff;
+			}
+			.selecteddaybegin{
+				// background: #eee;
+				color: $bt-red;
+				font-weight: 500;
+			}
+		}
+	}
+
+	@media(max-width: 767px){
+		&__text{
+			flex-basis:100%;
+			// text-align: center;
+			margin: 5px 0 10px 0;
+
+		}
+		&__holder{
+			overflow: auto;
+			&::-webkit-scrollbar {
+			    display: none;
+			}
+		}
+		&__select{
+			// flex-basis: 33%;
+			margin: 0 0 10px;
+			text-align: center;
+			min-width: 58px;
+			white-space: nowrap;
+			&:nth-child(6){
+				flex-basis: 67%;
+			}
+		}
+		my-date-range-picker{
+			margin: 0;
+			.mydrp{
+				width: 100% !important;
+				.selection{
+					background-color: transparent;
+				}
+				.selectiongroup, .btnclear{
+					background-color: transparent;
+				}
+				.selector {
+					width: 100% !important;
+				}
+			}
+		}
+	}
+}

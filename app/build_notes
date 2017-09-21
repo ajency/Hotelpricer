@@ -1,0 +1,2 @@
+1) Update build version inapp-globals before a production build.
+2) Run command npm run ionic:build:staging for staging builds

@@ -1,0 +1,187 @@
+.segment {
+	justify-content: center;
+}
+.segment-md .segment-button {
+	flex-grow: 0;
+	flex-shrink: 0;
+	// flex-basis: 95px;
+	flex-basis: auto;
+	width: auto;
+	height: 4rem;
+	text-transform: none;
+	font-size: 14px;
+	// color: #000;
+	// opacity: 0.45;
+	color: $bt-blue;
+	border-bottom-color: transparent;
+	border-bottom-width: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: relative;
+	top: 8px;
+	opacity: 0;
+	// transition: all 0.5s !important;
+	&.segment-activated {
+		opacity: 1;
+		color: #000;
+		border-bottom-color: $bt-red;
+	}
+}
+.open .segment-md .segment-button {
+	// opacity: 1;
+	// top: 0;
+	animation: reveal 0.4s forwards;
+	&:hover {
+		border-bottom-color: $bt-red;
+	}
+}
+@keyframes reveal {
+	0% {
+		top: 8px;
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		top: 0;
+	}
+}
+
+.tabbed {
+	order: 6;
+	&__panels {
+		border-top: 1px solid rgba($border-base, 0);
+		.list {
+			// background: $grey-lightest;
+			background: #f8f8f8;
+			position: relative;
+			border-top: 1px solid $border-base;
+			margin-bottom: 30px;
+		}
+		// &:empty {
+		// 	border-top: 0;
+		// 	padding-bottom: 0;
+		// }
+	}
+	// .segment.ng-touched + &__panels {
+	// 	border-top: 1px solid $border-base;
+	// 	padding-bottom: 30px;
+	// }
+	// .segment.ng-touched + &__panels:empty {
+	// 	border-top: 0;
+	// 	padding-bottom: 0;
+	// }
+	@media (min-width: 768px) {
+		.list {
+			padding-top: 32px;
+		}
+	}
+}
+
+
+// panel styling
+// PRODUCT INFO TAB
+.counts {
+	flex-wrap: wrap;
+	.count-single {
+		min-width: 33%;
+		margin-bottom: 15px;
+	}
+	.count-single__text {
+		font-size: 13px;
+		opacity: 0.45;
+		display: block;
+	}
+	[inline-block] {
+		display: inline-block;
+	}
+	.count-single__rule {
+		font-size: 110%;
+	}
+	.price {
+		margin: 0;
+	}
+	@media (min-width: 768px) {
+		.count-single{
+			min-width: 20%;
+		}
+	}
+}
+.competitors-list {
+	// max-width: 380px;
+	line-height: 1.6;
+	p {
+		padding-top: 8px;
+		opacity: 0.45;
+	}
+	&__label {
+		font-size: 12px;
+		// opacity: 0.5;
+	}
+}
+
+// SELLERS TAB
+.seller-table {
+	.tabular__header {
+		color: rgba(0,0,0,0.45);
+	}
+	// .tabular__row {
+	// 	background: #fff;
+	// }
+	.tabular__row.open & .prod-title a {
+		color: #000;
+		font-size: 90%;
+	}
+	.text-wrap .marketplaces {
+		// border: 0;
+		// margin: 0;
+	}
+	@media (min-width: 768px) {
+		max-height: 250px;
+		overflow: auto;
+	}
+}
+
+@media (max-width: 767px) {
+	.segment-md .segment-button {
+		width: 33.3%;
+	}
+	.open .segment {
+		padding: 0 15px;
+	}
+	// .open .tabbed__panels {
+	// 	height: 100%;
+	// }
+	.open .tabbed__panels .list {
+		background: $bt-grey;
+		margin-bottom: 0;
+		min-height: 250px;
+		// height: 100%;
+	}
+	.open .tabbed__panels .into-card {
+		padding: 15px !important;
+		background: #fff;
+		margin-bottom: 15px;
+		border: 0;
+		flex-basis: 100%;
+		width: 100%;
+	}
+	.open .competitors-list {
+		padding: 0 !important;
+	}
+	.open .competitors-list p {
+		padding: 0;
+		max-width: 380px;
+		width: 100%;
+	}
+	.seller-table {
+		padding: 15px;
+	}
+}
+
+// ACTIVITY TAB
+.activity-log {
+	@media (min-width: 768px) {
+		max-height: 350px;
+		overflow: auto;
+	}
+}

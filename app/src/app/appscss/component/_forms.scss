@@ -1,0 +1,143 @@
+.basic-details {
+	display: flex;
+	flex-wrap: wrap;
+	.f-channel {
+		width: 25%;
+	}
+	.f-rule {
+		width: 75%;
+	}
+	.f-desc {
+		width: 100%;
+	}
+	.item-md.item-block.item-label-floating.f-rule .item-inner {
+		border-top: 1px solid #e0e0e0 !important;
+		border-left: 0;
+	}
+	&.list-md .item-input:last-child {
+		border-bottom: 0;
+	}
+	@media (max-width: 767px) {
+		.f-channel, .f-rule, .f-desc {
+			width: 100%;
+		}
+		.item-md.item-block.item-label-floating .item-inner {
+			border: 1px solid #e0e0e0 !important;
+		}
+		// .item-md.item-block.item-label-floating + .item-md.item-block.item-label-floating .item-inner {
+		// 	border-top: 0;
+		// }
+	}
+}
+
+.f-channel {
+	// width: 25%;
+	border: 1px solid #e0e0e0;
+	border-bottom-width: 0;
+	.input-wrapper {
+		display: block;
+	}
+	.label {
+		position: absolute;
+		top: -7px;
+		left: 15px;
+		font-size: 13px;
+	}
+	ion-select {
+		width: 100%;
+		max-width: none;
+		padding-top: 26px;
+		padding-bottom: 11px;
+	}
+}
+
+
+.select-popover ion-list {
+	padding: 10px 0;
+	margin: 0;
+}
+
+// inline fiels and selects
+.single {
+	&__row {
+		align-items: center;
+	}
+	&--label {
+		width: 30%;
+	}
+	&--inputs {
+		width: 70%;
+	}
+	.filter-like {
+		width: 125px;
+		&.small, .small {
+			width: 55px;
+		}
+		&.wider {
+			width: 250px;
+		}
+	}
+	.filter-like.input-with-dropdown {
+		.item-input {
+			width: 69px;
+		}
+	}
+	.item-md.item-block .item-inner {
+		border-bottom: 0;
+	}
+	&__result {
+		align-self: center;
+		padding-left: 15px;
+		width: calc(100% - 125px - 55px - 125px);
+	}
+	.has-fw {
+		flex-wrap: wrap;
+		white-space: normal;
+		.full-width {
+			width: 100%;
+		}
+	}
+	@media (max-width: 1023px) {
+		&__row {
+			flex-wrap: wrap;
+		}
+		&--label {
+			width: 100%;
+		}
+		&--inputs {
+			width: 100%;
+			margin-top: 5px;
+			flex-wrap: wrap;
+			.filter-like:first-child {
+				width: 100%;
+				margin-bottom: 8px;
+			}
+		}
+		&__result {
+			width: calc(100% - 125px - 55px);
+			text-align: right;
+		}
+	}
+}
+
+.radio-btns {
+	.inline-radio {
+		flex-wrap: wrap;
+		.item-md {
+			width: 100%;
+			padding: 0;
+			margin-bottom: 8px;
+		}
+	}
+}
+
+
+@media (max-width: 767px) {
+	.form-footer {
+		justify-content: center;
+		.button {
+			width: 148px;
+			height: 50px;
+		}
+	}
+}

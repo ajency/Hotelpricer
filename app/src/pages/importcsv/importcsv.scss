@@ -1,0 +1,283 @@
+page-importcsv {
+	.tabular {
+		&__cell .cell-42 {
+			width: 42%;
+		}
+		&__cell .cell-58 {
+			width: 58%;
+		}
+	}
+	@media screen and (max-width: 767px) {
+		.filters {
+			margin: 0 -16px;
+			margin-top: -8px;
+		}
+		.tabular {
+			margin: 0 -16px;
+			padding: 16px;
+			background: $bt-grey;
+			&__row {
+				background: #fff;
+			}
+			.tabular__row > .tabular__cell:first-child {
+				width: 50%;
+				order: 1;
+			}
+			.tabular__row > .tabular__cell:nth-child(2) {
+				order: 3;
+				width: 100%;
+				border-bottom: 1px solid $border-base;
+				margin-bottom: 12px;
+			}
+			&__cell:nth-child(3) {
+				order: 2;
+				text-align: right;
+				width: 50%;
+			}
+			&__cell:nth-child(4) {
+				order: 5;
+				width: 50%;
+				text-align: right;
+				line-height: 1.6;
+			}
+			&__cell:nth-child(5) {
+				order: 4;
+				width: 50%;
+			}
+			&__cell:nth-child(6) {
+				order: 6;
+				width: 100%;
+				padding-bottom: 0;
+				text-align: right;
+			}
+			&__cell {
+				padding-bottom: 12px;
+				a {
+					display: inline-block;
+					padding: 8px;
+				}
+			}
+		}
+		.bunched {
+			flex-wrap: wrap;
+			line-height: 1.6;
+			.tabular__cell {
+				width: 100%;
+				padding-bottom: 0;
+			}
+		}
+	}
+	.file-name {
+		font-size: 120%;
+	}
+	small {
+		opacity: 0.6;
+	}
+
+	a{
+		cursor: pointer;
+	}
+
+	// marketplace select drop-down
+	ul.custom-select__dd {
+		border-radius: 2px;
+		box-sizing: border-box;
+		cursor: pointer;
+		font-size: 16px;
+		margin: 0;
+		padding: 0;
+		li {
+		  	display: none;
+		  	padding: 0.5em;
+		  	&.active {
+		  		display: flex;
+		  		justify-content: space-between;
+		  		align-items: center;
+		  		border: 1px solid $bt-light-grey;
+				box-shadow: 0 0 2px $bt-light-grey;
+				color: #111;
+		  	}
+		}
+		&.active {
+			border: 1px solid #aaa;
+			li {
+				border: none;
+			  	box-shadow: none;
+			  	display: block;
+			  	&:hover {
+			  		background: $bt-light-grey;
+			  	}
+			  	&.active {
+			  		background: $bt-light-grey;
+			  		&:hover {
+			  			background: $bt-light-grey;
+			  		}
+			  	}
+			}
+		}
+
+		// marketplaces
+		.marketplaces {
+			height: 24px;
+			width: 24px;
+			.m-h {
+				height: 24px;
+				width: 24px;
+			}
+			&.m-amazon {
+				.m-h {
+					background-position: left -4px top 3px;
+				}
+			}
+			&.m-flipkart {
+				.m-h {
+					background-position: left -55px top 1px;
+				}
+			}
+			&.m-snapdeal {
+				.m-h {
+					background-position: left -106px top 2px;
+				}
+			}
+			&.m-paytm {
+				.m-h {
+					background-position: left -150px top 1px;
+				}
+			}
+		}
+	}
+
+	#selected--custom-select__dd {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	  	color: #111;
+	  	font-size: 16px;
+	  	width: auto;
+	  	&.active {
+	  		border: 1px solid #111;
+		  	border-radius: 3px;
+		  	box-shadow: 0 0 2px #aaa;
+		  	padding: 0.5em;
+	  	}
+	}
+
+	select-dropdown {
+		& > div {
+			z-index: 99;
+		}
+		.options {
+			ul {
+				li {
+					padding: 12px 12px 12px 32px !important;
+					position: relative;
+					font-weight: 500;
+					font-family: 'Lato';
+					color: #565656;
+					font-size: 15px;
+					&:before{
+						content: "\f14a";
+						font-family: "Ionicons";
+						position: absolute;
+						left: 8px;
+						top: 10px;
+						font-size: 22px;
+						color: #dadada;
+					}
+					&.selected{
+						background-color: #fff;
+						color: #292929;
+						&:before{
+							color: $bt-green;
+						}
+					}
+					&.highlighted{
+						background-color: #fff;
+						color: #000;
+					}
+					&:nth-child(1):after {
+						content: "amazon";
+						color: transparent;
+						width: 30px;
+						height: 24px;
+						margin: 0 auto;
+						background-image: url(../assets/img/marketplaces-sprite.png);
+						background-repeat: no-repeat;
+						background-position: left 0 top 0;
+						position: absolute;
+						margin-left: 5px;
+						top: 10px;
+					}
+					&:nth-child(2):after {
+						content: "flipkart";
+						color: transparent;
+						width: 24px;
+						height: 24px;
+						margin: 0 auto;
+						background-image: url(../assets/img/marketplaces-sprite.png);
+						background-repeat: no-repeat;
+						background-position: left -55px top 0;
+						position: absolute;
+						margin-left: 5px;
+						top: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.single {
+		.amazon:after {
+			content: "amazon";
+			color: transparent;
+			width: 30px;
+			height: 24px;
+			margin: 0 auto;
+			background-image: url(../assets/img/marketplaces-sprite.png);
+			background-repeat: no-repeat;
+			background-position: left 0 top 2px;
+			position: absolute;
+			margin-left: 5px;
+			top: 8px;
+		}
+		.flipkart:after {
+			content: "flipkart";
+			color: transparent;
+			width: 24px;
+			height: 24px;
+			margin: 0 auto;
+			background-image: url(../assets/img/marketplaces-sprite.png);
+			background-repeat: no-repeat;
+			background-position: left -55px top 0;
+			position: absolute;
+			margin-left: 5px;
+			top: 8px;
+		}
+	}
+
+	ng-select > div{
+		padding: 5px;
+	}
+	ng-select *{
+		font-weight: 500;
+		font-family: 'Lato';
+		font-size: 15px;
+	}
+
+	.steps-link{
+		margin-top: 16px;
+		a{
+			font-weight: 500;
+			text-decoration: none;
+			font-size: 15px;
+			&:hover{
+				// text-decoration: underline;
+			}
+		}
+	}
+	@media(max-width: 767px){
+		.steps-link{
+			margin-top: 0;
+		}
+	}
+}

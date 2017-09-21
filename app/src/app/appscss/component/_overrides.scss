@@ -1,0 +1,48 @@
+// making the toggle bigger
+.item-toggle {
+	&.toggle-left {
+		.input-wrapper {
+			order: 2;
+		}
+		.input-wrapper {
+			order: 1;
+			padding-left: 10px;
+			opacity: 0.45;
+		}
+	}
+	.toggle-md-green.toggle-checked .toggle-icon {
+		// background: desaturate(lighten($bt-green, 35%), 40%);
+		background: $alert-green;
+	}
+	.toggle-md-green.toggle-checked .toggle-inner {
+		background: #fff;
+	}
+	.toggle-inner {
+		top: 2px;
+		left: 1px;
+	}
+	.toggle-md-green.toggle-checked .toggle-inner {
+		left: -1px;
+	}
+	.toggle-md {
+		width: 37px;
+		height: 25px;
+	}
+}
+
+// button outline dark - border-color
+.button-outline-md-dark {
+	border-color: $border-base;
+}
+
+
+// checkbox
+.checkbox-md .checkbox-icon {
+	border-color: $border-base;
+}
+.checkbox-md-green .checkbox-checked {
+	border-color: $bt-green;
+}
+.checkbox-md-dark .checkbox-checked {
+	border-color: #222;
+}

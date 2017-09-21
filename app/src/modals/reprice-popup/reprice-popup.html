@@ -1,0 +1,129 @@
+<ion-header class="popup__header">
+  <ion-toolbar>
+    <ion-title>
+      <h1 class="popup__title flex" no-margin>
+        <div class="img-wrap" margin-right style="background-image: url()">
+          <!--<img [src]="../assets/img/iphone.png" width="65" alt="">-->
+          <img [src]="product_details.product_image_url" width="65" alt="no image">
+        </div>
+        <div class="text-wrap">
+          <small>Repricing</small><br>
+          <span class="sku">{{channel_details.listing_id || naText}}</span> <strong class="text-ellipsis">{{product_details.product_name || naText}}</strong>
+        </div>
+      </h1>
+    </ion-title>
+    <ion-buttons start class="popup__dismiss">
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="popup__content">
+  <strong>Prices</strong>
+  <div class="flex popup-form inline" margin-top>
+    <ion-item class="has-rupee-symbol twenty-five">
+      <ion-label stacked>MRP</ion-label>
+      <ion-input type="number" [(ngModel)]="product_details.mrp"></ion-input>
+    </ion-item>
+    <ion-item class="has-rupee-symbol twenty-five">
+      <ion-label stacked>Cost Price</ion-label>
+      <ion-input type="number" [(ngModel)]="product_details.cp"></ion-input>
+    </ion-item>
+    <ion-item class="has-rupee-symbol twenty-five">
+      <ion-label stacked>MOP</ion-label>
+      <ion-input type="number" [(ngModel)]="product_details.mop"></ion-input>
+    </ion-item>
+    <ion-item class="has-rupee-symbol twenty-five">
+      <ion-label stacked>Shipping Price</ion-label>
+      <ion-input type="number" [(ngModel)]="product_details.shipping"></ion-input>
+    </ion-item>
+  </div>
+  <hr margin-vertical>
+  <strong>Default parameters for all marketplaces</strong>
+  <div class="flex popup-form inline" margin-vertical>
+    <ion-item class="has-rupee-symbol twenty-five">
+      <ion-label stacked>Min Price</ion-label>
+      <ion-input (keyup)="validateFields()" type="number" [(ngModel)]="repricing.my_min"></ion-input>
+    </ion-item>
+    <ion-item class="has-rupee-symbol twenty-five">
+      <ion-label stacked>Max Price</ion-label>
+      <ion-input (keyup)="validateFields()" type="number" [(ngModel)]="repricing.my_max"></ion-input>
+    </ion-item>
+    <ion-item class="f-channel fifty" no-padding margin-left>
+      <ion-label>Rule for tracking</ion-label>
+        <ion-select interface="popover" [(ngModel)]="selectedRule" placeholder="-- Please select a rule --">
+          <ion-option *ngFor="let rule of pricingRules | keys" [value]="rule">{{pricingRules[rule]}}</ion-option>
+        </ion-select>
+    </ion-item>
+  </div>
+  <div class="flex popup-form inline">
+    <ion-item class="">
+      <ion-label stacked>Competitors</ion-label>
+      <ion-input type="text" placeholder="competitor ids separated by comma" [(ngModel)]="repricing.tracked_listings"></ion-input>
+    </ion-item>
+  </div>
+  <!-- .... ######################################################### .... -->
+  <!-- .... Marketplaces hidden for now - to be used later            .... -->
+  <!-- .... Remove class "hidden" from "strong" and div ".market-row" .... -->
+  <!-- .... ######################################################### .... -->
+  <strong class="hidden">Marketplaces these parameters will be applied to</strong>
+  <!-- .... add class "market-row--on" if the marketplace is being repriced .... -->
+  <!-- .... add class "market-row--open" if the row is open, remove that class when row is closed - rows will open and close when the "customise/cancel" btns are clicked .... -->
+  <div class="hidden market-row market-row--on market-row--open tabular" margin-top>
+    <div class="market-row__header flex tabular__row">
+      <div class="market-row__toggle cell-4">
+        <ion-item class="hide-label" no-padding>
+          <!-- <ion-label> </ion-label> -->
+          <ion-toggle color="green"></ion-toggle>
+        </ion-item>
+      </div>
+      <div class="market-row__title cell-half">
+        <span class="marketplaces m-amazon"><span class="m-h"></span></span>
+        <span class="prod-title" no-margin>Amazon</span>
+      </div>
+      <div class="market-row__action cell-one-fourth text-right">
+        <a class="download-link"><span>Customise</span></a>
+      </div>
+    </div>
+    <div class="market-row__content background-bt-grey">
+      <div class="flex popup-form inline">
+        <ion-item class="has-rupee-symbol twenty-five">
+          <ion-label stacked>Min Price</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item class="has-rupee-symbol twenty-five">
+          <ion-label stacked>Max Price</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item class="f-channel fifty" no-padding margin-left>
+          <ion-label>Rule for tracking</ion-label>
+          <ion-select interface="popover" placeholder="-- Please select a rule --">
+            <ion-option>Rule 1</ion-option>
+            <ion-option>Rule 2</ion-option>
+            <ion-option>Rule 3</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div class="flex popup-form inline">
+        <ion-item class="">
+          <ion-label stacked>Competitors</ion-label>
+          <ion-input type="text" placeholder="competitor ids separated by comma"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div [hidden]="!updateFailMessage" class="error error--danger">
+    <strong>Sorry!</strong>&nbsp;{{updateFailMessage}}
+  </div>
+  
+<!--   <button [disabled]="updateInProgress || updateFailMessage" [class.loading]="updateInProgress" (click)="update()" ion-button color="green" class="btn-apply" no-margin>Save</button> -->
+	<!--<button [hidden]="!updateSuccess" (click)="dismiss()" ion-button color="green" class="btn-apply" no-margin>Done</button>-->
+</ion-content>
+<ion-footer class="popup__footer">
+  <button [disabled]="updateInProgress || updateFailMessage" [class.loading]="updateInProgress" (click)="update()" ion-button color="green" class="btn-apply" no-margin float-right>Save</button>
+</ion-footer>
+

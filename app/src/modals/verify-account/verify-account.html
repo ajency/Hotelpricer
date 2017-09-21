@@ -1,0 +1,154 @@
+<!-- <ion-header class="popup__header">
+  <ion-toolbar>
+    <ion-title>
+      <h1 class="popup__title" no-margin>
+        Verify Account
+      </h1>
+    </ion-title> -->
+    <!-- <ion-buttons start class="popup__dismiss">
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons> -->
+ <!--  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="popup__content text-center">
+
+
+<!-- step-1-0 -->
+<div class="step-1-0" *ngIf="!verified && !verifying" style="height: 100%;">
+
+  <div class="flex-center por" style="height: 100%;">
+    <h6 (click)="editPhone = false" *ngIf="editPhone" text-left class="flex flex-items-center back-to"><a class="text-primary text-decoration-none"><ion-icon name="md-arrow-round-back" class="m-r-5"></ion-icon> Back to Verification</a></h6>
+    <div class="flex-column">
+    <img *ngIf="!editPhone" src="../assets/img/tracker-logo.png" alt="" class="bt-logo">
+    <h4 *ngIf="!editPhone" class="text-lighter" padding-bottom>Welcome to Browntape Tracker</h4>
+    <img src="../assets/img/Verification.png" alt="">
+      <h4 *ngIf="!editPhone" class="text-lighter verification-title" >Phone Number Verification</h4>
+      <h4 *ngIf="editPhone" class="text-lighter verification-title">Edit phone number</h4>
+      <!-- <p class="fosz18 text-lighter">Please enter the access code sent to your number</p> -->
+      <p *ngIf="!editPhone" class="fosz18 text-lighter m-b-5">To continue using Browntape Tracker please verify your phone number.<br> Enter the 6 digit OTP sent via SMS to your number.</p>
+      <p *ngIf="editPhone" class="fosz18 text-lighter m-b-5">Please enter your 10 digit phone number</p>
+      <!-- <p *ngIf="editPhone" class="fosz18 text-lighter m-b-5">Please enter the access code sent to your number via SMS</p> -->
+
+      <!-- <p *ngIf="!editPhone"><span class="mob-no fw600">{{phonenumber}}</span> <a href="javascript:void(0);" class="text-primary fw600" (click)="openEditBox()">Edit</a> via SMS</p> -->
+      <p *ngIf="!editPhone"><span class="mob-no fw600">{{phonenumber}}</span> <a href="javascript:void(0);" class="text-primary fw600 edit-mob-no" (click)="openEditBox()"><ion-icon md="md-create"></ion-icon> Edit</a></p>
+      <p *ngIf="editPhone"><span class="mob-no"><ion-input type="text" [(ngModel)]="updatedPhone" placeholder="Enter Phone no"></ion-input></span></p>
+      <!-- <div *ngIf="!editPhone" ><a href="javascript:void(0);" class="text-primary fw600" (click)="updatePhoneNumber()">Send OTP </a></div> -->
+      <button *ngIf="editPhone" ion-button color="dark" (click)="updatePhoneNumber()">Update</button>
+
+
+
+
+      <!-- otp -->
+      <table *ngIf="!editPhone" class="otp-container">
+        <tr>
+          <td>
+            <ion-input type="number" #otp1 class="otp" pattern="[0-9]{6}" [(ngModel)]="otp.first" maxlength="1" size="1" (keyup)="next($event,otp1,otp2)">
+            </ion-input>
+          </td>
+          <td>
+            <ion-input type="number" #otp2 class="otp" pattern="[0-9]{6}" [(ngModel)]="otp.second" maxlength="1" size="1" (keyup)="next($event,otp1,otp3)">
+            </ion-input>
+          </td>
+          <td>
+            <ion-input type="number" #otp3 class="otp" pattern="[0-9]{6}" [(ngModel)]="otp.third" maxlength="1" size="1" (keyup)="next($event,otp2,otp4)">
+            </ion-input>
+          </td>
+          <td>
+            <ion-input type="number" #otp4 class="otp" pattern="[0-9]{6}" [(ngModel)]="otp.fourth" maxlength="1" size="1" (keyup)="next($event,otp3,otp5)">
+            </ion-input>
+          </td>
+          <td>
+            <ion-input type="number" #otp5 class="otp" pattern="[0-9]{6}" [(ngModel)]="otp.fifth" maxlength="1" size="1" (keyup)="next($event,otp4,otp6)">
+            </ion-input>
+          </td>
+          <td>
+            <ion-input type="number" #otp6 class="otp" pattern="[0-9]{6}" [(ngModel)]="otp.sixth" maxlength="1" size="1" (keyup)="next($event,otp5,otp6)">
+            </ion-input>
+          </td>
+        </tr>
+      </table>
+      <!-- /otp -->
+      <!-- <a (click)="verifyOtp()">></a> -->
+
+      <div *ngIf="!editPhone">
+        <div class="error error-danger" *ngIf="isVerificationError">{{verificationError}}</div>
+        <a (click)="verifyOtp()" class="verify-otp"><ion-icon name="arrow-round-forward"></ion-icon></a>
+        <p class="fosz18 text-lighter">Didn't receive the OTP?</p>
+        <a href="javascript:void(0);" class="text-primary fosz18 text-decoration-none resend-code" (click)="resendOtp()">Resend Code</a>
+        <p *ngIf="resentOtp">OTP Sent</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- step-1-1 -->
+<div class="step-1-1" *ngIf="verifying" style="height: 100%;">
+  <div class="flex-center" style="height: 100%;">
+    <div class="flex-column">
+    <img src="../assets/img/pwa-loading.gif" alt="">
+    <h4 class="text-lighter">Please wait verifying OTP...</h4>
+  </div>
+  </div>
+</div>
+
+
+
+<!-- step-1-0 -->
+<div class="step-1-2" *ngIf="verified && !trackerSetup" style="height: 100%;">
+  <div class="flex-center" style="height: 100%;">
+    <div class="flex-column">
+      <ion-icon name="checkmark-circle" class="icon-md-success" style="font-size: 60px;"></ion-icon>
+
+      <h4 class="text-lighter">Your number <span class="mob-no">{{phonenumber}}</span> has been verified</h4><br>
+
+      <button ion-button color="dark" (click)="showStep2()">Proceed<ion-icon name="arrow-round-forward" margin-left></ion-icon></button>
+     </div>
+  </div>
+</div>
+
+<!-- step-2.0 -->
+<div class="step-2 flex-center" *ngIf="trackerSetup">
+<div>
+  <img src="../assets/img/tracker-logo.png" alt="" class="">
+
+  <!-- phone no. verified msg -->
+  <!-- <div class="phone-verified">
+    <ion-icon name="checkmark-circle" class="icon-md-success" style=""></ion-icon> <p class="text-lighter">Your number <span class="mob-no">{{phonenumber}}</span> has been verified</p>
+  </div> -->
+  <h4 class="text-lighter">Now see tracker in action</h4>
+  <p class="fosz18 text-lighter">Get a complete understanding of tracker by importing dummy products into your account and watch them being tracked.</p><br><br>
+
+  <!-- <div class="fosz18 text-lighter">Choose your marketplaces</div> -->
+  <!-- <ul class="marketplaces-cover">
+    <li [class.active]="selectedCategory.market == 'amazon'" (click)="selectMarket('amazon')"><a class="marketplaces m-amazon" style="transition: none;"><span class="m-h"></span></a></li>
+    <li [class.active]="selectedCategory.market == 'flipkart'" (click)="selectMarket('flipkart')"><a class="marketplaces m-flipkart"><span class="m-h"></span></a></li>
+    <li [class.active]="selectedCategory.market == 'snapdeal'" (click)="selectMarket('snapdeal')"><a class="marketplaces m-snapdeal"><span class="m-h"></span></a></li>
+    <li [class.active]="selectedCategory.market == 'paytm'" (click)="selectMarket('paytm')"><a class="marketplaces m-paytm"><span class="m-h"></span></a></li>
+  </ul> -->
+
+  <div class="fosz18 text-lighter" margin-top>Choose category for dummy import</div>
+  <ul class="product-category flex">
+    <!-- <li class="active"><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/Electronics.png" alt=""><br>Electronics</a></li>
+    <li class=""><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/Appliances.png" alt=""><br>Appliances</a></li>
+    <li class=""><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/Fashion.png" alt=""><br>Fashion</a></li>
+    <li><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/kids.png" alt=""><br>Baby & Kids</a></li>
+    <li><a href=""><ion-icon md="md-checkmark" class="text-primary"></ion-icon><img src="../assets/img/furniture.png" alt=""><br>Furniture</a></li> -->
+    <li (click)="selectedCategory = category.slug;" [class.active]="selectedCategory == category.slug" *ngFor="let category of categories">
+      <a><!-- <ion-icon md="md-checkmark" class="text-primary"></ion-icon> --><!-- <img [src]="category.icon" alt=""> --><div class="cat-icon"></div>{{category.name}}</a>
+    </li>
+  </ul>
+
+  <button [hidden]="!importCallPending" [ngClass]="{'loading': importInProgress}" [disabled]="!selectedCategory || importInProgress" (click)="importDummyRecords()" ion-button color="green" margin-top>
+    <!-- <ion-icon md="md-cloud-upload" margin-right></ion-icon> -->
+    Track dummy products
+  </button>
+  <button [hidden]="importCallPending" ion-button color="dark" (click)="refreshLocation()">Start working<ion-icon name="arrow-round-forward" margin-left></ion-icon></button>
+
+  <div class="text-lighter fosz18" margin-top><span class="text-primary opacity-1">Note: </span>Dummy products will be deleted from your account as soon as you import real data</div>
+  </div>
+</div>
+</ion-content>

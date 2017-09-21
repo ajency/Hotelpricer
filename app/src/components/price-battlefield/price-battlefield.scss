@@ -1,0 +1,15 @@
+price-battlefield {
+    svg:not(:root) {
+        overflow: visible;
+    }
+
+    svg.drawerContainer{
+        overflow:hidden !important;
+    }
+
+    #mainSVGContainer{
+        text-align:center; 
+        overflow:hidden; 
+        margin:0 auto;
+    }
+}
