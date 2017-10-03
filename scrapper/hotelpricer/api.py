@@ -22,7 +22,7 @@ def sendResponseCall(url,payload):
         urlopen(request)
     except HTTPError, e:
         print '###########API ERROR#############'
-        print json.dumps(e)
+        print e
         print '\n'
     except URLError, e:
         print '###########API ERROR#############'
