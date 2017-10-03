@@ -1,4 +1,5 @@
-[1003/131305.900056:WARNING:resource_bundle.cc(353)] locale_file_path.empty() for locale 
-[1003/131305.973424:WARNING:resource_bundle.cc(353)] locale_file_path.empty() for locale 
-[1003/131314.091756:INFO:CONSOLE(0)] "-webkit-linear-gradient is deprecated. Please use linear-gradient instead.", source:  (0)
-[1003/131352.819330:INFO:CONSOLE(0)] "Uncaught (in promise) UnknownError: Background Sync is disabled.", source: https://www.trivago.in/?aDateRange[arr]=2017-10-03&aDateRange[dep]=2017-10-04&iRoomType=7&iPathId=84767&iGeoDistanceItem=1236122 (0)
+[1003/151710.575815:WARNING:resource_bundle.cc(353)] locale_file_path.empty() for locale 
+[1003/151710.676559:WARNING:resource_bundle.cc(353)] locale_file_path.empty() for locale 
+[1003/151710.788772:WARNING:histograms.cc(40)] Started multiple compositor clients (Browser, Renderer) in one process. Some metrics will be disabled.
+[1003/151712.737715:INFO:CONSOLE(0)] "-webkit-linear-gradient is deprecated. Please use linear-gradient instead.", source:  (0)
+[1003/151719.588308:INFO:CONSOLE(0)] "Uncaught (in promise) UnknownError: Background Sync is disabled.", source: https://www.trivago.in/?aDateRange[arr]=2017-10-03&aDateRange[dep]=2017-10-04&iRoomType=7&iPathId=84767&iGeoDistanceItem=1236122 (0)

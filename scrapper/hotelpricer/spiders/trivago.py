@@ -144,6 +144,13 @@ class TrivagoSpider(scrapy.Spider):
             options.add_argument('--headless')
             options.add_argument('disable-gpu')
 
+            options.add_argument('--user-data-dir=/tmp/user-data')
+            options.add_argument('--data-path=/tmp/data-path')
+            options.add_argument('--homedir=/tmp')
+            options.add_argument('--disk-cache-dir=/tmp/cache-dir')
+            options.add_argument('--no-sandbox')
+            options.add_argument('--single-process')
+
 
         driver = webdriver.Chrome(executable_path=driver_path,chrome_options=options)
         # driver = webdriver.Remote(
