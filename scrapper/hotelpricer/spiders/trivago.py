@@ -10,6 +10,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 import re
+import random
+from hotelpricer.settings import USER_AGENT_LIST
+from hotelpricer.settings import PROXY_LIST
 
 
 import os
@@ -21,6 +24,8 @@ import requests
 import datetime
 
 from scrapy.utils.project import get_project_settings
+
+from termcolor import colored
 
 
 
@@ -36,7 +41,6 @@ class TrivagoSpider(scrapy.Spider):
 
 
 
-
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         spider = super(TrivagoSpider, cls).from_crawler(crawler, *args, **kwargs)
@@ -44,18 +48,25 @@ class TrivagoSpider(scrapy.Spider):
         return spider
 
     def spider_error(self, failure, response, spider):
-        print '###########SPIDER ERROR#############'
+        print colored('###########SPIDER ERROR#############','red')
         print failure
         print '\n'
         spider.logger.info('Spider failed due to error!!: %s', spider.name)
 
     def start_requests(self):
-        yield scrapy.Request(url=self.url, callback=self.parse)
+        user_agent = random.choice(USER_AGENT_LIST)
+        request = scrapy.Request(url=self.url, callback=self.parse)
+        request.headers.setdefault('User-Agent', user_agent)
+        yield request
 
 
 
 
     def parse(self, response):
+
+        # print "========RESPONSE HEADERS========="
+        # print response.request.headers
+        # exit()
 
         ipathData = self.getIpathData(response)
         dealsData = self.getDealsData(ipathData)
@@ -72,7 +83,17 @@ class TrivagoSpider(scrapy.Spider):
 
 
     def getIpathData(self,response):
-        response_data = json.loads(response.body)
+
+        try:
+            print colored('##########IPATH RESPONSE###########','green')
+            print response.body
+            print '\n'
+            response_data = json.loads(response.body)
+        except:
+            print colored('??????IPATH RESPONSE ERROR?????','red')
+            print '\n'
+            exit()
+
 
         iPathId = response_data['result'][0]['app']['iPathId']
         cpt = response_data['result'][0]['id']
@@ -97,8 +118,8 @@ class TrivagoSpider(scrapy.Spider):
         tomorrow = str(datetime.date.today() + datetime.timedelta(1))
 
         url = "https://www.trivago.in/?aDateRange[arr]="+str(today)+"&aDateRange[dep]="+str(tomorrow)+"&iRoomType="+str(self.roomType)+"&iPathId="+str(ipathData['iPathId'])+"&iGeoDistanceItem="+str(ipathData['iGeoDistanceItem'])
-        driver = self.getChromeDriver(True)
-        #driver = self.getPhantomDriver()
+        #driver = self.getChromeDriver(True)
+        driver = self.getPhantomDriver()
         driver.get(url)
         deals = []
 
@@ -165,11 +186,24 @@ class TrivagoSpider(scrapy.Spider):
         'Accept-Encoding':'gzip, deflate, sdch',
         'Accept-Language':'en-US,en;q=0.8',
         'Cache-Control':'max-age=0',
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'
+        'User-Agent': random.choice(USER_AGENT_LIST)
+        #'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'
         }
 
         for key, value in enumerate(headers):
             webdriver.DesiredCapabilities.PHANTOMJS['phantomjs.page.customHeaders.{}'.format(key)] = value
+
+
+        # PROXY = random.choice(PROXY_LIST)
+        # webdriver.DesiredCapabilities.PHANTOMJS['proxy'] = {
+        #     "httpProxy":PROXY,
+        #     "ftpProxy":PROXY,
+        #     "sslProxy":PROXY,
+        #     "noProxy":None,
+        #     "proxyType":"MANUAL",
+        #     "class":"org.openqa.selenium.Proxy",
+        #     "autodetect":False
+        #     }
 
         driver_path = self.settings.get('PROJECT_ROOT')+'/phantomjs'
 
@@ -179,6 +213,6 @@ class TrivagoSpider(scrapy.Spider):
         ]
 
         driver = webdriver.PhantomJS(executable_path=driver_path,service_args=service_args,service_log_path=os.path.devnull)
-        driver.wait = WebDriverWait(driver, 10)
+        driver.wait = WebDriverWait(driver, 5)
         driver.set_window_size(1120, 550)
         return driver

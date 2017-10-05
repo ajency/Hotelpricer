@@ -6,6 +6,9 @@
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+import base64
+from hotelpricer.settings import PROXY_LIST
+import random
 
 
 class HotelpricerSpiderMiddleware(object):
@@ -54,3 +57,19 @@ class HotelpricerSpiderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+
+
+
+
+class ProxyMiddleware(object):
+    # overwrite process request
+    def process_request(self, request, spider):
+        # Set the location of the proxy
+        request.meta['proxy'] = random.choice(PROXY_LIST)
+
+        # Use the following lines if your proxy requires authentication
+        # proxy_user_pass = "USERNAME:PASSWORD"
+        # encoded_user_pass = base64.encodestring(proxy_user_pass)
+        # request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass

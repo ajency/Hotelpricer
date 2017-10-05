@@ -6,12 +6,13 @@ from scrapy.utils.log import configure_logging
 from hotelpricer.settings import PROJECT_ROOT
 
 from subprocess import Popen
+from termcolor import colored
 
 def dispatch(event, context):
     configure_logging({'LOG_ENABLED': False})
     hotels = event.get('hotels')
 
-    print '###########PAYLOAD#############'
+    print colored('###########PAYLOAD#############','yellow')
     print hotels
     print '\n'
 
@@ -22,7 +23,6 @@ def dispatch(event, context):
     # Popen(commnd, shell=True)
 
     for hotel in hotels:
-        print hotel['name']
         process.crawl('trivago', hotel=hotel['name'], roomType=hotel['roomType'])
     #process.start(stop_after_crawl=False)
     process.start()
