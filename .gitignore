@@ -58,7 +58,7 @@
 /scrapper/src/node_modules/*
 /scrapper/src/bower_components/*
 /scrapper/zappa_settings.json
-/scrapper/repricing/settings.py
+/scrapper/hotelpricer/settings.py
 /scrapper/hotelpricer/headless_shell
 
 /bin
