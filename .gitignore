@@ -7,23 +7,41 @@
 /api/cmd/*.out
 
 
-/app/vendor/*
-/app/config/app.php
-/app/tmp/*
-/app/logs/*
-/app/repricing/*
-/app/bin/*
-/app/include/*
-/app/lib/*
-/app/local/*
-/app/selenium/*
-/app/pip-selfcheck.json
-/app/node_modules/*
-/app/src/node_modules/*
+/app/*~
+/app/*.sw[mnpcod]
+/app/*.log
+/app/*.tmp
+/app/*.tmp.*
+/app/log.txt
+/app/*.sublime-project
+/app/*.sublime-workspace
+/app/.vscode/
+/app/npm-debug.log*
 
-/app/src/env.js
-/app/platforms
-/app/www
+
+/app/.idea/
+/app/.sass-cache/
+/app/.tmp/
+/app/.versions/
+/app/coverage/
+/app/dist/
+/app/node_modules/
+/app/tmp/
+/app/temp/
+/app/hooks/
+/app/plugins/android.json
+/app/plugins/ios.json
+/app/$RECYCLE.BIN/
+/app/!build/
+/app/www/*
+/app/platforms/*
+/app/.design/*
+/app/plugins/
+/app/platforms/browser/build/package.zip
+
+/app/.DS_Store
+/app/Thumbs.db
+/app/UserInterfaceState.xcuserstate
 
 
 /scrapper/vendor/*
