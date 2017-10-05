@@ -28,7 +28,6 @@
 /app/node_modules/
 /app/tmp/
 /app/temp/
-/app/hooks/
 /app/plugins/android.json
 /app/plugins/ios.json
 /app/$RECYCLE.BIN/
