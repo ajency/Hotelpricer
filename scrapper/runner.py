@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
     hotels = [
         {
-        "name":"marriot goa",
+        "name":"marriot resort goa",
         "roomType": "7"
         },
         # {
