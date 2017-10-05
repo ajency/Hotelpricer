@@ -1,5 +1,5 @@
 Automat==0.5.0
-PAM==0.4.2
+PAM==0.1.4
 Pillow==2.3.0
 PyDispatcher==2.0.5
 PyYAML==3.12
