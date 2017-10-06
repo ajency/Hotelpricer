@@ -47,8 +47,6 @@ class UsersController extends AppController
     public function token()
     {
 
-        $rulesTable = TableRegistry::get('PricingRules');
-
         $statusTable = TableRegistry::get('ProductStatuses');
         $marketplacesTable = TableRegistry::get('Marketplaces');
 
@@ -88,12 +86,6 @@ class UsersController extends AppController
           $token = str_ireplace('bearer' . ' ', '', $this->request->header('authorization'));
         }
 
-        $pricing_rules = $rulesTable->find('list', [
-            'keyField' => 'id',
-            'valueField' => 'title',
-            'groupField' => 'channel_id'
-            ])->where(['user_id'=>$user['id']])->orWhere(['type'=>'default'])->toArray();
-
         $status = $statusTable->find('list', [
             'keyField' => 'id',
             'valueField' => 'label'
@@ -108,7 +100,6 @@ class UsersController extends AppController
         $data = [
             'token'=>$token,
             'user'=>$user_data,
-            'default_pricing_rules'=>$pricing_rules,
             'status'=>$status,
             'marketplaces'=>$smarketplaces
         ];

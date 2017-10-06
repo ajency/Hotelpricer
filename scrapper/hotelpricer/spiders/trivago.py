@@ -162,6 +162,7 @@ class TrivagoSpider(scrapy.Spider):
 
         if headless:
             #options.binary_location = self.settings.get('PROJECT_ROOT')+'/headless_shell'
+            options.binary_location = self.settings.get('PROJECT_ROOT')+'/headless_shell'
             options.add_argument('--headless')
             options.add_argument('disable-gpu')
 
