@@ -118,8 +118,8 @@ class TrivagoSpider(scrapy.Spider):
         tomorrow = str(datetime.date.today() + datetime.timedelta(1))
 
         url = "https://www.trivago.in/?aDateRange[arr]="+str(today)+"&aDateRange[dep]="+str(tomorrow)+"&iRoomType="+str(self.roomType)+"&iPathId="+str(ipathData['iPathId'])+"&iGeoDistanceItem="+str(ipathData['iGeoDistanceItem'])
-        #driver = self.getChromeDriver(True)
-        driver = self.getPhantomDriver()
+        driver = self.getChromeDriver(True)
+        #driver = self.getPhantomDriver()
         driver.get(url)
         deals = []
 
@@ -161,16 +161,16 @@ class TrivagoSpider(scrapy.Spider):
         options.add_argument("'chrome.prefs': {'profile.managed_default_content_settings.images': 2}")
 
         if headless:
-            options.binary_location = self.settings.get('PROJECT_ROOT')+'/headless_shell'
+            #options.binary_location = self.settings.get('PROJECT_ROOT')+'/headless_shell'
             options.add_argument('--headless')
             options.add_argument('disable-gpu')
 
-            options.add_argument('--user-data-dir=/tmp/user-data')
-            options.add_argument('--data-path=/tmp/data-path')
-            options.add_argument('--homedir=/tmp')
-            options.add_argument('--disk-cache-dir=/tmp/cache-dir')
-            options.add_argument('--no-sandbox')
-            options.add_argument('--single-process')
+            # options.add_argument('--user-data-dir=/tmp/user-data')
+            # options.add_argument('--data-path=/tmp/data-path')
+            # options.add_argument('--homedir=/tmp')
+            # options.add_argument('--disk-cache-dir=/tmp/cache-dir')
+            # options.add_argument('--no-sandbox')
+            # options.add_argument('--single-process')
 
 
         driver = webdriver.Chrome(executable_path=driver_path,chrome_options=options)
